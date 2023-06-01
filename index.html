@@ -19,7 +19,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">Clarence Taylor</span>
+                <span class="d-block d-lg-none">Tech View</span>
                 <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/favicon.ico" alt="..." /></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -58,42 +58,45 @@
             </section>
             <hr class="m-0" />
             <!-- Experience-->
-            <section class="resume-section" id="experience">
+            <section class="resume-section" id="kubernetes">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Experience</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Senior Web Developer</h3>
-                            <div class="subheading mb-3">Intelitec Solutions</div>
-                            <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">March 2013 - Present</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Web Developer</h3>
-                            <div class="subheading mb-3">Intelitec Solutions</div>
-                            <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">December 2011 - March 2013</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Junior Web Designer</h3>
-                            <div class="subheading mb-3">Shout! Media Productions</div>
-                            <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">July 2010 - December 2011</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Web Design Intern</h3>
-                            <div class="subheading mb-3">Shout! Media Productions</div>
-                            <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">September 2008 - June 2010</span></div>
-                    </div>
-                </div>
+                    <h2 class="mb-5">Kubernetes</h2>
+                    <p>
+                        <h5>Introduction</h5>
+                    Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation.               <br/>
+                    It has a large, rapidly growing ecosystem. The name Kubernetes originates from Greek, meaning helmsman or pilot. Google open-sourced the Kubernetes project in 2014.                        <br/>
+                    Kubernetes builds upon a decade and a half of experience that Google has with running production workloads at scale, combined with best-of-breed ideas and practices from the community.    <br/>
+                    <img class="img-fluid" src="assets/img/kubernetes-architecture.png" alt="..."/>
+                    </p>
+                    <p>
+                        <h5>Kubernetes Cluster</h5>
+                    In Kubernetes, a cluster consists of at least one Kubernetes control plane and multiple Kubernetes worker machines called Nodes.            <br/>
+                    A cluster is the foundation of Kubernetes: all containerized workloads and services run within a cluster.                                   <br/>
+                    </p>
+                    <p>
+                        <h5>Kubernetes Control Plane</h5>
+                    The Kubernetes control plane is responsible for maintaining the desired state for your cluster.                                                                     <br/>
+                    When you interact with Kubernetes, such as by using the kubectl command-line interface, you’re communicating with your cluster’s Kubernetes control plane.          <br/>
+                    The “control plane” refers to a collection of processes managing the cluster state.                                                                                 <br/>
+                    Typically all these processes run on a single node in the cluster, and this node is also referred to as the control plane.                                          <br/>
+                    The control plane can also be replicated for availability and redundancy.                                                                                           <br/>
+
+                    </p>
+                    <p>
+                        <h5>Kubernetes Nodes</h5>
+                    The nodes in a cluster are the machines (VMs, physical servers, etc) that run your applications and containerized workflows.        <br/>
+                    The Kubernetes control plane controls each node; you’ll rarely interact with nodes directly.                                        <br/>
+                    </p>
+                    <p>
+                        <h5>Container Registry</h5>
+                    A Container Registry is a single access point to manage Container Images.                                                                                           <br/>
+                    Container Images are stored with rich metadata that allows images to be searched, viewed and retrieved for deployment to Container Platforms such as Kubernetes.    <br/>
+                    </p>
+                    <p>
+                        <h5>Namespace</h5>
+                    Namespaces are intended for use in environments with many users spread across multiple teams, or projects.                                                                                                  <br/>
+                    Namespaces are a way to divide cluster resources between multiple users. In GKP, namespaces are segmented by SEAL applications and deployments (a single SEAL application can have multiple deployments).   <br/>
+                    </p>
             </section>
             <hr class="m-0" />
             <!-- Education-->
@@ -118,9 +121,9 @@
                     </p>
                     <p>
                         <h5>Use cases</h5>
-                        • Fast, consistent delivery of applications.
-                        • Responsive deployment and scalable
-                        • Running more workloads on same h/w
+                        • Fast, consistent delivery of applications.                                                                                    <br/>
+                        • Responsive deployment and scalable                                                                                            <br/>
+                        • Running more workloads on same h/w                                                                                            <br/>
                     </p>
                     <p>
                         <h5>Docker Architecture</h5>                        •
@@ -230,7 +233,7 @@
                     The template for all modern computers is the Von Neumann architecture, detailed in a 1945 paper by Hungarian mathematician John von Neumann. <br/>
                     This describes a design architecture for an electronic digital computer with subdivisions of a processing unit consisting of an arithmetic logic unit and processor registers,
                     a control unit containing an instruction register and program counter, a memory to store both data and instructions, external mass storage, and input and output mechanisms. <br/><br/>
-                    <img src="assets/von-neumann-arch.png"/>
+                    <img class="img-fluid" src="assets/img/von-neumann-architecture.png" alt="..."/>
                     </p>
                     <p>
                     <h5>Input device</h5>
@@ -304,9 +307,9 @@
             </section>
             <hr class="m-0" />
             <!-- Awards-->
-            <section class="resume-section" id="awards">
+            <section class="resume-section" id="hardware">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Awards & Certifications</h2>
+                    <h2 class="mb-5">Hardware</h2>
                     <ul class="fa-ul mb-0">
                         <li>
                             <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
