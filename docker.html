@@ -1,0 +1,70 @@
+<h2 class="mb-5">Docker</h2>
+<p>
+<h5>Introduction</h5>
+• Docker is an open platform for developing, shipping and running applications.                                                 <br/>
+• Docker enable you to separate your applications from infrastructure so you can deliver software quickly.                      <br/>
+• With Docker, you can manager your infrastructure the same way you manager your applications.                                  <br/>
+• By using Docker methodologies, we can significantly reduce the delay between development and running in production.           <br/>
+</p>
+<p>
+<h5>Docker Platform</h5>
+• Docker provides the ability to package and run application, in a loosely isolated environment called container.               <br/>
+• Containers are light weight, self-contained, sharable, so scalable, and can run in different host environments.               <br/>
+• Docker provides the tooling and platform to manage the lifecycle of containers.                                               <br/>
+a. Develop your application and its supporting components using containers.                                                     <br/>
+b. It becomes the unit, distributable, testable and scalable.                                                                   <br/>
+c. Once development is ready, deploy it to different environments without any changes.                                          <br/>
+</p>
+<p>
+<h5>Use cases</h5>
+• Fast, consistent delivery of applications.                                                                                    <br/>
+• Responsive deployment and scalable                                                                                            <br/>
+• Running more workloads on same h/w                                                                                            <br/>
+</p>
+<p>
+<h5>Docker Architecture</h5>                        •
+• Docker uses client-server architecture, where docker client talks to docker domain using REST API over UNIX sockets or n/w interface. <br/>
+• Another docker client is Docker compose, which lets you work with applications consisting of set of containers.               <br/>
+<img class="img-fluid" src="assets/img/docker.png" alt="..."/>
+</p>
+<p>
+<h5>Docker Daemon</h5>
+○ Docker Daemon (dockerd) listens for Docker API requests and managers Docker objects such as images, containers, n/w and volumes. <br/>
+○ A Daemon can communicate with other daemons to manage docker services.                                                            <br/>
+</p>
+<p>
+<h5>Docker Client</h5>
+○ Docker Client (docker) is the primary way that many docker users interact with Docker.                                        <br/>
+○ When you run commands like docker run, the client sends these commands to dockerd for execution.                              <br/>
+○ The docker command uses the docker API                                                                                        <br/>
+○ The Docker client can communicate with multiple daemons.                                                                      <br/>
+</p>
+<p>
+<h5>Docker Desktop</h5>
+○ Docker desktop is easy to install application for MAC, Windows and Linux environments.                                        <br/>
+○ It enables you to build and share containerize applications and micro services.                                               <br/>
+○ It includes docker, dockerd, docker compose, docker content trust, Kubernetes, and credential helper.                         <br/>
+</p>
+<p>
+<h5>Docker registries</h5>
+○ A docker registry stores docker images.                                                                                       <br/>
+○ Docker is public registry and default when you pull.                                                                          <br/>
+○ We can even run our own private registry.                                                                                     <br/>
+</p>
+<p>
+<h5>Docker Objects (Images, Containers, Networks, Volumes, Plugins, and other)</h5>
+Image
+○ An image is read only template used to materialize the container.                                                             <br/>
+○ To build an image, we write Dockerfile with simple syntax for defining the steps needed to create an image.                   <br/>
+○ Each instruction creates a layer in the image.                                                                                <br/>
+○ When you change the Dockerfile and rebuild the image, only those layers which are changed are rebuild.                        <br/>
+Container
+○ Container is runnable instance of Image.                                                                                      <br/>
+○ We can create, start, stop, move and delete a container using Docker API or CLI.                                              <br/>
+○ We can connect a container to more than one networks, attach storage to it, or even create image with current state.          <br/>
+</p>
+<p>
+<h5>Underlying technology</h5>
+• Docker is written in Go Programming language.                                                                                 <br/>
+• Docker uses namespaces to provide isolated workspaces called containers.                                                      <br/>
+</p>
