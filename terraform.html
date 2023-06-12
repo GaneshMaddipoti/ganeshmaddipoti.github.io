@@ -1,0 +1,119 @@
+<pre>
+  Terraform – Infrastructure as code
+Tool for provisioning and managing infrastructure/environment through software to achieve consistent and predictable deployments. (Automated provisioning)
+
+Architecture
+
+Semantics
+Idempotent, push type, State Data, workflow like execution
+$terraform init - looks for configuration files in current directory, and check if they any provider plugins, if yes, it will download from public terraform registry.
+It will use current directory to store state data.
+$terraform plan - displays the plan it's going to do before provisioning the infra/environment.
+$terraform apply - provision the infra/environment.
+$terraform destroy - will destroy everything in target environment based on state data.
+
+Modules/Entities
+Provider Plugins – (AWS, Azure, GCP) - They are stored in registry.terraform.io
+Data sources
+Resources
+
+Syntax
+Declarative
+
+Data types
+Primitive:	String, Number, Boolean
+Collection	List, Set, Map
+Structural	Tuple, Object
+
+locals {
+	key = value
+}
+
+output "name_label" {
+	value = output_value
+	description = "description of the variable"
+	sensitive = true/false
+}
+
+variable "name_label" {
+	type = value
+	description = "value"
+	default = "value"
+	sensitive = true/false
+}                                                                                         var.name_label
+
+provider "aws" {
+	access_key = "ACCESS_KEY"
+	secret_key = "SECRET_KEY"
+	region = "us-east-1"
+}
+
+data "aws_ssm_parameter" "ami" {
+	name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+}
+
+resouce "aws_instance" "web_server" {
+	name = "web_server"
+	ebs_volume {
+		size = 40
+	}
+	user_data = <<EOF
+        #! /bin/bash
+	sudo amazon-linux-extras install -y inginx1
+	sudo service nginx start
+	sudo rm /usr/share/nginx/html/index.html
+	echo 'hi'
+	EOF
+}
+
+Input
+
+
+Language Compiler/Interpreter
+Go language
+Installation comes with compiled binary for your target platform. (Executable) (Chocolatey to install in windows)
+Input : JSON or Hashicorp configuration language(HCL) (.tf)
+
+CLI
+$ terraform -help
+Usage: terraform [global options] <subcommand> [args]
+The available commands for execution are listed below.
+The primary workflow commands are given first, followed by
+less common or more advanced commands.
+Main commands:
+  init          	Prepare your working directory for other commands
+  validate     	Check whether the configuration is valid
+  plan          	Show changes required by the current configuration
+  apply        	Create or update infrastructure
+  destroy      	Destroy previously-created infrastructure
+All other commands:
+  console       	Try Terraform expressions at an interactive command prompt
+  fmt           	Reformat your configuration in the standard style
+  force-unlock  	Release a stuck lock on the current workspace
+  get          	Install or upgrade remote Terraform modules
+  graph         	Generate a Graphviz graph of the steps in an operation
+  import        	Associate existing infrastructure with a Terraform resource
+  login        	Obtain and save credentials for a remote host
+  logout        	Remove locally-stored credentials for a remote host
+  output        	Show output values from your root module
+  providers     	Show the providers required for this configuration
+  refresh       	Update the state to match remote systems
+  show          	Show the current state or a saved plan
+  state         	Advanced state management
+  taint         	Mark a resource instance as not fully functional
+  test          	Experimental support for module integration testing
+  untaint       	Remove the 'tainted' state from a resource instance
+  version       	Show the current Terraform version
+  workspace     	Workspace management
+Global options (use these before the subcommand, if any):
+  -chdir=DIR    	Switch to a different working directory before executing the given subcommand.
+  -help        	Show this help output, or the help for a specified subcommand.
+  -version      	An alias for the "version" subcommand.
+
+Storage
+Source code stored in Version control Systems - GitHub
+
+Platform
+Windows, Linux/Unix, Mac
+
+</pre>
