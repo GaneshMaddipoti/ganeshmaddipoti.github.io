@@ -1,18 +1,18 @@
-<h2 class="mb-5">Kubernetes</h2>
+<h3 class="mb-5">Kubernetes</h3>
 <p>
-<h5>Introduction</h5>
+<h6>Introduction</h6>
 Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation.               <br/>
 It has a large, rapidly growing ecosystem. The name Kubernetes originates from Greek, meaning helmsman or pilot. Google open-sourced the Kubernetes project in 2014.                        <br/>
 Kubernetes builds upon a decade and a half of experience that Google has with running production workloads at scale, combined with best-of-breed ideas and practices from the community.    <br/>
 <img class="img-fluid" src="../assets/img/kubernetes-architecture.png" alt="..."/>
 </p>
 <p>
-<h5>Kubernetes Cluster</h5>
+<h6>Kubernetes Cluster</h6>
 In Kubernetes, a cluster consists of at least one Kubernetes control plane and multiple Kubernetes worker machines called Nodes.            <br/>
 A cluster is the foundation of Kubernetes: all containerized workloads and services run within a cluster.                                   <br/>
 </p>
 <p>
-<h5>Kubernetes Control Plane</h5>
+<h6>Kubernetes Control Plane</h6>
 The Kubernetes control plane is responsible for maintaining the desired state for your cluster.                                                                     <br/>
 When you interact with Kubernetes, such as by using the kubectl command-line interface, you’re communicating with your cluster’s Kubernetes control plane.          <br/>
 The “control plane” refers to a collection of processes managing the cluster state.                                                                                 <br/>
@@ -21,17 +21,17 @@ The control plane can also be replicated for availability and redundancy.       
 
 </p>
 <p>
-<h5>Kubernetes Nodes</h5>
+<h6>Kubernetes Nodes</h6>
 The nodes in a cluster are the machines (VMs, physical servers, etc) that run your applications and containerized workflows.        <br/>
 The Kubernetes control plane controls each node; you’ll rarely interact with nodes directly.                                        <br/>
 </p>
 <p>
-<h5>Container Registry</h5>
+<h6>Container Registry</h6>
 A Container Registry is a single access point to manage Container Images.                                                                                           <br/>
 Container Images are stored with rich metadata that allows images to be searched, viewed and retrieved for deployment to Container Platforms such as Kubernetes.    <br/>
 </p>
 <p>
-<h5>Namespace</h5>
+<h6>Namespace</h6>
 Namespaces are intended for use in environments with many users spread across multiple teams, or projects.                                                                                                  <br/>
 Namespaces are a way to divide cluster resources between multiple users. In GKP, namespaces are segmented by SEAL applications and deployments (a single SEAL application can have multiple deployments).   <br/>
 </p>
