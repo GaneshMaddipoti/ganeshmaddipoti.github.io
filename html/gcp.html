@@ -1,39 +1,143 @@
-<h3>GCP</h3>
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <h3>GCP</h3>
 
-<h6>Introduction</h6>
-<p>
-  Google Cloud is a suite of cloud services hosted on Google's infrastructure.                                                                        <br/>
-  From computing and storage, to data analytics, machine learning, and networking, Google Cloud offers a wide variety of services                     <br/>
+      <p>
+        Container-based architecture—a fully automated, elastic third-wave cloud that consists of a combination of automated services and scalable data.    <br/>
+        Services automatically provision and configure the infrastructure used to run applications.                                                         <br/>
+        In the future, every company—regardless of size or industry— will differentiate itself from its competitors through technology.                     <br/>
+        Increasingly, that technology will be in the form of software.                                                                                      <br/>
+        Great software is based on high-quality data. This means that every company is, or will eventually become, a data company.                          <br/>
+      </p>
 
-  and APIs that can be integrated with any cloud-computing application or project, from personal to enterprise-grade.                                 <br/>
-  Cloud Console—an in-browser UI that lets you access and manage Google Cloud services.                                                               <br/>
+      <h6>Cloud Offerings</h6>
+      <p>
+        IAAS: Infrastructure as a service                                                                                                                   <br/>
+        PAAS: Platform as a service                                                                                                                         <br/>
+        SAAS: Software as a service                                                                                                                         <br/>
+        Serverless Applications : CloudFunctions, CloudRun                                                                                                  <br/>
+      </p>
 
-  Organizations use Google Cloud in different ways, so projects are a good method for organizing cloud computing services (team, product, for example.) <br/>
+      <h6>Google Cloud Network</h6>
+      <p>
+        Google Cloud’s infrastructure is based in five major geographic locations:                                                                          <br/>
+        North America,                                                                                                                                      <br/>
+        South America,                                                                                                                                      <br/>
+        Europe,                                                                                                                                             <br/>
+        Asia,                                                                                                                                               <br/>
+        Australia.                                                                                                                                          <br/>
+        Having multiple locations is important because choosing where to locate applications affects qualities like availability, durability, and latency,  <br/>
+        the latter of which measures the time a packet of information takes to travel from its source to its destination.                                   <br/>
 
-  A Google Cloud project is an organizing entity for your Google Cloud resources. It often contains resources and services;                           <br/>
-  for example, it may hold a pool of virtual machines, a set of databases, and a network that connects them together.                                 <br/>
-  Projects also contain settings and permissions, which specify security rules and who has access to what resources.                                  <br/>
-  A Project ID is a unique identifier that is used to link Google Cloud resources and APIs to your specific project.                                  <br/>
-  Project IDs are unique across Google Cloud: there can be only one qwiklabs-gcp-xxx...., which makes it globally identifiable.                       <br/>
-</p>
+        Each of these locations is divided into several regions and zones.                                                                                  <br/>
+        Regions represent independent geographic areas and are composed of zones. For example, London, or europe-west2, is a region that currently comprises three different zones. <br/>
+        A zone is an area where Google Cloud resources are deployed.                                                                                        <br/>
+        For example, if you launch a virtual machine using Compute Engine it will run in the zones that you specify to ensure resource redundancy.          <br/>
+        You can also run resources in different regions.                                                                                                    <br/>
+        Google Cloud currently supports 103 zones in 34 regions.                                                                                            <br/>
+      </p>
+    </div>
+    <div class="carousel-item">
+      <h3>GCP</h3>
 
-<h6>Roles</h6>
-<p>
-  In addition to cloud computing services, Google Cloud also contains a collection of permissions and roles that define who has access to what resources. <br/>
-  You can use the Cloud Identity and Access Management (Cloud IAM) service to inspect and modify these roles and permissions.                         <br/>
-  Basic roles set project-level permissions and, unless otherwise specified, control access and management to all Google Cloud services.              <br/>
-  Role Name	      Permissions                                                                                                                         <br/>
-  roles/viewer	  Permissions for read-only actions that do not affect state, such as viewing (but not modifying) existing resources or data.         <br/>
-  roles/editor	  All viewer permissions, plus permissions for actions that modify state, such as changing existing resources.                        <br/>
-  roles/owner	  All editor permissions and permissions for the following actions: billing, manage roles and permissions for a project and all resources within the project; <br/>
-</p>
+      <p>
+        Container-based architecture—a fully automated, elastic third-wave cloud that consists of a combination of automated services and scalable data.    <br/>
+        Services automatically provision and configure the infrastructure used to run applications.                                                         <br/>
+        In the future, every company—regardless of size or industry— will differentiate itself from its competitors through technology.                     <br/>
+        Increasingly, that technology will be in the form of software.                                                                                      <br/>
+        Great software is based on high-quality data. This means that every company is, or will eventually become, a data company.                          <br/>
+      </p>
 
-<h6>APIs and services</h6>
-<p>
-  Google Cloud APIs are a key part of Google Cloud. Like services, the 200+ APIs, in areas that range from business administration to machine learning, <br/>
-  all easily integrate with Google Cloud projects and applications.                                                                                     <br/>
-  APIs are application programming interfaces that you can call directly or via the client libraries.                                                 <br/>
-  Cloud APIs use resource-oriented design principles                                                                                                  <br/>
+      <h6>Cloud Offerings</h6>
+      <p>
+        IAAS: Infrastructure as a service                                                                                                                   <br/>
+        PAAS: Platform as a service                                                                                                                         <br/>
+        SAAS: Software as a service                                                                                                                         <br/>
+        Serverless Applications : CloudFunctions, CloudRun                                                                                                  <br/>
+      </p>
 
-</p>
+      <h6>Google Cloud Network</h6>
+      <p>
+        Google Cloud’s infrastructure is based in five major geographic locations:                                                                          <br/>
+        North America,                                                                                                                                      <br/>
+        South America,                                                                                                                                      <br/>
+        Europe,                                                                                                                                             <br/>
+        Asia,                                                                                                                                               <br/>
+        Australia.                                                                                                                                          <br/>
+        Having multiple locations is important because choosing where to locate applications affects qualities like availability, durability, and latency,  <br/>
+        the latter of which measures the time a packet of information takes to travel from its source to its destination.                                   <br/>
+
+        Each of these locations is divided into several regions and zones.                                                                                  <br/>
+        Regions represent independent geographic areas and are composed of zones. For example, London, or europe-west2, is a region that currently comprises three different zones. <br/>
+        A zone is an area where Google Cloud resources are deployed.                                                                                        <br/>
+        For example, if you launch a virtual machine using Compute Engine it will run in the zones that you specify to ensure resource redundancy.          <br/>
+        You can also run resources in different regions.                                                                                                    <br/>
+        Google Cloud currently supports 103 zones in 34 regions.                                                                                            <br/>
+      </p>
+
+      <h6>Introduction</h6>
+      <p>
+        Google Cloud is a suite of cloud services hosted on Google's infrastructure.                                                                        <br/>
+        From computing and storage, to data analytics, machine learning, and networking, Google Cloud offers a wide variety of services                     <br/>
+
+        and APIs that can be integrated with any cloud-computing application or project, from personal to enterprise-grade.                                 <br/>
+        Cloud Console—an in-browser UI that lets you access and manage Google Cloud services.                                                               <br/>
+
+        Organizations use Google Cloud in different ways, so projects are a good method for organizing cloud computing services (team, product, for example.) <br/>
+
+        A Google Cloud project is an organizing entity for your Google Cloud resources. It often contains resources and services;                           <br/>
+        for example, it may hold a pool of virtual machines, a set of databases, and a network that connects them together.                                 <br/>
+        Projects also contain settings and permissions, which specify security rules and who has access to what resources.                                  <br/>
+        A Project ID is a unique identifier that is used to link Google Cloud resources and APIs to your specific project.                                  <br/>
+        Project IDs are unique across Google Cloud: there can be only one qwiklabs-gcp-xxx...., which makes it globally identifiable.                       <br/>
+      </p>
+
+      <h6>Roles</h6>
+      <p>
+        In addition to cloud computing services, Google Cloud also contains a collection of permissions and roles that define who has access to what resources. <br/>
+        You can use the Cloud Identity and Access Management (Cloud IAM) service to inspect and modify these roles and permissions.                         <br/>
+        Basic roles set project-level permissions and, unless otherwise specified, control access and management to all Google Cloud services.              <br/>
+        Role Name	      Permissions                                                                                                                         <br/>
+        roles/viewer	  Permissions for read-only actions that do not affect state, such as viewing (but not modifying) existing resources or data.         <br/>
+        roles/editor	  All viewer permissions, plus permissions for actions that modify state, such as changing existing resources.                        <br/>
+        roles/owner	  All editor permissions and permissions for the following actions: billing, manage roles and permissions for a project and all resources within the project; <br/>
+      </p>
+
+      <h6>APIs and services</h6>
+      <p>
+        Google Cloud APIs are a key part of Google Cloud. Like services, the 200+ APIs, in areas that range from business administration to machine learning, <br/>
+        all easily integrate with Google Cloud projects and applications.                                                                                     <br/>
+        APIs are application programming interfaces that you can call directly or via the client libraries.                                                 <br/>
+        Cloud APIs use resource-oriented design principles                                                                                                  <br/>
+
+      </p>
+
+      <h6>Pricing</h6>
+      <p>
+        Google was the first major cloud provider to deliver per-second billing for its infrastructure-as-a-service compute offering, Compute Engine.       <br/>
+        In addition, per-second billing is now also offered for Google Kubernetes Engine, Dataproc, and App Engine flexible environment VMs                 <br/>
+      </p>
+    </div>
+    <div class="carousel-item">
+      <h6>Google Cloud Resource Hierarchy</h6>
+      <p>
+
+      </p>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+
 
