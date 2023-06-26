@@ -122,6 +122,37 @@
     <div class="carousel-item">
       <h6>Google Cloud Resource Hierarchy</h6>
       <p>
+        Google Cloud’s resource hierarchy contains four levels, they are: resources, projects, folders, and an organization node.                     <br/>
+        <img src="assets/img/gcp-resource-hierarchy.PNG" class="img-fluid"/>                                                                          <br/>
+        Resources - These represent virtual machines, Cloud Storage buckets, tables in BigQuery, or anything else in Google Cloud.                    <br/>
+        Resources are organized into projects.                                                                                                        <br/>
+        Projects can be organized into folders, or even sub-folders.                                                                                   <br/>
+        Organization node, which encompasses all the projects, folders, and resources in your organization.                                           <br/>
+        It’s important to understand this resource hierarchy because it directly relates to how policies are managed and applied in Google Cloud.     <br/>
+        Policies can be defined at the project, folder, and organization node levels, and can be applied to some individual resources, too.           <br/>
+        Policies are also inherited downward. This means that if you apply a policy to a folder, it will also apply to all the projects within that folder. <br/>
+        Projects are the basis for enabling and using Google Cloud services, like managing APIs, enabling billing, and enabling other Google services. <br/>
+        Each Google Cloud project has three identifying attributes: a project ID, a project name, and a project number.                               <br/>
+        <br/>
+        The project ID is a globally unique identifier assigned by Google that can’t be changed after creation. (Immutable)                           <br/>
+        Project IDs are used in different contexts to inform Google Cloud of the exact project to work with.                                          <br/>
+        Project names, however, are user-created. They don’t have to be unique and they can be changed at any time, so they are not immutable.        <br/>
+        Google Cloud also assigns each project a unique project number. they’re mainly used internally by Google Cloud to keep track of resources.    <br/>
+        <br/>
+        Google Cloud’s Resource Manager tool is designed to programmatically help you manage projects.                                                <br/>
+        It’s an API that can gather a list of projects associated with an account, create new projects, update existing projects, and delete projects.<br/>
+        It can even recover projects that were previously deleted,and can be accessed through the RPC API and the REST API.                           <br/>
+        <br/>
+        Folders let you assign policies to resources at a level of granularity you choose.                                                            <br/>
+        The resources in a folder inherit policies and permissions assigned to that folder.                                                           <br/>
+        A folder can contain projects, other folders, or a combination of both.                                                                       <br/>
+        You can use folders to group projects under an organization in a hierarchy. (Ex: per department, vertical, etc...)                            <br/>
+        To use folders, you must have an organization node, which is the very topmost resource in the Google Cloud hierarchy.                         <br/>
+        Everything else attached to that account goes under this node, which includes folders, projects, and other resources.                         <br/>
+
+        If you have a Workspace domain, Google Cloud projects will automatically belong to your organization node.                                    <br/>
+        Otherwise, you can use Cloud Identity, Google’s identity, access, application, and endpoint management platform, to generate one.             <br/>
+
 
       </p>
     </div>
