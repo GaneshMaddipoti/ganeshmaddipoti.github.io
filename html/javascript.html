@@ -3,10 +3,152 @@
         <div class="carousel-item active">
             <h3>Javascript</h3>
             <p>
-                <h6>Introduction</h6>
-                Javascript Designed by	Brendan Eich of Netscape initially, on December 4, 1995; 27 years ago                                         <br/>
+            <h6>Introduction</h6>
+            Javascript Designed by	Brendan Eich of Netscape initially, on December 4, 1995; 27 years ago                                           <br/>
+            Often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.  <br/>
+            As of 2023, 98.7% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries.        <br/>
+            All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.                                        <br/>
+            JavaScript is a high-level, interpreted, often just-in-time compiled language that conforms to the ECMAScript standard.[11] It has dynamic typing,                      <br/>
+            prototype-based object-orientation, and first-class functions. It is multi-paradigm, supporting event-driven, functional, and imperative programming styles.            <br/>
+            It has application programming interfaces (APIs) for working with text, dates, regular expressions, standard data structures, and the Document Object Model (DOM).      <br/>
+            The ECMAScript standard does not include any input/output (I/O), such as networking, storage, or graphics facilities.                   <br/>
+            In practice, the web browser or other runtime system provides JavaScript APIs for I/O.                                                  <br/>
+            JavaScript engines were originally used only in web browsers, but are now core components of some servers and a variety of applications. <br/>
+            The most popular runtime system for this usage is Node.js.                                                                              <br/>
              </p>
 
+            <p>
+            <h6>Execution Context</h6>
+            When the JavaScript engine scans a script file, it makes an environment called the Execution Context that handles the entire transformation and execution of the code. <br/>
+            During the context runtime, the parser parses the source code and allocates memory for the variables and functions. The source code is generated and gets executed.    <br/>
+            There are two types of execution contexts:
+            <ul>
+                <li>The global execution context is created when a JavaScript script first starts to run, and it represents the global scope in JavaScript.</li>
+                <li>A function execution context is created whenever a function is called, representing the function's local scope.</li>
+            </ul>
+            </p>
+            <p>
+            <h6>Call Stack</h6>
+            To keep the track of all the contexts, including global and functional, the JavaScript engine uses a call stack.                                                                <br/>
+            It uses the LIFO principle (Last-In-First-Out). When the engine first starts executing the script, it creates a global context and pushes it on the stack.                      <br/>
+            Whenever a function is invoked, similarly, the JS engine creates a function stack context for the function and pushes it to the top of the call stack and starts executing it.  <br/>
+            When execution of the current function is complete, then the JavaScript engine will automatically remove the context from the call stack and it goes back to its parent.        <br/>
+            <pre>
+                let a = 'Hello World!';
+                function first() {
+                  console.log('Inside first function');
+                  second();
+                  console.log('Again inside first function');
+                }
+                function second() {
+                  console.log('Inside second function');
+                }
+                first();
+                console.log('Inside Global Execution Context');
+            </pre>
+            <img class="img-fluid" src="assets/img/js-callstack.PNG"/>
+            </p>
+        </div>
+        <div class="carousel-item">
+            <h3>Syntax</h3>
+            <p>
+                <h6>Comments</h6>
+                <pre>
+                    //Single line comment
+
+                    /*
+                    Multi line comments
+                     */
+                </pre>
+                <h6>Data Types</h6>
+                <pre>
+                    let n = 0;                                  //number
+                    let s = "hello";                            //string
+                    let f = true;                               //boolean
+                    let u;                                      //undefined by javascript
+                    let e = null;                               //null by user
+
+                    const c = 99999;                            //constant
+                    var v = 2323;                               //similar to let but hoisting will happen(will be taken to top)
+
+                    let mySymbol = Symbol();                    //for object private properties
+                    let o = {
+                        firstName: "fname",
+                        lastName: "lname",
+                        [mySymbol]: "secret"
+                    }
+                    console.log(o.firstName);
+                </pre>
+                <h6>Arrays</h6>
+                Arrays are objects that hold multiple values of same type.
+                <pre>
+                    let values = [1,2,3];
+                    let values = Array.of(1,2,3);
+                    console.log(values[2]);
+                </pre>
+
+                <h6>Expressions</h6>
+                An expression usually refers to a piece of code that can be evaluated to a value, and is composed of variables, operators, function calls, and literals.                <br/>
+                In most programming languages, common examples of expressions are method calls and mathematical operations. (User defined)                                              <br/>
+                there are typically three different types of expressions: arithmetic, character, and logical.                                                                           <br/>
+                Arithmetic expressions usually evaluate to a numeric value, character expressions will yield a character value, and logical expressions will yield a logical value.     <br/>
+                Several types of expressions can be combined to produce a single expression.                                                                                            <br/>
+                Due to the different types of expressions, an expression will always have a type, either an integer, character or boolean value.                                        <br/>
+                <pre>
+                        (n + c * v)
+                        showMessage()
+                </pre>
+
+                <h6>Statement</h6>
+                A statement refers to a piece of code that executes a specific instruction or tells the computer to complete a task.                                                <br/>
+                A statement can take the form of assignments, control statements, import statements, loop statements, jump statements, or method calls. (Predefined)                <br/>
+                Neither statement yields a value but instead performs a certain action.                                                                                             <br/>
+                Due to their property of not yielding a value, statements are usually of the type void. This means that they don’t have a data type as they don’t yield any value.   <br/>
+                <pre>
+                    c = 89;
+                    import com.sample.lib.*;
+                </pre>
+
+
+                <h6>Functions</h6>
+                Functions are created to call same code multiple times. (Code reuse)
+                Functions can be created in 2 forms
+                <ul>
+                    <li>
+                        Function Declaration or Function statement
+                        <pre>
+                            function getCode(value) {
+                                return value * 999;
+                            }
+                        </pre>
+                    </li>
+                    <li>
+                        Function Expression
+                        <pre>
+                            let fn = function () {
+                                console.log("hi");
+                            }
+                            fn();
+                        </pre>
+                    </li>
+                </ul>
+                When you call function by variable, its call by value. Any changes inside function will not change passed variable                     <br/>
+                When you call function by object, is call by reference. Any changes inside function will change passed object properties                <br/>
+                <h6>Scopes</h6>
+                Global Scope    : All variables those are defined outside functions.                                                                    <br/>
+                Function Scope  : Variables those are defined within function, and those are visible inside function only.                              <br/>
+                <h6>Objects</h6>
+                Objects are group of variables, and methods those operate on object properties.
+                <pre>
+                    let mySymbol = Symbol();                    //for object private properties
+                    let o = {
+                        firstName: "fname",
+                        lastName: "lname",
+                        [mySymbol]: "secret"
+                    }
+                    console.log(o.firstName);
+                </pre>
+            </p>
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
