@@ -144,9 +144,11 @@
                     let o = {
                         firstName: "fname",
                         lastName: "lname",
-                        [mySymbol]: "secret"
-                    }
-                    console.log(o.firstName);
+                        [mySymbol]: "secret",
+                        getFullName: function (arg) {
+                            return arg + this.firstName + this.lastName;
+                        }
+                    console.log(o.getFullName("Hi "));
                 </pre>
             </p>
         </div>
