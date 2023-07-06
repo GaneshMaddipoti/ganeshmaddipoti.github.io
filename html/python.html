@@ -1,116 +1,159 @@
-<pre>
-  Introduction
-  Python is a modern high-level programming language developed by Guido Van Rossum in the 1990s.
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <h3>Python</h3>
+            <p>
+            <h6>Introduction</h6>
+            Python is a modern high-level programming language developed by Guido Van Rossum in the 1990s.              <br/>
 
-  Do well
-  Its cross-platform, interpreted, open source.
-  Its easy to use (Dynamically typed, abstracted, indented)
-  Its used for rapid application development (as coding time is very less compared to others)
-  Its expressive (A single line will do more things)
-  Its readable (as its indented very well)
-  Its batter included philosophy, meaning standard library comes with email, web, DB, GUI, etc...
+            <h6>Do well</h6>                                                                                            <br/>
+            Its cross-platform, interpreted, open source.                                                               <br/>
+            It's easy to use (Dynamically typed, abstracted, indented)                                                  <br/>
+            It's used for rapid application development (as coding time is very less compared to others)                <br/>
+            Its expressive (A single line will do more things)                                                          <br/>
+            Its readable (as its indented very well)                                                                    <br/>
+            Its batter included philosophy, meaning standard library comes with email, web, DB, GUI, etc...             <br/>
 
-  Doesn't do well
-  Its speed of execution is slow (as its interpreted after semi-compiled)
-  It doesn't have the most of the libraries.
-  It doesn't check variable type at compile time, leads to runtime errors.
+            <h6>Doesn't do well</h6>
+            Its speed of execution is slow (as its interpreted after semi-compiled)                                     <br/>
+            It doesn't have the most of the libraries.                                                                  <br/>
+            It doesn't check variable type at compile time, leads to runtime errors.                                    <br/>
+            </p>
+        </div>
+        <div class="carousel-item">
+            <h6>Syntax</h6>
+            Built-in data types : Integers, Floats, Complex numbers, Strings, Lists, Tuples, Dictionaries, and File Objects.      <br/>
+            These can be manipulated using language operators, builtin functions, library functions, and data type's own methods. <br/>
+            Programmers also can create their own classes and instantiate objects.                                                <br/>
+            All python objects are instances of one class or the other.                                                           <br/>
+            if-elseif-else - conditional loop and for, while -> iterative loops.                                                  <br/>
+            It allows function definition with flexible argument-passing options.                                                 <br/>
+            Exceptions(errors) can be raised using raise statement, and handled by try-except-else construct.                     <br/>
+            Variables dont have to be declared, can have any build-in data type, user defined object, function or module.         <br/>
+            We can use \ to break a long statement across multiple lines.                                                         <br/>
 
+            <h6>Built-in Data types</h6>
+            Numbers                                                                                                     <br/>
+            Integers - -999999999 0 +999999999999                                                                       <br/>
+            Floats - -9.99 0.0 +9.9                                                                                     <br/>
+            Complex numbers - 3+2j -4.2-6.3j                                                                            <br/>
+            Booleans - True(1) False(0)                                                                                 <br/>
+            We can manipulate them using arithmetic operators. (+, -, *, /, **, %)                                      <br/>
+            Note that, integers are of unlimited size, they will grow as large as you need them do.                     <br/>
+            Complex numbers consist of both real and imaginary elements, we can get by using x.real.                    <br/>
 
-  Syntax
-  Built-in data types : Integers, Floats, Complex numbers, Strings, Lists, Tuples, Dictionaries, and File Objects.
-  These can be manipulated using language operators, builtin functions, library functions, and data type's own methods.
-  Programmers also can create their own classes and instantiate objects.
-  All python objects are instances of one class or the other.
-  if-elseif-else - conditional loop and for, while -> iterative loops.
-  It allows function definition with flexible argument-passing options.
-  Exceptions(errors) can be raised using raise statement, and handled by try-except-else construct.
-  Variables dont have to be declared, can have any build-in data type, user defined object, function or module.
-  We can use \ to break a long statement across multiple lines.
+            <h6>Lists</h6>
+            A list can contain a mixture of other types as elements (Numbers, Strings, Lists, Tuples, Dictionaries, and File objects)   <br/>
+            Ex: [1,2,"three", 3L, 4.0, ["a", "b"], (5,6)]                                                                               <br/>
+            Lists can be indexed from its front(0 to length-1) or back(-1 to -length).                                                  <br/>
+            We can obtain a slice using [m:n] where m is the inclusive starting index and n is exclusive ending index.                  <br/>
+            The size of the list increases or decreases, if the new slice is bigger or smaller than the slice its replacing.            <br/>
+            The operators +, * will create new list, leaving the original unchanged.                                                    <br/>
 
-  Built-in Data types
-    Numbers
-      Integers            - -999999999 0 +999999999999
-      Floats              - -9.99   0.0    +9.9
-      Complex numbers     - 3+2j    -4.2-6.3j
-      Booleans            - True(1) False(0)
-    We can manipulate them using arithmetic operators. (+, -, *, /, **, %)
-    Note that, integers are of unlimited size, they will grow as large as you need them do.
-    Complex numbers consist of both real and imaginary elements, we can get by using x.real.
+            <h6>Tuples</h6>
+            The are like lists, except they are immutable.                                                                          <br/>
+            Can contain a mixture of other types as elements (Numbers, Strings, Lists, Tuples, Dictionaries, and File objects)      <br/>
+            Ex: (1,2,"three", 3L, 4.0, ["a", "b"], (5,6))                                                                           <br/>
+            A one element needs a comma.                                                                                            <br/>
 
-    Lists
-    A list can contain a mixture of other types as elements (Numbers, Strings,  Lists, Tuples, Dictionaries, and File objects)
-    Ex: [1,2,"three", 3L, 4.0, ["a", "b"], (5,6)]
-    Lists can be indexed from its front(0 to length-1) or back(-1 to -length).
-    We can obtain a slice using [m:n] where m is the inclusive starting index and n is exclusive ending index.
-    The size of the list increases or decreases, if the new slice is bigger or smaller than the slice its replacing.
-    The operators +, * will create new list, leaving the original unchanged.
+            <h6>Strings</h6>
+            String are sequence of characters, delimited by ', ", """, ''' quotations and can contain \t and \n characters.         <br/>
+            Strings are immutable.                                                                                                  <br/>
+            re module provides regular expression functionality, have pattern extraction and replacement capability.                <br/>
 
-    Tuples
-    The are like lists, except they are immutable.
-    Can contain a mixture of other types as elements (Numbers, Strings,  Lists, Tuples, Dictionaries, and File objects)
-    Ex: (1,2,"three", 3L, 4.0, ["a", "b"], (5,6))
-    A one element needs a comma.
+            <h6>Dictionaries</h6>
+            It like associative array functionality, implemented using hash tables.                                     <br/>
+            Ex: {1: "one", 2: "tow", 3: "three"}                                                                        <br/>
+            Keys must be an immutable type.                                                                             <br/>
+            Values can be any kind of objects including mutable objects lists, and dictionaries.                        <br/>
 
-    Strings
-    String are sequence of characters, delimited by ', ", """, ''' quotations and can contain \t and \n characters.
-    Strings are immutable.
-    re module provides regular expression functionality, have pattern extraction and replacement capability.
+            <h6>Sets</h6>
+            Its an unordered collection of objects with membership, uniqueness in its features.                         <br/>
 
-    Dictionaries
-    It like associative array functionality, implemented using hash tables.
-    Ex: {1: "one", 2: "tow", 3: "three"}
-    Keys must be an immutable type.
-    Values can be any kind of objects including mutable objects lists, and dictionaries.
+            <h6>File Objects</h6>
+            A file in system, is accessed by file object in Python.                                                     <br/>
+            The os module provides number of functions over files and directories in that system.                       <br/>
 
-    Sets
-    Its an unordered collection of objects with membership, uniqueness in its features.
+            <h6>Operators</h6>
+            Arithmetic : +, -, *, /, //, **, %                                                                          <br/>
+            Comparison : <, <=, >, >=, ==, !=, is, is not, in, not in results boolean                                   <br/>
+            Logical : and, not, or results boolean                                                                      <br/>
 
-    File Objects
-    A file in system, is accessed by file object in Python.
-    The os module provides number of functions over files and directories in that system.
+            <h6>Expressions</h6>
+            Division of integers with single /, will result float, with // will result truncated integer.               <br/>
+            if: elseif: else: conditional expression                                                                    <br/>
+            <pre>
+                x = 28
+                if x < 0:
+                    print('x < 0')                     # Executes only if x < 0
+                elif x == 1:
+                    print('x == 1')                    # If it's not true that x < 0 and x != 0, check if x == 1
+                else:
+                    print('none of the above is true')
+            </pre>
+            <h6>Loops</h6>
+            while: for: iterative statement                                                                             <br/>
+            <pre>
+                starting_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                for i in starting_numbers:
+                    print(i)
 
-  Operators
-    Arithmetic  : +, -, *, /, //, **, %
-    Comparison  : <, <=, >, >=, ==, !=, is, is not, in, not in    results boolean
-    Logical     : and, not, or                                    results boolean
+                square = 1
+                while square <= 10:
+                    print(square)
+                    square += 1
+            </pre>
 
-  Statements
-    if: elseif: else:     conditional statement
-    while: for:           iterative statement
+            <h6>Functions</h6>
+            Functions are defined by using the def statement.                                                           <br/>
+            The return statement is what a function uses to return a value.                                             <br/>
+            The return type can be of any type.                                                                         <br/>
+            If no return statement is encountered, python's None value is returned.                                     <br/>
+            Function arguments can be entered either by position or name.                                               <br/>
+            Function parameters can be defined with defaults.                                                           <br/>
+            A special parameter can be defined to collect all extra arguments into a tuple, or dictionary.              <br/>
+            <pre>
+                def sum_two_numbers(a, b):
+                    return a + b
+            </pre>
 
-  Functions
-    Functions are defined by using the def statement.
-    The return statement is what a function uses to return a value.
-    The return type can be of any type.
-    If no return statement is encountered, python's None value is returned.
-    Function arguments can be entered either by position or name.
-    Function parameters can be defined with defaults.
-    A special parameter can be defined to collect all extra arguments into a tuple, or dictionary.
+            <h6>Exceptions</h6>
+            Exceptions(errors) can be raised, caght, and handled by try-except-finally-else compound statement.         <br/>
 
-  Exceptions
-    Exceptions(errors) can be raised, caght, and handled by try-except-finally-else compound statement.
+            <h6>Modules and Packages</h6>
+            Modules is used to define functions at one place and use them in multiple places                            <br/>
+            Group of modules, we organize them using packages, subpackages.                                             <br/>
 
-  Modules and Packages
-    Modules is used to define functions at one place and use them in multiple places
-    Group of modules, we organize them using packages, subpackages.
+            <h6>Object Oriented Programming</h6>
+            Classes are defined using Class keyword.                                                                    <br/>
+            The instance initializer method or constructor is defined as __init__ method, and will be called implicitly.<br/>
+            The first argument of any method is by convention called self.                                              <br/>
+            The print method implicitly uses __str__ method.                                                            <br/>
+            <pre>
+                class Cat:
+                    count = 0                           //class variable
+                    def __init__(self, name):           //instance variable
+                        self.name = name
+                    def incrementCount():
+                        count++;
+            </pre>
 
-  Object Oriented Programming
-    Classes are defined using Class keyword.
-    The instance initializer method or constructor is defined as __init__ method, and will be called implicitly.
-    The first argument of any method is by convention called self.
-    The print method implicitly uses __str__ method.
+            <h6>Programming</h6>
+            Indentation and block structuring                                                                           <br/>
+            Python doesn't use braces to indicate code structure, rather uses indentation itself is used.               <br/>
 
-  Programming
-  Indentation and block structuring
-    Python doesn't use braces to indicate code structure, rather uses indentation itself is used.
-
-  Variables and Assignments
-    x = 5
-    In Python, neither a variable type declaration nor end of the line delimiter is required.
-    Variable names are case sensitive, and can contain alphanumeric and underscore, usually start with letter or underscore.
-
-  Expressions
-    Division of integers with single /, will result float, with // will result truncated integer.
-
-
-</pre>
+            <h6>Variables and Assignments</h6>
+            x = 5                                                                                                       <br/>
+            In Python, neither a variable type declaration nor end of the line delimiter is required.                   <br/>
+            Variable names are case-sensitive, and can contain alphanumeric and underscore, usually start with letter or underscore. <br/>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
