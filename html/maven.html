@@ -1,0 +1,176 @@
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <h3>Maven - A build tool</h3>
+            <p>
+                <h6>Introduction</h6>
+                Building a software project typically consists of such tasks as
+                <ul>
+                    <li>downloading dependencies, </li>
+                    <li>putting additional jars on a classpath, </li>
+                    <li>compiling source code into binary code, </li>
+                    <li>running tests, </li>
+                    <li>packaging compiled code into deployable artifacts such as JAR, WAR, and ZIP files, </li>
+                    <li>deploying these artifacts to an application server or repository</li>
+                </ul>
+
+                Apache Maven automates these tasks,                                                                                                                                             <br/>
+                minimizing the risk of humans making errors while building the software manually and separating the work of compiling and packaging our code from that of code construction.    <br/>
+
+                We will use project object model, pom.xml file to describe the above tasks.
+
+                <h6>The key features of Maven are: </h6>
+                <ul>
+                    <li>simple project setup that follows best practices: Maven tries to avoid as much configuration as possible, by supplying project templates (named archetypes)</li>
+                    <li>dependency management: it includes automatic updating, downloading and validating the compatibility, as well as reporting the dependency closures (known also as transitive dependencies)</li>
+                    <li>isolation between project dependencies and plugins: with Maven, project dependencies are retrieved from the dependency repositories while any plugin's dependencies are retrieved from the plugin repositories, <br/>
+                        resulting in fewer conflicts when plugins start to download additional dependencies</li>
+                    <li>central repository system: project dependencies can be loaded from the local file system or public repositories, such as Maven Central</li>
+                </ul>
+
+                <h6>Declaring Dependencies</h6>
+                In order to declare a dependency on an external library, you need to provide the groupId, artifactId, and version of the library.
+                <pre>
+                    &lt;dependencies>
+                    &lt;dependency>
+                        &lt;groupId>org.junit.jupiter&lt;/groupId>
+                        &lt;artifactId>junit-jupiter-api&lt;/artifactId>
+                        &lt;version>5.8.2&lt;/version>
+                        &lt;scope>test&lt;/scope>
+                    &lt;/dependency>
+                    &lt;/dependencies>
+                </pre>
+
+                <h6>Repositories</h6>
+                A repository in Maven is used to hold build artifacts and dependencies of varying types.                                                            <br/>
+                The default local repository is located in the .m2/repository folder under the home directory of the user.                                          <br/>
+                If an artifact or a plugin is available in the local repository, Maven uses it. Otherwise, it is downloaded from a central repository and stored in the local repository. <br/>
+                The default central repository is Maven Central.                                                                                                    <br/>
+                <br/>
+                Some libraries, such as the JBoss server, are not available at the central repository but are available at an alternate repository.                 <br/>
+                For those libraries, you need to provide the URL to the alternate repository inside the pom.xml file.                                               <br/>
+                <pre>
+                    &lt;repositories>
+                        &lt;repository>
+                            &lt;id>JBoss repository&lt;/id>
+                            &lt;url>http://repository.jboss.org/nexus/content/groups/public/&lt;/url>
+                        &lt;/repository>
+                    &lt;/repositories>
+                </pre>
+
+                <h6>Properties</h6>
+                Custom properties can help to make your pom.xml file easier to read and maintain.                                                                   <br/>
+                In the classic use case, you would use custom properties to define versions for your project's dependencies.                                        <br/>
+                Maven properties are value-placeholders and are accessible anywhere within a pom.xml by using the notation ${name}, where name is the property.     <br/>
+                <pre>
+                    &lt;properties>
+                        &lt;spring.version>5.3.16&lt;/spring.version>
+                    &lt;/properties>
+                </pre>
+
+                <h6>Build</h6>
+                It provides information about the default Maven goal, the directory for the compiled project, and the final name of the application.                <br/>
+                The default build section looks like this:
+                <pre>
+                    &lt;build>
+                        &lt;defaultGoal>install&lt;/defaultGoal>
+                        &lt;directory>${basedir}/target&lt;/directory>
+                        &lt;finalName>${artifactId}-${version}&lt;/finalName>
+                        &lt;filters>
+                          &lt;filter>filters/filter1.properties&lt;/filter>
+                        &lt;/filters>
+                        //...
+                    &lt;/build>
+                </pre>
+
+                <h6>Using Profiles</h6>
+                Another important feature of Maven is its support for profiles. A profile is basically a set of configuration values.                               <br/>
+                By using profiles, you can customize the build for different environments such as Production/Test/Development:                                      <br/>
+                <pre>
+                    &lt;profiles>
+                        &lt;profile>
+                            &lt;id>production&lt;/id>
+                            &lt;build>
+                                &lt;plugins>
+                                    &lt;plugin>
+                                    //...
+                                    &lt;/plugin>
+                                &lt;/plugins>
+                            &lt;/build>
+                        &lt;/profile>
+                        &lt;profile>
+                            &lt;id>development&lt;/id>
+                            &lt;activation>
+                                &lt;activeByDefault>true&lt;/activeByDefault>
+                            &lt;/activation>
+                            &lt;build>
+                                &lt;plugins>
+                                    &lt;plugin>
+                                    //...
+                                    &lt;/plugin>
+                                &lt;/plugins>
+                            &lt;/build>
+                         &lt;/profile>
+                     &lt;/profiles>
+                </pre>
+            </p>
+        </div>
+        <div class="carousel-item">
+            <h6>Maven Build Lifecycles</h6>
+            Every Maven build follows a specified lifecycle.                                                                                                <br/>
+            You can execute several build lifecycle goals, including the ones to compile the project’s code, create a package, and install the archive file in the local Maven dependency repository. <br/>
+            The following list shows the most important Maven lifecycle phases:
+            <ul>
+                <li>validate – checks the correctness of the project</li>
+                <li>compile – compiles the provided source code into binary artifacts</li>
+                <li>test – executes unit tests</li>
+                <li>package – packages compiled code into an archive file</li>
+                <li>integration-test – executes additional tests, which require the packaging</li>
+                <li>verify – checks if the package is valid</li>
+                <li>install – installs the package file into the local Maven repository</li>
+                <li>deploy – deploys the package file to a remote server or repository</li>
+            </ul>
+            <h6>Plugins and Goals</h6>
+            A Maven plugin is a collection of one or more goals. Goals are executed in phases, which helps to determine the order in which the goals are executed. <br/>
+            Maven is - at its heart - a plugin execution framework; all work is done by plugins.                                                            <br/>
+            Build plugins will be executed during the build and they should be configured in the &lt;build/> element from the POM.                             <br/>
+            Reporting plugins will be executed during the site generation and they should be configured in the &lt;reporting/> element from the POM.           <br/>
+            <ul>
+                <li>Build - clean,compiler, deploy, failsafe, install, resources, site, surefire, verifier</li>
+                <li>Package - ear, ejb, jar, rar, war, app-client/acr, shade, source, jlink, jmod</li>
+                <li>Report - changelog, changes, checkstyle, doap, docck, javadoc, jdeps, jxr, linkcheck, pmd, project-info-reports, surefire-report</li>
+                <li>Tools - antrun, artifact, archetype, assembly, dependency, enforcer, gpg, help, invoker, jarsigner, jdeprscan, patch, <br/>
+                    pdf, plugin, plugin-report, release, remote-resources, scm, scm-publish, scripting, stage, toolchains, wrapper </li>
+            </ul>
+            <h6>Default Lifecycle Bindings - Packaging ejb / ejb3 / jar / par / rar / war </h6>
+            <ul>
+                <li>process-resources	resources:resources</li>
+                <li>compile	compiler:compile</li>
+                <li>process-test-resources	resources:testResources</li>
+                <li>test-compile	compiler:testCompile</li>
+                <li>test	surefire:test</li>
+                <li>package	ejb:ejb or ejb3:ejb3 or jar:jar or par:par or rar:rar or war:war</li>
+                <li>install	install:install</li>
+                <li>deploy	deploy:deploy</li>
+            </ul>
+            <h6>Maven's Multi-Module Project</h6>
+            A multi-module project is built from an aggregator POM that manages a group of submodules.                                                          <br/>
+            In most cases, the aggregator is located in the project's root directory and must have packaging of type pom.                                       <br/>
+            The submodules are regular Maven projects, and they can be built separately or through the aggregator POM.                                          <br/>
+            By building the project through the aggregator POM, each project that has a packaging type different from pom will result in a built archive file.  <br/>
+
+            The significant advantage of using this approach is that we may reduce duplication.                                                             <br/>
+            Maven supports inheritance in a way that each pom.xml file has the implicit parent POM.                                                         <br/>
+            It's called Super POM and can be located in the Maven binaries. These two files are merged by Maven and form the Effective POM.                 <br/>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+

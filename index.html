@@ -30,6 +30,7 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="aws">AWS</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="gcp">GCP</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="terraform">Terraform</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="maven">Maven</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="challenges">Coding Challenges</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="python">Python</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="java">Java</a></li>
@@ -71,21 +72,30 @@
                 $("#main-content").load("html/terraform.html");
             });
 
+            $("#maven").on("click", function(){
+                $("#main-content").load("html/maven.html");
+            });
+
             $("#challenges").on("click", function(){
                 $("#main-content").load("html/challenges.html");
             });
+
             $("#about").on("click", function(){
                 $("#main-content").load("html/about.html");
             });
+
             $("#python").on("click", function(){
                 $("#main-content").load("html/python.html");
             });
+
             $("#java").on("click", function(){
                 $("#main-content").load("html/java.html");
             });
+
             $("#javascript").on("click", function(){
                 $("#main-content").load("html/javascript.html");
             });
+
             $("#programming-languages").on("click", function(){
                 $("#main-content").load("html/programming-languages.html");
             });
@@ -95,18 +105,23 @@
                     var jsonData = JSON.parse(data);
                 }, 'text');
             });
+
             $("#kubernetes").on("click", function(){
                 $("#main-content").load("html/kubernetes.html");
             });
+
             $("#docker").on("click", function(){
                 $("#main-content").load("html/docker.html");
             });
+
             $("#linux").on("click", function(){
                 $("#main-content").load("html/linux.html");
             });
+
             $("#operating-system").on("click", function(){
                 $("#main-content").load("html/operating-system.html");
             });
+
             $("#hardware").on("click", function(){
                 $("#main-content").load("html/hardware.html");
             });
