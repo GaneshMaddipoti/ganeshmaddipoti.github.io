@@ -29,6 +29,7 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="about">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="aws">AWS</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="gcp">GCP</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="security">Security</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="terraform">Terraform</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="maven">Maven</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="challenges">Coding Challenges</a></li>
@@ -66,6 +67,10 @@
 
             $("#aws").on("click", function(){
                 $("#main-content").load("html/aws.html");
+            });
+
+            $("#security").on("click", function(){
+                $("#main-content").load("html/security.html");
             });
 
             $("#terraform").on("click", function(){
