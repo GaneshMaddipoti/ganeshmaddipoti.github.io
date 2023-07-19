@@ -1,30 +1,31 @@
+<h3>Terraform – Infrastructure as code</h3>
+Tool for provisioning and managing infrastructure/environment through software to achieve consistent and predictable deployments. (Automated provisioning) <br/>
+<br/>
+<h6>Architecture</h6>
+<img src="/assets/img/terraform-arch.png" class="img-fluid" />
+
+<h6>Semantics</h6>
+Idempotent, push type, State Data, workflow like execution                                                                                              <br/>
+$terraform init - looks for configuration files in current directory, and check if they any provider plugins, if yes, it will download from public terraform registry. <br/>
+It will use current directory to store state data.                                                                                                      <br/>
+$terraform plan - displays the plan it's going to do before provisioning the infra/environment.                                                         <br/>
+$terraform apply - provision the infra/environment.                                                                                                     <br/>
+$terraform destroy - will destroy everything in target environment based on state data.                                                                 <br/>
+<br/>
+<h6>Modules/Entities</h6>
+Provider Plugins – (AWS, Azure, GCP) - They are stored in registry.terraform.io                                                                         <br/>
+Data sources                                                                                                                                            <br/>
+Resources                                                                                                                                               <br/>
+<br/>
+<h6>Syntax</h6>
+Declarative                                                                                                                                             <br/>
+<br/>
+<h6>Data types</h6>
+Primitive:	String, Number, Boolean                                                                                                                     <br/>
+Collection	List, Set, Map                                                                                                                              <br/>
+Structural	Tuple, Object                                                                                                                               <br/>
+<br/>
 <pre>
-  Terraform – Infrastructure as code
-Tool for provisioning and managing infrastructure/environment through software to achieve consistent and predictable deployments. (Automated provisioning)
-
-Architecture
-
-Semantics
-Idempotent, push type, State Data, workflow like execution
-$terraform init - looks for configuration files in current directory, and check if they any provider plugins, if yes, it will download from public terraform registry.
-It will use current directory to store state data.
-$terraform plan - displays the plan it's going to do before provisioning the infra/environment.
-$terraform apply - provision the infra/environment.
-$terraform destroy - will destroy everything in target environment based on state data.
-
-Modules/Entities
-Provider Plugins – (AWS, Azure, GCP) - They are stored in registry.terraform.io
-Data sources
-Resources
-
-Syntax
-Declarative
-
-Data types
-Primitive:	String, Number, Boolean
-Collection	List, Set, Map
-Structural	Tuple, Object
-
 locals {
 	key = value
 }
@@ -57,7 +58,7 @@ resouce "aws_instance" "web_server" {
 	ebs_volume {
 		size = 40
 	}
-	user_data = <<EOF
+	user_data = &lt;&lt;EOF
         #! /bin/bash
 	sudo amazon-linux-extras install -y inginx1
 	sudo service nginx start
@@ -65,18 +66,19 @@ resouce "aws_instance" "web_server" {
 	echo 'hi'
 	EOF
 }
-
+</pre>
 Input
 
-
-Language Compiler/Interpreter
-Go language
-Installation comes with compiled binary for your target platform. (Executable) (Chocolatey to install in windows)
-Input : JSON or Hashicorp configuration language(HCL) (.tf)
-
-CLI
+<br/>
+<h6>Language Compiler/Interpreter</h6>
+Go language                                                                                                                                             <br/>
+Installation comes with compiled binary for your target platform. (Executable) (Chocolatey to install in windows)                                       <br/>
+Input : JSON or Hashicorp configuration language(HCL) (.tf)                                                                                             <br/>
+<br/>
+<h6>CLI</h6>
+<pre>
 $ terraform -help
-Usage: terraform [global options] <subcommand> [args]
+Usage: terraform [global options] &lt;subcommand> [args]
 The available commands for execution are listed below.
 The primary workflow commands are given first, followed by
 less common or more advanced commands.
@@ -109,11 +111,10 @@ Global options (use these before the subcommand, if any):
   -chdir=DIR    	Switch to a different working directory before executing the given subcommand.
   -help        	Show this help output, or the help for a specified subcommand.
   -version      	An alias for the "version" subcommand.
-
-Storage
-Source code stored in Version control Systems - GitHub
-
-Platform
-Windows, Linux/Unix, Mac
-
 </pre>
+<br/>
+<h6>Storage</h6>
+Source code stored in Version control Systems - GitHub                                                                                                  <br/>
+<br/>
+<h6>Platform</h6>
+Windows, Linux/Unix, Mac                                                                                                                                <br/>
