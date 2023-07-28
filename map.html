@@ -7,49 +7,86 @@
 
     <div id="sample">
         <div id="myDiagramDiv"
-             style="border: 1px solid black; width: 400px; height: 400px; position: relative; -webkit-tap-highlight-color: rgba(255, 255, 255, 0);">
+             style="border: 1px solid black; width: 800px; height: 800px; position: relative; -webkit-tap-highlight-color: rgba(255, 255, 255, 0);">
             <canvas tabindex="0" width="398" height="398"
-                    style="position: absolute; top: 0px; left: 0px; z-index: 2; user-select: none; touch-action: none; width: 398px; height: 398px;">
+                    style="position: absolute; top: 0px; left: 0px; z-index: 2; user-select: none; touch-action: none; width: 798px; height: 798px;">
                 This text is displayed if your browser does not support the Canvas HTML element.
             </canvas>
-            <div style="position: absolute; overflow: auto; width: 398px; height: 398px; z-index: 1;">
-                <div style="position: absolute; width: 1px; height: 1px;"></div>
-            </div>
         </div>
     </div>
 </div>
 <script id="code">
-    const myDiagram =
+    var $ = go.GraphObject.make;
+    const diagram =
         new go.Diagram("myDiagramDiv",  // create a Diagram for the HTML Div element
             {"undoManager.isEnabled": true});  // enable undo & redo
 
-    // define a simple Node template
-    myDiagram.nodeTemplate =
-        new go.Node("Auto")  // the Shape will go around the TextBlock
-            .add(new go.Shape("RoundedRectangle",
-                {strokeWidth: 0, fill: "white"})  // no border; default fill is white
-                .bind("fill", "color"))  // Shape.fill is bound to Node.data.color
-            .add(new go.TextBlock(
-                {margin: 8, font: "bold 14px sans-serif", stroke: '#333'})  // some room around the text
-                .bind("text", "key"));  // TextBlock.text is bound to Node.data.key
+    // this function changes the category of the node data to cause the Node to be replaced
+    function changeCategory(e, obj) {
+        const node = obj.part;
+        if (node) {
+            const diagram = node.diagram;
+            diagram.startTransaction("changeCategory");
+            let cat = diagram.model.getCategoryForNodeData(node.data);
+            if (cat === "simple")
+                cat = "detailed";
+            else
+                cat = "simple";
+            diagram.model.setCategoryForNodeData(node.data, cat);
+            diagram.commitTransaction("changeCategory");
+        }
+    }
 
-    // but use the default Link template, by not setting Diagram.linkTemplate
+    // The "simple" template just shows the key string and the color in the background.
+    // There is a Button to invoke the changeCategory function.
+    const simpletemplate =
+        $(go.Node, "Spot",
+            $(go.Panel, "Auto",
+                $(go.Shape, "RoundedRectangle", {strokeWidth: 0, fill: "white"},
+                    new go.Binding("fill", "color")),
+                $(go.TextBlock, {margin: 8, font: "bold 14px Roboto", stroke: '#333'},new go.Binding("text", "key"))
+            ),
+            $("Button",
+                { alignment: go.Spot.TopRight },
+                $(go.Shape, "PlusLine", { width: 8, height: 8 }),
+                { click: changeCategory })
+        );
 
-    // create the model data that will be represented by Nodes and Links
-    myDiagram.model = new go.GraphLinksModel(
-        [
-            {key: "Application", color: "lightblue"},
-            {key: "Tools", color: "lightgrey"},
-            {key: "Operating System", color: "lightgreen"},
-            {key: "Hardware", color: "orange"}
-        ],
-        [
-            {from: "Alpha", to: "Beta"},
-            {from: "Alpha", to: "Gamma"},
-            {from: "Beta", to: "Beta"},
-            {from: "Gamma", to: "Delta"},
-            {from: "Delta", to: "Alpha"}
-        ]);
+    // The "detailed" template shows all of the information in a Table Panel.
+    // There is a Button to invoke the changeCategory function.
+    const detailtemplate =
+        $(go.Node, "Spot",
+            $(go.Panel, "Auto",
+                $(go.Shape, "RoundedRectangle",
+                    new go.Binding("fill", "color")),
+                $(go.Panel, "Vertical",
+                    { defaultAlignment: go.Spot.Bottom },
+                    $(go.TextBlock, { margin: 8, font: "bold 14px Roboto", stroke: '#333' }, new go.Binding("text", "key")),
+                    $(go.TextBlock, { font: "12px Roboto" }, new go.Binding("text", "desc"))
+                )
+            ),
+            $("Button",
+                { alignment: go.Spot.TopRight },
+                $(go.Shape, "MinusLine", { width: 8, height: 8 }),
+                { click: changeCategory })
+        );
+
+    const templmap = new go.Map(); // In TypeScript you could write: new go.Map<string, go.Node>();
+    templmap.add("simple", simpletemplate);
+    templmap.add("detailed", detailtemplate);
+    diagram.nodeTemplateMap = templmap;
+
+    diagram.layout = $(go.TreeLayout, {angle: 90});
+
+    diagram.model.nodeDataArray = [
+        { key: "Application", desc: "<b>second letter</b>", color: "lightblue", category: "simple" },
+        { key: "Operating System", desc: "third letter", color: "lightgreen", category: "simple" },
+        { key: "Hardware", desc: "fourth letter", color: "orange", category: "simple" }
+    ];
+    diagram.model.linkDataArray = [
+        { from: "Application", to: "Operating System" },
+        { from: "Operating System", to: "Hardware" }
+    ];
 </script>
 </body>
 </html>
