@@ -1,0 +1,20 @@
+{ "class": "go.TreeModel",
+  "nodeDataArray": [
+    {"key":1, "name":"Application", "category": "simple", "items": [
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Delta" ]},
+    {"key":2, "name":"Operating System", "parent":1, "category": "simple", "items": [
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Delta" ]},
+    {"key":3, "name":"Hardware", "parent":2, "category": "simple", "items": [
+      "Computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations (computation) automatically.",
+      "Hardware includes the physical parts of a computer, such as central processing unit (CPU), random access memory (RAM), Input/Output devices and motherboard.",
+      "Software is the set of instructions that can be stored and run by hardware.",
+      "Hardware is so-termed because it is \"hard\" or rigid with respect to changes, whereas software is \"soft\" because it is easy to change.",
+      "Hardware is typically directed by the software to execute any command or instruction, this combination of hardware and software forms a usable computing system."]}
+  ]
+}

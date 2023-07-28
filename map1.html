@@ -100,12 +100,6 @@
                 return { font: "9pt  Segoe UI,sans-serif", stroke: "white" };
             }
 
-            // This converter is used by the Picture.
-            function findHeadShot(pic) {
-                if (!pic) return "images/HSnopic.png"; // There are only 16 images on the server
-                return "images/HS" + pic;
-            }
-
             function changeCategory(e, obj) {
                 const node = obj.part;
                 if (node) {
@@ -165,14 +159,22 @@
                     $(go.Panel, "Auto",
                         $(go.Shape, "RoundedRectangle", {strokeWidth: 0, fill: "white"},
                             new go.Binding("fill", "color")),
-                        $(go.TextBlock, {margin: 8, font: "bold 14px Roboto", stroke: '#333'},new go.Binding("text", "name"))
+                        $(go.TextBlock, textStyle(),  // the name
+                            {
+                                name: "NAMETB",
+                                row: 0, column: 0, columnSpan: 5,
+                                margin: 18, font: "bold 14px Roboto", stroke: '#333',
+                                editable: true, isMultiline: false,
+                                minSize: new go.Size(50, 16)
+                            },
+                            new go.Binding("text", "name").makeTwoWay())
                     ),
                     $("Button",
                         { alignment: go.Spot.TopRight },
-                        $(go.Shape, "MinusLine", { width: 8, height: 8 }),
+                        $(go.Shape, "PlusLine", { width: 6, height: 6 }),
                         { click: changeCategory }),
                     $("Button",
-                        $(go.Shape, "PlusLine", { width: 10, height: 10 }),
+                        $(go.Shape, "PlusLine", { width: 6, height: 6 }),
                         {
                             name: "BUTTON", alignment: go.Spot.Right, opacity: 0,  // initially not visible
                             click: (e, button) => addEmployee(button.part)
@@ -236,20 +238,31 @@
                     // bind the Part.layerName to control the Node's layer depending on whether it isSelected
                     new go.Binding("layerName", "isSelected", sel => sel ? "Foreground" : "").ofObject(),
                     $(go.Panel, "Auto",
-                        $(go.Shape, "RoundedRectangle", {strokeWidth: 0, fill: "white"},
-                            new go.Binding("fill", "color")),
+                        $(go.Shape, "RoundedRectangle", {strokeWidth: 0, fill: "white"}, new go.Binding("fill", "color")),
                         $(go.Panel, "Vertical",
                             { defaultAlignment: go.Spot.Bottom },
-                            $(go.TextBlock, { margin: 8, font: "bold 14px Roboto", stroke: '#333' }, new go.Binding("text", "name")),
-                            $(go.TextBlock, { font: "12px Roboto" }, new go.Binding("text", "desc"))
+                            $(go.TextBlock, { margin: 18, font: "bold 14px Roboto", stroke: '#333' }, new go.Binding("text", "name")),
+                            $(go.Panel, "Vertical", new go.Binding("itemArray", "items"),
+                                {itemTemplate:
+                                    $(go.Panel, "Vertical",
+                                        { margin: 2,alignment: go.Spot.Left },
+                                        $(go.TextBlock, textStyle(),  // the name
+                                            {
+                                                margin: 2, font: "14px Roboto", stroke: '#333',
+                                                editable: true, isMultiline: false,
+                                                alignment: go.Spot.Left
+                                            },new go.Binding("text", "").makeTwoWay(),
+                                            { margin: 2 })
+                                    )  // end of itemTemplate
+                                })
                         )
                     ),
                     $("Button",
                         { alignment: go.Spot.TopRight },
-                        $(go.Shape, "MinusLine", { width: 8, height: 8 }),
+                        $(go.Shape, "MinusLine", { width: 6, height: 6 }),
                         { click: changeCategory }),
                     $("Button",
-                        $(go.Shape, "PlusLine", { width: 10, height: 10 }),
+                        $(go.Shape, "PlusLine", { width: 6, height: 6 }),
                         {
                             name: "BUTTON", alignment: go.Spot.Right, opacity: 0,  // initially not visible
                             click: (e, button) => addEmployee(button.part)
@@ -280,7 +293,7 @@
                 if (!node) return;
                 const thisemp = node.data;
                 myDiagram.startTransaction("add employee");
-                const newemp = { name: "(new person)", title: "(title)", comments: "", category: "simple", parent: thisemp.key };
+                const newemp = { name: "(new node)", comments: "", category: "simple", parent: thisemp.key, items: ["-", "-", "-", "-", "-"] };
                 myDiagram.model.addNodeData(newemp);
                 const newnode = myDiagram.findNodeForData(newemp);
                 if (newnode) newnode.location = node.location;
@@ -424,10 +437,23 @@
             </div>
             <textarea id="mySavedModel" style="width:100%; height:270px;">{ "class": "go.TreeModel",
   "nodeDataArray": [
-{"key":1, "name":"Application", "title":"CEO", "pic":"1.jpg", "category": "detailed"},
-{"key":2, "name":"Operating System", "title":"VP Marketing/Sales", "pic":"2.jpg", "parent":1, "category": "simple"},
-{"key":3, "name":"Hardware", "title":"Sales", "pic":"3.jpg", "parent":1, "category": "simple"}
- ]
+    {"key":1, "name":"Application", "category": "simple", "items": [
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Delta" ]},
+    {"key":2, "name":"Operating System", "parent":1, "category": "simple", "items": [
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Delta" ]},
+    {"key":3, "name":"Hardware", "parent":2, "category": "simple", "items": [
+      "Computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations (computation) automatically.",
+      "Hardware includes the physical parts of a computer, such as central processing unit (CPU), random access memory (RAM), Input/Output devices and motherboard.",
+      "Software is the set of instructions that can be stored and run by hardware.",
+      "Hardware is so-termed because it is \"hard\" or rigid with respect to changes, whereas software is \"soft\" because it is easy to change.",
+      "Hardware is typically directed by the software to execute any command or instruction, this combination of hardware and software forms a usable computing system."]}
+  ]
 }
     </textarea>
         </div>
