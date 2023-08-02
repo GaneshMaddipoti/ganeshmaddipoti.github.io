@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/go.js"></script>
+    <script src="js/OrthogonalLinkReshapingTool.js"></script>
+</head>
+<body style="align-content: center">
+    <div id="myDiagramDiv" style="width:1024px; height:760px; background-color: #DAE4E4;margin:0 auto;"></div>
+    <script>
+
+        var $ = go.GraphObject.make;
+        let diagram = new go.Diagram("myDiagramDiv",{"undoManager.isEnabled": true, "linkReshapingTool": new OrthogonalLinkReshapingTool()});
+
+        diagram.nodeTemplate =
+            $(go.Node, "Auto", { fromSpot: go.Spot.RightSide,  toSpot: go.Spot.LeftSide },
+                new go.Binding("location", "loc").makeTwoWay(),  // get the Node.location from the data.loc value
+                $(go.Shape, "RoundedRectangle",
+                    { fill: "white",strokeWidth: 2, stroke: "#555" },
+                    new go.Binding("fill", "color")),
+                $(go.TextBlock,
+                    { margin: 5, width: 90, textAlign: "center"},
+                    new go.Binding("text", "key"))
+            );
+
+        diagram.linkTemplate =
+            $(go.Link, {
+                    routing: go.Link.AvoidsNodes,
+                    reshapable: true,
+                    resegmentable: true, corner: 5
+                },
+                $(go.Shape, { strokeWidth: 2, stroke: "#555" }),
+                $(go.Shape, { toArrow: "Standard" }),
+                $(go.Panel, "Auto",  // this whole Panel is a link label
+                    $(go.Shape, "Rectangle", { fill: "lightgrey", stroke: "gray" }),
+                    $(go.TextBlock, { margin: 3 },
+                        new go.Binding("text", "channel"))),
+                {
+                    toolTip:  // define a tooltip for each node that displays the color as text
+                        $("ToolTip",
+                            $(go.TextBlock, { margin: 4 },
+                                new go.Binding("text", "desc"))
+                        )  // end of Adornment
+                }
+            );
+
+        var nodeDataArray = [
+            { key: "Consumption Router", color: "lightblue", loc: new go.Point(0, 100) },
+            { key: "Pivot Coordinator", color: "lightblue", loc: new go.Point(200, 50) },
+            { key: "Pivot Maintenance", color: "lightblue", loc: new go.Point(400, 0) },
+            { key: "Dremio Hive", color: "lightblue", loc: new go.Point(600, 50) },
+            { key: "Consumption Hive", color: "lightblue", loc: new go.Point(200, 150) },
+            { key: "Consumption Impala", color: "lightblue", loc: new go.Point(400, 200) },
+            { key: "Midas Transformer", color: "lightblue", loc: new go.Point(400, 300) },
+            { key: "Dremio Builder", color: "lightblue", loc: new go.Point(800, 100) }
+        ];
+
+        var linkDataArray = [
+            { from: "Consumption Router", to: "Pivot Coordinator",  channel: "cis", desc: "Consumption In Stage"},
+            { from: "Pivot Coordinator", to: "Pivot Maintenance",  channel: "async",  desc: "Call to Nighfort/PACMan"},
+            { from: "Pivot Maintenance", to: "Dremio Hive",  channel: "cps", desc: "Consumption Pivot Stage"},
+            { from: "Consumption Router", to: "Consumption Hive", channel: "cis", desc: "Consumption In Stage" },
+            { from: "Consumption Hive", to: "Consumption Impala", channel: "hms", desc: "Hive Metadata data Stage" },
+            { from: "Consumption Hive", to: "Midas Transformer", channel: "hms", desc: "Hive Metadata data Stage" },
+            { from: "Dremio Hive", to: "Dremio Builder", channel: "hps", desc: "Hive Pivot Stage" },
+            { from: "Consumption Hive", to: "Dremio Builder", channel: "hms", desc: "Hive Metadata data Stage" },
+            { from: "Midas Transformer", to: "Dremio Builder", channel: "mts", desc: "Midas Transform Stage" },
+            { from: "Dremio Builder", to: "Consumption Router", channel: "dmts", desc: "Dremio Metadata Data Stage Complete" }
+        ];
+
+        diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+        diagram.add(
+            $(go.Part, { location: new go.Point(0, -40) },
+                $(go.TextBlock, "Everest Consumption", { font: "bold 18pt sans-serif", stroke: "#555" })));
+    </script>
+</body>
+</html>

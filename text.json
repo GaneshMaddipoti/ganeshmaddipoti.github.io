@@ -6,10 +6,9 @@
       "Gamma",
       "Delta" ]},
     {"key":2, "name":"Operating System", "parent":1, "category": "simple", "items": [
-      "Alpha",
-      "Beta",
-      "Gamma",
-      "Delta" ]},
+      "An operating system (OS) is the program that, after being initially loaded into the computer by a boot program, manages all of the other application programs in a computer.",
+      "The application programs make use of the operating system by making requests for services through a defined application program interface (API).",
+      "In addition, users can interact directly with the operating system through a user interface, such as a command-line interface (CLI) or a graphical UI (GUI)."]},
     {"key":3, "name":"Hardware", "parent":2, "category": "simple", "items": [
       "Computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations (computation) automatically.",
       "Hardware includes the physical parts of a computer, such as central processing unit (CPU), random access memory (RAM), Input/Output devices and motherboard.",

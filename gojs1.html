@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/go.js"></script>
+</head>
+<body>
+  <div id="myDiagramDiv" style="width:400px; height:150px; background-color: #DAE4E4;"></div>
+  <script>
+    let diagram = new go.Diagram("myDiagramDiv");
+    var $ = go.GraphObject.make;
+    diagram.add(
+        $(go.Node, "Auto",
+            { resizable: true },
+            $(go.Shape, "RoundedRectangle", { fill: "lightblue" }),
+            $(go.TextBlock, "Hello!", { margin: 5 })
+        ));
+  </script>
+</body>
+</html>
