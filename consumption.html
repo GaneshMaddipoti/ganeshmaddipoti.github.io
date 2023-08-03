@@ -5,72 +5,91 @@
     <script src="js/OrthogonalLinkReshapingTool.js"></script>
 </head>
 <body style="align-content: center">
-    <div id="myDiagramDiv" style="width:1024px; height:760px; background-color: #DAE4E4;margin:0 auto;"></div>
+    <div id="myDiagramDiv" style="width:1024px; height:760px; background-color: WhiteSmoke;margin:0 auto;"></div>
     <script>
 
         var $ = go.GraphObject.make;
         let diagram = new go.Diagram("myDiagramDiv",{"undoManager.isEnabled": true, "linkReshapingTool": new OrthogonalLinkReshapingTool()});
 
         diagram.nodeTemplate =
-            $(go.Node, "Auto", { fromSpot: go.Spot.RightSide,  toSpot: go.Spot.LeftSide },
-                new go.Binding("location", "loc").makeTwoWay(),  // get the Node.location from the data.loc value
-                $(go.Shape, "RoundedRectangle",
-                    { fill: "white",strokeWidth: 2, stroke: "#555" },
-                    new go.Binding("fill", "color")),
-                $(go.TextBlock,
-                    { margin: 5, width: 90, textAlign: "center"},
-                    new go.Binding("text", "key"))
+            $(go.Node, "Auto", { fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides },
+                new go.Binding("location", "loc").makeTwoWay(),
+                $(go.Shape, new go.Binding("desiredSize", "size"), //{ desiredSize: new go.Size(85, 50) },
+                    new go.Binding("figure", "shape"), { strokeWidth: 2, stroke: "#555" }, new go.Binding("fill", "color")),
+                $(go.TextBlock,{ margin: 5, width: 90, textAlign: "center"}, new go.Binding("text", "key"))
             );
 
         diagram.linkTemplate =
-            $(go.Link, {
-                    routing: go.Link.AvoidsNodes,
-                    reshapable: true,
-                    resegmentable: true, corner: 5
-                },
+            $(go.Link, {routing: go.Link.AvoidsNodes, reshapable: true, resegmentable: true, corner: 5},
                 $(go.Shape, { strokeWidth: 2, stroke: "#555" }),
-                $(go.Shape, { toArrow: "Standard" }),
-                $(go.Panel, "Auto",  // this whole Panel is a link label
-                    $(go.Shape, "Rectangle", { fill: "lightgrey", stroke: "gray" }),
-                    $(go.TextBlock, { margin: 3 },
-                        new go.Binding("text", "channel"))),
-                {
-                    toolTip:  // define a tooltip for each node that displays the color as text
-                        $("ToolTip",
-                            $(go.TextBlock, { margin: 4 },
-                                new go.Binding("text", "desc"))
-                        )  // end of Adornment
-                }
+                $(go.Shape, { toArrow: "Standard" })
+                // $(go.Panel, "Auto",
+                //     $(go.Shape, "Rectangle", { fill: "lightgrey", stroke: "gray" }, new go.Binding("fill", "color")),
+                //     $(go.TextBlock, { margin: 3 }, new go.Binding("text", "channel"))),
+                //             {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))}
+            );
+
+        diagram.groupTemplate =
+            $(go.Group, "Auto", {isSubGraphExpanded : true},
+                new go.Binding("location", "loc").makeTwoWay(),
+                $(go.Shape, "RoundedRectangle", // surrounds everything
+                    { parameter1: 10, fill: "WhiteSmoke",strokeWidth: 2, stroke: "#555" }),
+                $(go.Panel, "Vertical",  // position header above the subgraph
+                    { defaultAlignment: go.Spot.Left },
+                    $(go.Panel, "Horizontal",
+                        $("SubGraphExpanderButton"),
+                        $(go.TextBlock, { font: "Bold 12pt Sans-Serif", stroke: "#555", margin: new go.Margin(0, 10) }, new go.Binding("text", "key"))
+                    ),
+                    $(go.Placeholder,     // represents area for all member parts
+                        { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
+                )
             );
 
         var nodeDataArray = [
-            { key: "Consumption Router", color: "lightblue", loc: new go.Point(0, 100) },
-            { key: "Pivot Coordinator", color: "lightblue", loc: new go.Point(200, 50) },
-            { key: "Pivot Maintenance", color: "lightblue", loc: new go.Point(400, 0) },
-            { key: "Dremio Hive", color: "lightblue", loc: new go.Point(600, 50) },
-            { key: "Consumption Hive", color: "lightblue", loc: new go.Point(200, 150) },
-            { key: "Consumption Impala", color: "lightblue", loc: new go.Point(400, 200) },
-            { key: "Midas Transformer", color: "lightblue", loc: new go.Point(400, 300) },
-            { key: "Dremio Builder", color: "lightblue", loc: new go.Point(800, 100) }
+            //Components
+            { key: "Consumption Router", color: "lightblue", loc: new go.Point(0, 100), shape: "RoundedRectangle" },
+            { key: "Consumption Hive", color: "lightblue", loc: new go.Point(250, 100), shape: "RoundedRectangle" },
+            { key: "Consumption Impala", color: "lightblue", loc: new go.Point(500, 100), shape: "RoundedRectangle" },
+            { key: "Consumption Dremio Builder", color: "lightblue", loc: new go.Point(500, 175), shape: "RoundedRectangle" },
+            { key: "Midas Transformer", color: "lightblue", loc: new go.Point(400, 250), shape: "RoundedRectangle" },
+
+            //Points
+            { key: "CIS", color: "Wheat", loc: new go.Point(150, 100), shape: "Diamond",size: new go.Size(50, 40) },
+            { key: "HMS", color: "Wheat", loc: new go.Point(400, 100), shape: "Diamond",size: new go.Size(50, 40) },
+
+            //End states
+            { key: "Impala Complete", color: "Wheat", loc: new go.Point(700, 100), shape: "Ellipse", size: new go.Size(80, 40) },
+            { key: "Dremio Complete", color: "Wheat", loc: new go.Point(700, 175), shape: "Ellipse", size: new go.Size(80, 40) },
+            { key: "Bitemp Complete", color: "Wheat", loc: new go.Point(700, 300), shape: "Ellipse", size: new go.Size(80, 40) },
+
+
+            //Pivot route
+            { key: "Pivot Route", loc: new go.Point(150, 350), isGroup: true },
+            { key: "Pivot Coordinator", color: "lightblue", loc: new go.Point(150, 350), group: "Pivot Route", shape: "RoundedRectangle" },
+            { key: "Pivot Maintenance", color: "lightblue", loc: new go.Point(300, 350), group: "Pivot Route", shape: "RoundedRectangle" },
+            { key: "Dremio Hive", color: "lightblue", loc: new go.Point(450, 350), group: "Pivot Route", shape: "RoundedRectangle" },
+
         ];
 
         var linkDataArray = [
-            { from: "Consumption Router", to: "Pivot Coordinator",  channel: "cis", desc: "Consumption In Stage"},
-            { from: "Pivot Coordinator", to: "Pivot Maintenance",  channel: "async",  desc: "Call to Nighfort/PACMan"},
+            { from: "Consumption Router", to: "CIS",  channel: "cis", desc: "Consumption In Stage"},
+            { from: "CIS", to: "Consumption Hive", channel: "cis", desc: "Consumption In Stage" },
+            { from: "Consumption Hive", to: "HMS", channel: "hms", desc: "Hive Metadata data Stage" },
+            { from: "HMS", to: "Consumption Impala", channel: "hms", desc: "Hive Metadata data Stage" },
+            { from: "HMS", to: "Consumption Dremio Builder", channel: "hms", desc: "Hive Metadata data Stage" },
+            { from: "HMS", to: "Midas Transformer", channel: "hms", desc: "Hive Metadata data Stage" },
+            { from: "Consumption Impala", to: "Impala Complete", channel: "Impala Complete", desc: "Impala Stage Complete" },
+            { from: "Consumption Dremio Builder", to: "Dremio Complete", channel: "dmtsc", desc: "Dremio Metadata Data Stage Complete" },
+            { from: "Midas Transformer", to: "Consumption Dremio Builder", channel: "mts", desc: "Midas Transform Stage" },
+
+            { from: "CIS", to: "Pivot Coordinator", channel: "cis", desc: "Consumption In Stage" },
+            { from: "Pivot Coordinator", to: "Pivot Maintenance", channel: "cis", desc: "Consumption In Stage" },
             { from: "Pivot Maintenance", to: "Dremio Hive",  channel: "cps", desc: "Consumption Pivot Stage"},
-            { from: "Consumption Router", to: "Consumption Hive", channel: "cis", desc: "Consumption In Stage" },
-            { from: "Consumption Hive", to: "Consumption Impala", channel: "hms", desc: "Hive Metadata data Stage" },
-            { from: "Consumption Hive", to: "Midas Transformer", channel: "hms", desc: "Hive Metadata data Stage" },
-            { from: "Dremio Hive", to: "Dremio Builder", channel: "hps", desc: "Hive Pivot Stage" },
-            { from: "Consumption Hive", to: "Dremio Builder", channel: "hms", desc: "Hive Metadata data Stage" },
-            { from: "Midas Transformer", to: "Dremio Builder", channel: "mts", desc: "Midas Transform Stage" },
-            { from: "Dremio Builder", to: "Consumption Router", channel: "dmts", desc: "Dremio Metadata Data Stage Complete" }
+            { from: "Dremio Hive", to: "Consumption Dremio Builder", channel: "hps", desc: "Hive Pivot Stage" },
+            { from: "Consumption Dremio Builder", to: "Bitemp Complete", channel: "dmtsc", desc: "Dremio Metadata Data Stage Complete" },
         ];
 
         diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-        diagram.add(
-            $(go.Part, { location: new go.Point(0, -40) },
-                $(go.TextBlock, "Everest Consumption", { font: "bold 18pt sans-serif", stroke: "#555" })));
     </script>
 </body>
 </html>
