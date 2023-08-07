@@ -84,7 +84,13 @@
         templmap.add("", diagram.nodeTemplate);
         diagram.nodeTemplateMap = templmap;
 
-        diagram.linkTemplate =
+        const simplelinktemplate =
+            $(go.Link, {routing: go.Link.AvoidsNodes, reshapable: true, resegmentable: true, corner: 5},
+                $(go.Shape, { strokeWidth: 2, stroke: "#555" }),
+                $(go.Shape, { toArrow: "Standard" }),
+            );
+
+        const simplelinklabletemplate =
             $(go.Link, {routing: go.Link.AvoidsNodes, reshapable: true, resegmentable: true, corner: 5},
                 $(go.Shape, { strokeWidth: 2, stroke: "#555" }),
                 $(go.Shape, { toArrow: "Standard" }),
@@ -93,6 +99,12 @@
                     $(go.TextBlock, { margin: 3 }, new go.Binding("text", "channel"))),
                             {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))}
             );
+
+        const linktemplmap = new go.Map();
+        linktemplmap.add("simplelink", simplelinktemplate);
+        linktemplmap.add("simplelinklabel", simplelinklabletemplate);
+        linktemplmap.add("", diagram.linkTemplate);
+        diagram.linkTemplateMap = linktemplmap;
 
         diagram.groupTemplate =
             $(go.Group, "Auto", {layout: $(go.TreeLayout,
@@ -141,22 +153,22 @@
         ];
 
         var linkDataArray = [
-            { from: "Start", to: "Consumption Router",  channel: "ce", desc: "Consumption Event"},
-            { from: "Consumption Router", to: "CIS",  channel: "ce", desc: "Consumption Event"},
-            { from: "CIS", to: "Consumption Hive", channel: "ce", desc: "Consumption Event" },
-            { from: "Consumption Hive", to: "HMS", channel: "ce", desc: "Consumption Event" },
-            { from: "HMS", to: "Consumption Impala", channel: "ce", desc: "Consumption Event" },
-            { from: "HMS", to: "Consumption Dremio Builder", channel: "ce", desc: "Consumption Event" },
-            { from: "HMS", to: "Midas Transformer", channel: "ce", desc: "Consumption Event" },
-            { from: "Consumption Impala", to: "Impala Complete", channel: "ce", desc: "Consumption Event" },
-            { from: "Consumption Dremio Builder", to: "Dremio Complete", channel: "ce", desc: "Consumption Event" },
-            { from: "Midas Transformer", to: "Consumption Dremio Builder", channel: "ce", desc: "Consumption Event" },
+            { from: "Start", to: "Consumption Router", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Consumption Router", to: "CIS", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "CIS", to: "Consumption Hive", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Consumption Hive", to: "HMS", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "HMS", to: "Consumption Impala", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "HMS", to: "Consumption Dremio Builder", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "HMS", to: "Midas Transformer", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Consumption Impala",  to: "Impala Complete", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Consumption Dremio Builder", to: "Dremio Complete", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Midas Transformer", to: "Consumption Dremio Builder", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
 
-            { from: "CIS", to: "Pivot Coordinator", channel: "ce", desc: "Consumption Event" },
-            { from: "Pivot Coordinator", to: "Pivot Maintenance", channel: "ce", desc: "Consumption Event" },
-            { from: "Pivot Maintenance", to: "Dremio Hive",  channel: "ce", desc: "Consumption Event"},
-            { from: "Dremio Hive", to: "Consumption Dremio Builder", channel: "ce", desc: "Consumption Event" },
-            { from: "Consumption Dremio Builder", to: "Bitemp Complete", channel: "ce", desc: "Consumption Event" },
+            { from: "CIS", to: "Pivot Coordinator", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Pivot Coordinator", to: "Pivot Maintenance", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Pivot Maintenance", to: "Dremio Hive", category: "simplelinklabel",  channel: "ce", desc: "Consumption Event"},
+            { from: "Dremio Hive", to: "Consumption Dremio Builder", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Consumption Dremio Builder", to: "Bitemp Complete", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
         ];
 
         diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
