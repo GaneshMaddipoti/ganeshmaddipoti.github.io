@@ -26,26 +26,12 @@
             items: [ {text: "Moneta-Boot", color: "LightGreen" },
                 {text: "Gaia", color: "LightSalmon" },],
             toolTipHTML: "asdf" },
-        { key: "Node3", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Root",
-            items: [ {text: "Moneta-Boot", color: "LightGreen" },
-                {text: "Gaia", color: "LightSalmon" },],
-            toolTipHTML: "asdf" },
-        { key: "Node4", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Root",
-            items: [ {text: "Moneta-Boot", color: "LightGreen" },
-                {text: "Gaia", color: "LightSalmon" },],
-            toolTipHTML: "asdf" },
-        { key: "Node5", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Root",
-            items: [ {text: "Moneta-Boot", color: "LightGreen" },
-                {text: "Gaia", color: "LightSalmon" },],
-            toolTipHTML: "asdf" },
 
         //Points
         { key: "CIS", desc: "CIS", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Root", },
-        { key: "HMS", desc: "HMS", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Root", },
 
         //End states
         { key: "Stage1 Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Root", },
-        { key: "Stage2 Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Root", },
 
     ];
 
@@ -54,13 +40,7 @@
         { from: "Node1", to: "CIS", category: "simplelinklabel", channel: "ce", desc: "event"},
         { from: "CIS", to: "Node2", category: "simplelinklabel", channel: "ce", desc: "event" },
         { from: "Node2", to: "HMS", category: "simplelinklabel", channel: "ce", desc: "event" },
-        { from: "HMS", to: "Node3", category: "simplelinklabel", channel: "ce", desc: "event" },
-        { from: "HMS", to: "Node4", category: "simplelinklabel", channel: "ce", desc: "event" },
-        { from: "HMS", to: "Node5", category: "simplelinklabel", channel: "ce", desc: "event" },
-        { from: "Node3",  to: "Stage1 Complete", category: "simplelinklabel", channel: "ce", desc: "event" },
-        { from: "Node4", to: "Stage2 Complete", category: "simplelinklabel", channel: "ce", desc: "event" },
-        { from: "Node5", to: "Node4", category: "simplelinklabel", channel: "ce", desc: "event" },
-
+        { from: "Node2",  to: "Stage1 Complete", category: "simplelinklabel", channel: "ce", desc: "event" },
     ];
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
