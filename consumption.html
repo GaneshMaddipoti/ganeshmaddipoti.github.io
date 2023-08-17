@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/go.js"></script>
+    <script src="js/OrthogonalLinkReshapingTool.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+<body style="align-content: center">
+    <div id="myDiagramDiv" style="width:1200px; height:800px; background-color: WhiteSmoke;margin:0 auto;"></div>
+    <div id="toolTipDIV" class="tooltip"></div>
+    <script src="js/custom.js"></script>
+    <script>
+
+
+
+        var nodeDataArray = [
+
+            { key: "Consumption Flow", color: "LightSteelBlue", isGroup: true, expand: true},
+            { key: "Start", color: "Wheat", shape: "Ellipse", size: new go.Size(40,40), category: "simple", group: "Consumption Flow",},
+            //Components
+            { key: "Consumption Router", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Forwards Enricher messages to the ce-event-notification. <br/>\n" +
+                    "        Transforms and Forwards back Consumption messages from the ce-event-notification.out back to runstatus topic. <br/>\n" +
+                    "        Listen to pacman for metadata copy and purge/recall <br/>\n" +
+                    "        Keep track of overall consumption status based on events coming in from different components." },
+            { key: "Consumption Hive", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Creation and Updating of the Metadata and Data table. <br/>\n" +
+                    "        And then forwards the message to ce-event-notification." },
+            { key: "Consumption Impala", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Creates impala views for the dataset supplied on the message sent by consumption-hive. <br/>\n" +
+                    "        And then forwards the message to ce-event-notification." },
+            { key: "Consumption Dremio Builder", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Responsible for dremio actions such as alter pds, vds and reflection refresh." },
+            { key: "Midas Transformer", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Creates and triggers midas workflows for child datasets." },
+
+            //Points
+            { key: "CIS", desc: "Consumption In Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption Flow", },
+            { key: "HMS", desc: "Hive Metadata Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption Flow", },
+
+            //End states
+            { key: "Impala Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption Flow", },
+            { key: "Dremio Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption Flow", },
+            { key: "Bitemp Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption Flow", },
+
+
+            //Pivot route
+            { key: "Pivot Route", color:"WhiteSmoke", isGroup: true, group: "Consumption Flow", expand: false},
+            { key: "Pivot Coordinator", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "This involves listening for new RUNIDs on event notification topic. <br/>\n" +
+                    "Invoking runner via a call to Nightfort." },
+            { key: "Pivot Maintenance", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Scala", color: "LightBlue" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Spark", color: "LightSalmon" },],
+                toolTipHTML: "This is the Spark component invoked by dataprocessor runner in cluster mode. <br/>\n" +
+                    "        And then forwards the message to ce-event-notification." },
+            { key: "Dremio Hive", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Responsible for adding the newly created pivot partition or updating pivot partitions based on updates" },
+
+        ];
+
+        var linkDataArray = [
+            { from: "Start", to: "Consumption Router", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Consumption Router", to: "CIS", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "CIS", to: "Consumption Hive", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Consumption Hive", to: "HMS", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "HMS", to: "Consumption Impala", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "HMS", to: "Consumption Dremio Builder", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "HMS", to: "Midas Transformer", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Consumption Impala",  to: "Impala Complete", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Consumption Dremio Builder", to: "Dremio Complete", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Midas Transformer", to: "Consumption Dremio Builder", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+
+            { from: "CIS", to: "Pivot Coordinator", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Pivot Coordinator", to: "Pivot Maintenance", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Pivot Maintenance", to: "Dremio Hive", category: "simplelinklabel",  channel: "ce", desc: "Consumption Event"},
+            { from: "Dremio Hive", to: "Consumption Dremio Builder", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+            { from: "Consumption Dremio Builder", to: "Bitemp Complete", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
+        ];
+
+        diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+
+    </script>
+</body>
+</html>
