@@ -3,27 +3,43 @@
 <head>
     <script src="js/go.js"></script>
     <script src="js/OrthogonalLinkReshapingTool.js"></script>
+    <script src="js/ZoomSlider.js"></script>
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body style="align-content: center">
-    <div id="myDiagramDiv" style="width:1200px; height:800px; background-color: WhiteSmoke;margin:0 auto;"></div>
+    <div id="myDiagramDiv" style="width:96%;height: 950px; background-color: WhiteSmoke;margin:0 auto;"></div>
     <div id="toolTipDIV" class="tooltip"></div>
     <script src="js/custom.js"></script>
     <script>
-
-
-
         var nodeDataArray = [
 
-            { key: "Consumption Flow", color: "LightSteelBlue", isGroup: true, expand: true},
+            //Datasources
+            { key: "Data Sources", color: "LightSteelBlue", isGroup: true, expand: true, category: "grid"},
+            { key: "System of Records", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Data Sources"},
+            { key: "Authoritative Data Sources", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Data Sources"},
+
+
+            //Storage & processing
+            { key: "Storage and Processing", color: "LightSteelBlue", isGroup: true, expand: true, category: "grid"},
+            { key: "Registration", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+            { key: "Controls", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+            { key: "Ingestion", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+            { key: "Enrichment", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+            { key: "Entitlements", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+            { key: "Feed Management", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+            { key: "Operations Management", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+            { key: "Reporting", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+
+
+            //Consumption
+            { key: "Consumption Flow", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
             { key: "Start", color: "Wheat", shape: "Ellipse", size: new go.Size(40,40), category: "simple", group: "Consumption Flow",},
             //Components
             { key: "Consumption Router", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
-                toolTipHTML: "Listen to PACMAN events - metadata copy, purge, recall<br/>" +
-                    "Forwards to consumption topic for processing <br/>\n" +
+                toolTipHTML: "Forwards Enricher messages to the ce-event-notification. <br/>\n" +
                     "        Transforms and Forwards back Consumption messages from the ce-event-notification.out back to runstatus topic. <br/>\n" +
                     "        Listen to pacman for metadata copy and purge/recall <br/>\n" +
                     "        Keep track of overall consumption status based on events coming in from different components." },
@@ -61,7 +77,7 @@
 
 
             //Pivot route
-            { key: "Pivot Route", color:"WhiteSmoke", isGroup: true, group: "Consumption Flow", expand: false},
+            { key: "Pivot Route", color:"LightSteelBlue", isGroup: true, group: "Consumption Flow", expand: false, category: "tree"},
             { key: "Pivot Coordinator", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
@@ -84,6 +100,9 @@
         ];
 
         var linkDataArray = [
+
+            { from: "Data Sources", to: "Storage and Processing", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+
             { from: "Start", to: "Consumption Router", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
             { from: "Consumption Router", to: "CIS", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
             { from: "CIS", to: "Consumption Hive", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
@@ -103,7 +122,7 @@
         ];
 
         diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-
+        zoomSlider = new ZoomSlider(diagram);
 
     </script>
 </body>

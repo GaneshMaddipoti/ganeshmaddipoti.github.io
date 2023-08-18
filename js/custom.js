@@ -10,6 +10,8 @@ function changeCategory(e, obj) {
             cat = "simple";
         diagram.model.setCategoryForNodeData(node.data, cat);
         diagram.commitTransaction("changeCategory");
+        //diagram.scrollToRect(node.actualBounds);
+        diagram.commandHandler.zoomToFit();
     }
 }
 
@@ -24,6 +26,8 @@ function changeSubGraph(e, obj) {
             node.expandSubGraph();
         }
         diagram.commitTransaction("changeSubGraph");
+        //diagram.scrollToRect(node.actualBounds);
+        diagram.commandHandler.zoomToFit();
     }
 }
 
@@ -142,17 +146,65 @@ linktemplmap.add("", diagram.linkTemplate);
 diagram.linkTemplateMap = linktemplmap;
 
 //Groups
-diagram.groupTemplate =
-    $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
-                { angle: 0, nodeSpacing: 50, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
-        $(go.Shape, "RoundedRectangle", // surrounds everything
-            { parameter1: 10, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
+// const treeGroupTemplate =
+//     $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
+//                 { angle: 0, nodeSpacing: 50, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
+//         $(go.Shape, "RoundedRectangle", // surrounds everything
+//             { parameter1: 10, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
+//             { click: (e, obj) => changeSubGraph(e, obj) }),
+//         $(go.Panel, "Vertical",  // position header above the subgraph
+//             { defaultAlignment: go.Spot.Center },
+//             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),
+//                 { click: (e, obj) => changeSubGraph(e, obj) }),
+//             $(go.Placeholder,     // represents area for all member parts
+//                 { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
+//         ), new go.Binding("isSubGraphExpanded", "expand"),
+//     );
+
+// const gridGroupTemplate =
+//     $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.GridLayout,
+//                 { angle: 0, nodeSpacing: 50, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
+//         $(go.Shape, "RoundedRectangle", // surrounds everything
+//             { parameter1: 10, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
+//             { click: (e, obj) => changeSubGraph(e, obj) }),
+//         $(go.Panel, "Vertical",  // position header above the subgraph
+//             { defaultAlignment: go.Spot.Center },
+//             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),
+//                 { click: (e, obj) => changeSubGraph(e, obj) }),
+//             $(go.Placeholder,     // represents area for all member parts
+//                 { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
+//         ), new go.Binding("isSubGraphExpanded", "expand"),
+//     );
+
+// const groupTemplates = new go.Map();
+// groupTemplates.add("tree", treeGroupTemplate);
+// groupTemplates.add("grid", gridGroupTemplate);
+diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
+            { angle: 0, nodeSpacing: 50, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
+    $(go.Shape, "RoundedRectangle", // surrounds everything
+        { parameter1: 10, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
+        { click: (e, obj) => changeSubGraph(e, obj) }),
+    $(go.Panel, "Vertical",  // position header above the subgraph
+        { defaultAlignment: go.Spot.Center },
+        $(go.TextBlock, textStyle(), new go.Binding("text", "key"),
             { click: (e, obj) => changeSubGraph(e, obj) }),
-        $(go.Panel, "Vertical",  // position header above the subgraph
-            { defaultAlignment: go.Spot.Center },
-            $(go.TextBlock, textStyle(), new go.Binding("text", "key"),
-                { click: (e, obj) => changeSubGraph(e, obj) }),
-            $(go.Placeholder,     // represents area for all member parts
-                { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
-        ), new go.Binding("isSubGraphExpanded", "expand"),
-    );
+        $(go.Placeholder,     // represents area for all member parts
+            { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
+    ), new go.Binding("isSubGraphExpanded", "expand"),
+));
+diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip,
+        layout: $(go.GridLayout, {
+            wrappingColumn: 3, alignment: go.GridLayout.Position,cellSize: new go.Size(0, 0)
+        }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
+    $(go.Shape, "RoundedRectangle", // surrounds everything
+        { parameter1: 10, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
+        { click: (e, obj) => changeSubGraph(e, obj) }),
+    $(go.Panel, "Vertical",  // position header above the subgraph
+        { defaultAlignment: go.Spot.Center },
+        $(go.TextBlock, textStyle(), new go.Binding("text", "key"),
+            { click: (e, obj) => changeSubGraph(e, obj) }),
+        $(go.Placeholder,     // represents area for all member parts
+            { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
+    ), new go.Binding("isSubGraphExpanded", "expand"),
+));
+diagram.scrollMode = go.Diagram.InfiniteScroll;
