@@ -149,7 +149,20 @@ diagram.linkTemplateMap = linktemplmap;
 diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
             { angle: 0, nodeSpacing: 50, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
     $(go.Shape, "RoundedRectangle", // surrounds everything
-        { parameter1: 10, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
+        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
+        { click: (e, obj) => changeSubGraph(e, obj) }),
+    $(go.Panel, "Vertical",  // position header above the subgraph
+        { defaultAlignment: go.Spot.Center },
+        $(go.TextBlock, textStyle(), new go.Binding("text", "key"),
+            { click: (e, obj) => changeSubGraph(e, obj) }),
+        $(go.Placeholder,     // represents area for all member parts
+            { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
+    ), new go.Binding("isSubGraphExpanded", "expand"),
+));
+diagram.groupTemplateMap.add("tree90", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
+            { angle: 90, nodeSpacing: 50, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
+    $(go.Shape, "RoundedRectangle", // surrounds everything
+        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
         { click: (e, obj) => changeSubGraph(e, obj) }),
     $(go.Panel, "Vertical",  // position header above the subgraph
         { defaultAlignment: go.Spot.Center },
@@ -161,10 +174,10 @@ diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, la
 ));
 diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip,
         layout: $(go.GridLayout, {
-            wrappingColumn: 3, alignment: go.GridLayout.Position,cellSize: new go.Size(0, 0)
+            wrappingColumn: 4, alignment: go.GridLayout.Position,cellSize: new go.Size(1, 1), spacing: new go.Size(20,20)
         }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
     $(go.Shape, "RoundedRectangle", // surrounds everything
-        { parameter1: 10, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
+        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
         { click: (e, obj) => changeSubGraph(e, obj) }),
     $(go.Panel, "Vertical",  // position header above the subgraph
         { defaultAlignment: go.Spot.Center },

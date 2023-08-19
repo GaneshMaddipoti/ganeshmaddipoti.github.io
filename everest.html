@@ -19,23 +19,74 @@
             { key: "Authoritative Data Sources", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Data Sources"},
 
 
+            { key: "Tools", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree"},
+            { key: "Calculators", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Tools"},
+            { key: "AI/ML Models", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Tools"},
+            { key: "Aggregators", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Tools"},
+
+            { key: "Outputs", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree"},
+            { key: "Reports", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Outputs"},
+            { key: "Applications", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Outputs"},
+            { key: "Dashboards", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Outputs"},
+
+
             //Storage & processing
-            { key: "Storage and Processing", color: "LightSteelBlue", isGroup: true, expand: true, category: "grid"},
-            { key: "Registration", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
-            { key: "Controls", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
-            { key: "Ingestion", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
-            { key: "Enrichment", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
-            { key: "Entitlements", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
-            { key: "Feed Management", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
-            { key: "Operations Management", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
-            { key: "Reporting", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+            { key: "Storage and Processing", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree90"},
+
+            //Processing
+            { key: "Processing", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree", group: "Storage and Processing"},
+            { key: "Registration", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree",
+                toolTipHTML: "Data owners configure their datasets and models"},
+
+            { key: "Model Registry(MR)", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Registration",
+                toolTipHTML: "registering an entity model and associations with other entities into EPS. <br/>" +
+                    "contains the entities, attributes, relations, and transformation rules that describe the data on the platform"},
+            { key: "Dataset Registry(DSR)", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Registration",
+                toolTipHTML: "highly available resilient centralized repository of Datasets with versioning. <br/>" +
+                    "contains the data necessary to describe an Everest data flow"},
+
+
+            { key: "Controls", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree"},
+            { key: "Enrichment", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree"},
+            { key: "Entitlements", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree"},
+            { key: "Feed Management", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree"},
+            { key: "Operations Management", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree"},
+            { key: "Reporting", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree"},
+            { key: "Ingestion", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree",
+                toolTipHTML: "Imports the data from data sources and validate <br/>" +
+                    "Persist in storage with milestone information."},
+
+            //Physical Storage
+            { key: "Everest LOB Storage", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
+
+            { key: "HDFS Storage", color: "LightSteelBlue", isGroup: true, expand: false, group: "Everest LOB Storage", category: "tree"},
+            { key: "Transactions & Positions", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "HDFS Storage"},
+            { key: "Reference Data", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "HDFS Storage"},
+
+            { key: "Hive", color: "LightSteelBlue", isGroup: true, expand: false, group: "Everest LOB Storage", category: "tree"},
+            { key: "Data Table", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Hive"},
+            { key: "Metadata Table", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Hive"},
+
+            { key: "Impala", color: "LightSteelBlue", isGroup: true, expand: false, group: "Everest LOB Storage", category: "tree"},
+            { key: "Data View", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Impala"},
+            { key: "Metadata View", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Impala"},
+
+            { key: "Dremio", color: "LightSteelBlue", isGroup: true, expand: false, group: "Everest LOB Storage", category: "tree"},
+            { key: "PDS", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Dremio"},
+            { key: "VDS", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Dremio"},
+
+            // { key: "LOB Storage", color: "LightSteelBlue", isGroup: true, expand: false, group: "Everest LOB Storage", category: "tree"},
+            // { key: "Data Source 1", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "LOB Storage"},
+            // { key: "Data Source 2", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "LOB Storage"},
+
+
 
 
             //Consumption
-            { key: "Consumption Flow", color: "LightSteelBlue", isGroup: true, expand: false, group: "Storage and Processing", category: "tree"},
-            { key: "Start", color: "Wheat", shape: "Ellipse", size: new go.Size(40,40), category: "simple", group: "Consumption Flow",},
+            { key: "Consumption", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree"},
+            // { key: "Start", color: "Wheat", shape: "Ellipse", size: new go.Size(40,40), category: "simple", group: "Consumption",},
             //Components
-            { key: "Consumption Router", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+            { key: "Consumption Router", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
@@ -43,41 +94,42 @@
                     "        Transforms and Forwards back Consumption messages from the ce-event-notification.out back to runstatus topic. <br/>\n" +
                     "        Listen to pacman for metadata copy and purge/recall <br/>\n" +
                     "        Keep track of overall consumption status based on events coming in from different components." },
-            { key: "Consumption Hive", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+            { key: "Consumption Hive", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "Creation and Updating of the Metadata and Data table. <br/>\n" +
                     "        And then forwards the message to ce-event-notification." },
-            { key: "Consumption Impala", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+            { key: "Consumption Impala", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "Creates impala views for the dataset supplied on the message sent by consumption-hive. <br/>\n" +
                     "        And then forwards the message to ce-event-notification." },
-            { key: "Consumption Dremio Builder", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+            { key: "Consumption Dremio Builder", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "Responsible for dremio actions such as alter pds, vds and reflection refresh." },
-            { key: "Midas Transformer", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+            { key: "Midas Transformer", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "Creates and triggers midas workflows for child datasets." },
 
             //Points
-            { key: "CIS", desc: "Consumption In Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption Flow", },
-            { key: "HMS", desc: "Hive Metadata Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption Flow", },
+            { key: "CIS", desc: "Consumption In Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption", },
+            { key: "HMS", desc: "Hive Metadata Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption", },
 
             //End states
-            { key: "Impala Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption Flow", },
-            { key: "Dremio Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption Flow", },
-            { key: "Bitemp Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption Flow", },
+            { key: "Impala Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption", },
+            { key: "Dremio Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption", },
+            { key: "Bitemp Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption", },
 
 
             //Pivot route
-            { key: "Pivot Route", color:"LightSteelBlue", isGroup: true, group: "Consumption Flow", expand: false, category: "tree"},
+            { key: "Pivot Route", color:"LightSteelBlue", isGroup: true, group: "Consumption", expand: false, category: "tree",
+                toolTipHTML: "For Bitemp Pivot enabled datasets" },
             { key: "Pivot Coordinator", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
@@ -102,8 +154,27 @@
         var linkDataArray = [
 
             { from: "Data Sources", to: "Storage and Processing", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Storage and Processing", to: "Tools", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Tools", to: "Outputs", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
 
-            { from: "Start", to: "Consumption Router", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Enrichment", to: "Consumption Router", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Registration", to: "Ingestion", category: "simplelinklabel", channel: "se", desc: "Storage Event"},
+            { from: "Ingestion", to: "Enrichment", category: "simplelinklabel", channel: "se", desc: "Storage Event"},
+            { from: "Ingestion", to: "HDFS Storage", category: "simplelinklabel", channel: "se", desc: "Storage Event"},
+            { from: "Enrichment", to: "HDFS Storage", category: "simplelinklabel", channel: "se", desc: "Storage Event"},
+
+            { from: "HDFS Storage", to: "Hive", category: "simplelinklabel", channel: "se", desc: "Storage Event"},
+            { from: "Hive", to: "Impala", category: "simplelinklabel", channel: "se", desc: "Storage Event"},
+            { from: "Hive", to: "Dremio", category: "simplelinklabel", channel: "se", desc: "Storage Event"},
+
+            { from: "Pivot Maintenance", to: "HDFS Storage", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Consumption Hive", to: "Hive", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Consumption Impala", to: "Impala", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+            { from: "Consumption Dremio Builder", to: "Dremio", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
+
+            { from: "Reporting", to: "LOB Storage", category: "simplelinklabel", channel: "se", desc: "Storage Event"},
+
+
             { from: "Consumption Router", to: "CIS", category: "simplelinklabel", channel: "ce", desc: "Consumption Event"},
             { from: "CIS", to: "Consumption Hive", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
             { from: "Consumption Hive", to: "HMS", category: "simplelinklabel", channel: "ce", desc: "Consumption Event" },
