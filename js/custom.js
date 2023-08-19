@@ -50,9 +50,15 @@ function doMouseOver(e) {
 //Diagram
 var $ = go.GraphObject.make;
 let diagram = new go.Diagram("myDiagramDiv",{layout: $(go.TreeLayout,
-        { angle: 0, nodeSpacing: 50, layerSpacing: 50 }), "undoManager.isEnabled": true, "linkReshapingTool": new OrthogonalLinkReshapingTool(),
+        { angle: 0, nodeSpacing: 50, layerSpacing: 50}), "undoManager.isEnabled": true, "linkReshapingTool": new OrthogonalLinkReshapingTool(),
     mouseOver: doMouseOver,
-    click: doMouseOver });
+    click: doMouseOver ,
+    "ModelChanged": e => {
+    if (e.isTransactionFinished) {
+        diagram.commandHandler.zoomToFit();
+        updateAnimation();
+    }
+}});
 
 //Nodes
 const itemtemplates = new go.Map();
@@ -138,10 +144,21 @@ const simplelinklabletemplate =
             $(go.TextBlock, { margin: 3 }, new go.Binding("text", "channel"))),
         {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))}
     );
+const animatedLinkTemplate =
+    $(go.Link,
+        { routing: go.Link.AvoidsNodes, curve: go.Link.JumpGap, corner: 10, reshapable: true, toShortLength: 7 },
+        new go.Binding("points").makeTwoWay(),
+        // mark each Shape to get the link geometry with isPanelMain: true
+        $(go.Shape, { isPanelMain: true, stroke: "black", strokeWidth: 7 }),
+        $(go.Shape, { isPanelMain: true, stroke: "LightSteelBlue", strokeWidth: 5 }),
+        $(go.Shape, { isPanelMain: true, stroke: "white", strokeWidth: 3, name: "PIPE", strokeDashArray: [10, 10] }),
+        $(go.Shape, { toArrow: "Triangle", scale: 1.3, fill: "gray", stroke: null })
+    );
 
 const linktemplmap = new go.Map();
 linktemplmap.add("simplelink", simplelinktemplate);
 linktemplmap.add("simplelinklabel", simplelinklabletemplate);
+linktemplmap.add("animatedLink", animatedLinkTemplate);
 linktemplmap.add("", diagram.linkTemplate);
 diagram.linkTemplateMap = linktemplmap;
 
@@ -188,3 +205,17 @@ diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip,
     ), new go.Binding("isSubGraphExpanded", "expand"),
 ));
 diagram.scrollMode = go.Diagram.InfiniteScroll;
+diagram.commandHandler.zoomToFit();
+
+var myAnimation = null;
+
+function updateAnimation() {
+    if (myAnimation) myAnimation.stop();
+    // Animate the flow in the pipes
+    myAnimation = new go.Animation();
+    myAnimation.easing = go.Animation.EaseLinear;
+    diagram.links.each(link => myAnimation.add(link.findObject("PIPE"), "strokeDashOffset", 20, 0));
+    // Run indefinitely
+    myAnimation.runCount = Infinity;
+    myAnimation.start();
+}
