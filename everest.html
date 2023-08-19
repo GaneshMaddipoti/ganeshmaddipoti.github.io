@@ -7,9 +7,11 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body style="align-content: center">
-    <div id="myDiagramDiv" style="width:96%;height: 950px; background-color: WhiteSmoke;margin:0 auto;"></div>
+    <div id="myDiagramDiv" style="width:96%;height: 800px; background-color: WhiteSmoke;margin:0 auto;"></div>
     <div id="toolTipDIV" class="tooltip"></div>
     <script src="js/custom.js"></script>
+    <a href="#" onclick="updateAnimation('impala')">Simulate Impala</a>
+    <a href="#" onclick="czoomTofFit()">Zoom To Fit</a>
     <script>
         var nodeDataArray = [
 
@@ -153,47 +155,48 @@
 
         var linkDataArray = [
 
-            { from: "Data Sources", to: "Storage and Processing", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
-            { from: "Storage and Processing", to: "Tools", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
-            { from: "Tools", to: "Outputs", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
+            { name: "dstoi", from: "Data Sources", to: "Ingestion", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "sptot", from: "Storage and Processing", to: "Tools", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "ttoo", from: "Tools", to: "Outputs", category: "simplelink", channel: "ce", desc: "Consumption Event"},
 
-            { from: "Enrichment", to: "Consumption Router", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
-            { from: "Registration", to: "Ingestion", category: "animatedLink", channel: "se", desc: "Storage Event"},
-            { from: "Ingestion", to: "Enrichment", category: "animatedLink", channel: "se", desc: "Storage Event"},
-            { from: "Ingestion", to: "HDFS Storage", category: "animatedLink", channel: "se", desc: "Storage Event"},
-            { from: "Enrichment", to: "HDFS Storage", category: "animatedLink", channel: "se", desc: "Storage Event"},
+            { name: "etocr", from: "Enrichment", to: "Consumption Router", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "rtoi", from: "Registration", to: "Ingestion", category: "simplelink", channel: "se", desc: "Storage Event"},
+            { name: "itoe", from: "Ingestion", to: "Enrichment", category: "simplelink", channel: "se", desc: "Storage Event"},
+            { name: "itohs", from: "Ingestion", to: "HDFS Storage", category: "simplelink", channel: "se", desc: "Storage Event"},
+            { name: "etohs", from: "Enrichment", to: "HDFS Storage", category: "simplelink", channel: "se", desc: "Storage Event"},
 
-            { from: "HDFS Storage", to: "Hive", category: "animatedLink", channel: "se", desc: "Storage Event"},
-            { from: "Hive", to: "Impala", category: "animatedLink", channel: "se", desc: "Storage Event"},
-            { from: "Hive", to: "Dremio", category: "animatedLink", channel: "se", desc: "Storage Event"},
+            { name: "hstoh", from: "HDFS Storage", to: "Hive", category: "simplelink", channel: "se", desc: "Storage Event"},
+            { name: "htoi", from: "Hive", to: "Impala", category: "simplelink", channel: "se", desc: "Storage Event"},
+            { name: "htod", from: "Hive", to: "Dremio", category: "simplelink", channel: "se", desc: "Storage Event"},
 
-            { from: "Pivot Maintenance", to: "HDFS Storage", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
-            { from: "Consumption Hive", to: "Hive", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
-            { from: "Consumption Impala", to: "Impala", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
-            { from: "Consumption Dremio Builder", to: "Dremio", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
+            { name: "pmtohs", from: "Pivot Maintenance", to: "HDFS Storage", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "chtoh", from: "Consumption Hive", to: "Hive", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "citoi", from: "Consumption Impala", to: "Impala", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "cdbtod", from: "Consumption Dremio Builder", to: "Dremio", category: "simplelink", channel: "ce", desc: "Consumption Event"},
 
-            { from: "Reporting", to: "LOB Storage", category: "animatedLink", channel: "se", desc: "Storage Event"},
+            { name: "rtols", from: "Reporting", to: "LOB Storage", category: "simplelink", channel: "se", desc: "Storage Event"},
 
 
-            { from: "Consumption Router", to: "CIS", category: "animatedLink", channel: "ce", desc: "Consumption Event"},
-            { from: "CIS", to: "Consumption Hive", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "Consumption Hive", to: "HMS", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "HMS", to: "Consumption Impala", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "HMS", to: "Consumption Dremio Builder", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "HMS", to: "Midas Transformer", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "Consumption Impala",  to: "Impala Complete", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "Consumption Dremio Builder", to: "Dremio Complete", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "Midas Transformer", to: "Consumption Dremio Builder", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
+            { name: "crtoc", from: "Consumption Router", to: "CIS", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "ctoch", from: "CIS", to: "Consumption Hive", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "chtoh", from: "Consumption Hive", to: "HMS", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "htoci", from: "HMS", to: "Consumption Impala", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "htocdb", from: "HMS", to: "Consumption Dremio Builder", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "htomt", from: "HMS", to: "Midas Transformer", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "citoic", from: "Consumption Impala",  to: "Impala Complete", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "cdbtodc", from: "Consumption Dremio Builder", to: "Dremio Complete", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "mttocdb", from: "Midas Transformer", to: "Consumption Dremio Builder", category: "simplelink", channel: "ce", desc: "Consumption Event" },
 
-            { from: "CIS", to: "Pivot Coordinator", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "Pivot Coordinator", to: "Pivot Maintenance", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "Pivot Maintenance", to: "Dremio Hive", category: "animatedLink",  channel: "ce", desc: "Consumption Event"},
-            { from: "Dremio Hive", to: "Consumption Dremio Builder", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
-            { from: "Consumption Dremio Builder", to: "Bitemp Complete", category: "animatedLink", channel: "ce", desc: "Consumption Event" },
+            { name: "ctopc", from: "CIS", to: "Pivot Coordinator", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "pctopm", from: "Pivot Coordinator", to: "Pivot Maintenance", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "pmtodh", from: "Pivot Maintenance", to: "Dremio Hive", category: "simplelink",  channel: "ce", desc: "Consumption Event"},
+            { name: "dhtocdb", from: "Dremio Hive", to: "Consumption Dremio Builder", category: "simplelink", channel: "ce", desc: "Consumption Event" },
+            { name: "cdbtobc", from: "Consumption Dremio Builder", to: "Bitemp Complete", category: "simplelink", channel: "ce", desc: "Consumption Event" },
         ];
 
         diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
         zoomSlider = new ZoomSlider(diagram);
+
 
     </script>
 </body>

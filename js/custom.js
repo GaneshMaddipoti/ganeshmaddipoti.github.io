@@ -11,7 +11,7 @@ function changeCategory(e, obj) {
         diagram.model.setCategoryForNodeData(node.data, cat);
         diagram.commitTransaction("changeCategory");
         //diagram.scrollToRect(node.actualBounds);
-        diagram.commandHandler.zoomToFit();
+        //diagram.commandHandler.zoomToFit();
     }
 }
 
@@ -27,7 +27,7 @@ function changeSubGraph(e, obj) {
         }
         diagram.commitTransaction("changeSubGraph");
         //diagram.scrollToRect(node.actualBounds);
-        diagram.commandHandler.zoomToFit();
+        //diagram.commandHandler.zoomToFit();
     }
 }
 
@@ -53,12 +53,16 @@ let diagram = new go.Diagram("myDiagramDiv",{layout: $(go.TreeLayout,
         { angle: 0, nodeSpacing: 50, layerSpacing: 50}), "undoManager.isEnabled": true, "linkReshapingTool": new OrthogonalLinkReshapingTool(),
     mouseOver: doMouseOver,
     click: doMouseOver ,
-    "ModelChanged": e => {
-    if (e.isTransactionFinished) {
+    "LinkReshaped": e => {
         diagram.commandHandler.zoomToFit();
-        updateAnimation();
+    },
+    "InitialAnimationStarting": e => {
+        diagram.commandHandler.zoomToFit();
+    },
+    "LinkReshaped": e => {
+        diagram.commandHandler.zoomToFit();
     }
-}});
+});
 
 //Nodes
 const itemtemplates = new go.Map();
@@ -205,17 +209,36 @@ diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip,
     ), new go.Binding("isSubGraphExpanded", "expand"),
 ));
 diagram.scrollMode = go.Diagram.InfiniteScroll;
-diagram.commandHandler.zoomToFit();
-
 var myAnimation = null;
 
-function updateAnimation() {
+function updateAnimation(arg) {
+    var harray = [];
+    if(arg === "impala"){
+        harray = ["dstoi", "itoe", "itohs", "etohs", "etocr", "crtoc", "ctoch", "chtochi", "hstoh", "htoi", "chtoh", "citoi", "citoic"];
+    }
+    var arr = diagram.model.linkDataArray;
+    for (var i = 0; i < arr.length; i++) {
+        let pivot = arr[i];
+        if(harray.includes(pivot.name)) {
+            pivot.category = "animatedLink";
+        }
+    };
+    diagram.model = new go.GraphLinksModel(nodeDataArray, arr);
     if (myAnimation) myAnimation.stop();
     // Animate the flow in the pipes
     myAnimation = new go.Animation();
     myAnimation.easing = go.Animation.EaseLinear;
-    diagram.links.each(link => myAnimation.add(link.findObject("PIPE"), "strokeDashOffset", 20, 0));
+
+    diagram.links.each(link => {
+        if(link.category === "animatedLink")
+            myAnimation.add(link.findObject("PIPE"), "strokeDashOffset", 20, 0)
+    });
     // Run indefinitely
     myAnimation.runCount = Infinity;
     myAnimation.start();
+    //diagram.commandHandler.zoomToFit();
 }
+function czoomTofFit() {
+    diagram.commandHandler.zoomToFit();
+}
+
