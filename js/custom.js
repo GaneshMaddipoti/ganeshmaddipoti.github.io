@@ -214,13 +214,17 @@ var myAnimation = null;
 function updateAnimation(arg) {
     var harray = [];
     if(arg === "impala"){
-        harray = ["dstoi", "itoe", "itohs", "etohs", "etocr", "crtoc", "ctoch", "chtochi", "hstoh", "htoi", "chtoh", "citoi", "citoic"];
+        harray = ["dstoi", "itoe", "itohs", "etohs", "etocr", "crtoc", "ctoch", "chtochi", "hstoh", "htoi", "chtoh", "citoi", "htoci", "citoic", "itot", "ttoo"];
+    } else if(arg === "dremio") {
+        harray = ["dstoi", "itoe", "itohs", "etohs", "etocr", "crtoc", "ctoch", "hstoh", "htod", "chtoh", "htocdb", "dtot", "ttoo", "htomt", "cdbtodc", "cdbtod"];
     }
     var arr = diagram.model.linkDataArray;
     for (var i = 0; i < arr.length; i++) {
         let pivot = arr[i];
         if(harray.includes(pivot.name)) {
             pivot.category = "animatedLink";
+        } else {
+            pivot.category = "simplelink";
         }
     };
     diagram.model = new go.GraphLinksModel(nodeDataArray, arr);

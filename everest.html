@@ -10,8 +10,14 @@
     <div id="myDiagramDiv" style="width:96%;height: 800px; background-color: WhiteSmoke;margin:0 auto;"></div>
     <div id="toolTipDIV" class="tooltip"></div>
     <script src="js/custom.js"></script>
-    <a href="#" onclick="updateAnimation('impala')">Simulate Impala</a>
-    <a href="#" onclick="czoomTofFit()">Zoom To Fit</a>
+    <div style="width:96%; background-color: WhiteSmoke;margin:0 auto;">
+        <br/>
+        <br/>
+        <button href="#" onclick="czoomTofFit()">Zoom To Fit</button>
+        <button href="#" onclick="updateAnimation('')">Remove Simulation</button>
+        <button href="#" onclick="updateAnimation('impala')">Simulate Impala</button>
+        <button href="#" onclick="updateAnimation('dremio')">Simulate Dremio</button>
+    </div>
     <script>
         var nodeDataArray = [
 
@@ -156,7 +162,8 @@
         var linkDataArray = [
 
             { name: "dstoi", from: "Data Sources", to: "Ingestion", category: "simplelink", channel: "ce", desc: "Consumption Event"},
-            { name: "sptot", from: "Storage and Processing", to: "Tools", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "itot", from: "Impala", to: "Tools", category: "simplelink", channel: "ce", desc: "Consumption Event"},
+            { name: "dtot", from: "Dremio", to: "Tools", category: "simplelink", channel: "ce", desc: "Consumption Event"},
             { name: "ttoo", from: "Tools", to: "Outputs", category: "simplelink", channel: "ce", desc: "Consumption Event"},
 
             { name: "etocr", from: "Enrichment", to: "Consumption Router", category: "simplelink", channel: "ce", desc: "Consumption Event"},

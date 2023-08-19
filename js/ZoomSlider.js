@@ -54,8 +54,8 @@ function ZoomSlider(diagram, options) {
   // Options defaults:
   this._size = 125;
   this._buttonSize = 25;
-  this._alignment = go.Spot.BottomRight;
-  this._alignmentFocus = go.Spot.BottomRight;
+  this._alignment = go.Spot.TopRight;
+  this._alignmentFocus = go.Spot.TopRight;
   this._orientation = 'vertical';
   this._opacity = .75;
 
