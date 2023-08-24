@@ -5,9 +5,9 @@
     z-index: 1000;
     display: none;
     font-family: Roboto;
-    font-size: 12px;
+    font-size: 14px;
     padding: 5px;
-    width: 300px;
+    /*width: 300px;*/
     border: 1px solid black;
     border-radius: 5px;
 }
