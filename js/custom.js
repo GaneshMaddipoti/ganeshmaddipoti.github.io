@@ -15,22 +15,6 @@ function changeCategory(e, obj) {
     }
 }
 
-// function changeSubGraph(e, obj) {
-//     const node = obj.part;
-//     if (node) {
-//         const diagram = node.diagram;
-//         diagram.startTransaction("changeSubGraph");
-//         if(node.isSubGraphExpanded) {
-//             node.collapseSubGraph();
-//         } else {
-//             node.expandSubGraph();
-//         }
-//         diagram.commitTransaction("changeSubGraph");
-//         //diagram.scrollToRect(node.actualBounds);
-//         //diagram.commandHandler.zoomToFit();
-//     }
-// }
-
 function textStyle() {
     return [
         { margin: 5, width: 100, textAlign: "center", font: '500 14px Roboto, sans-serif'}
@@ -40,6 +24,20 @@ function textStyle() {
 function itemStyle() {
     return [
         { textAlign: "center", font: '12px Roboto, sans-serif'}
+    ];
+}
+
+function subGraphExpanderButtonStyle() {
+    return [
+        {
+            "_subGraphExpandedFigure": "MinusLine",
+            "_subGraphCollapsedFigure": "PlusLine",
+            "_buttonFillNormal": "LightSteelBlue",
+            "_buttonStrokeNormal": "LightSteelBlue",
+            "_buttonFillOver": "LightSteelBlue",
+            "_buttonStrokeOver": "LightSteelBlue",
+            "ButtonBorder.fill": "LightSteelBlue"
+        }
     ];
 }
 
@@ -91,11 +89,23 @@ var myToolTip = $(go.HTMLInfo, {
     //hide: hideToolTip
 });
 
+const picTemplate =
+    $(go.Node, "Vertical",
+        $(go.Picture,
+            { maxSize: new go.Size(50, 50) },
+            new go.Binding("source", "img")),
+        $(go.TextBlock,
+            { margin: new go.Margin(3, 0, 0, 0),
+                maxSize: new go.Size(100, 30),
+                isMultiline: false },
+            new go.Binding("text", "text"))
+    );
+
 const simpletemplate =
     $(go.Node, "Auto",{ toolTip: myToolTip, fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: true, shadowOffset: new go.Point(3, 3) },
         $(go.Shape, new go.Binding("desiredSize", "size"),
             new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
-        $(go.TextBlock, textStyle(), new go.Binding("text", "value")),
+        $(go.TextBlock, textStyle(), new go.Binding("text", "key")),
         { click: (e, obj) => changeCategory(e, obj) }
     );
 
@@ -129,6 +139,7 @@ const templmap = new go.Map();
 templmap.add("simple", simpletemplate);
 templmap.add("simpleTooltip", simpleWithTooltiptemplate)
 templmap.add("detailed", detailtemplate);
+templmap.add("picTemplate", picTemplate);
 templmap.add("", diagram.nodeTemplate);
 diagram.nodeTemplateMap = templmap;
 
@@ -170,13 +181,13 @@ diagram.linkTemplateMap = linktemplmap;
 diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
             { angle: 0, nodeSpacing: 30, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
     $(go.Shape, "RoundedRectangle", // surrounds everything
-        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
-        { click: (e, obj) => changeSubGraph(e, obj) }),
+        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
     $(go.Panel, "Vertical",  // position header above the subgraph
         { defaultAlignment: go.Spot.Center },
         $(go.Panel, "Horizontal",  // the header
-            { defaultAlignment: go.Spot.Top },
-            $("SubGraphExpanderButton"),
+            { defaultAlignment: go.Spot.Center },
+            $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
+            $(go.Picture,{ maxSize: new go.Size(50, 50) }, new go.Binding("source", "img")),
             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),),
         ),
         $(go.Placeholder,     // represents area for all member parts
@@ -186,13 +197,12 @@ diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, la
 diagram.groupTemplateMap.add("tree90", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
             { angle: 90, nodeSpacing: 30, layerSpacing: 30 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
     $(go.Shape, "RoundedRectangle", // surrounds everything
-        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
-        { click: (e, obj) => changeSubGraph(e, obj) }),
+        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
     $(go.Panel, "Vertical",  // position header above the subgraph
         { defaultAlignment: go.Spot.Center },
         $(go.Panel, "Horizontal",  // the header
-            { defaultAlignment: go.Spot.Top },
-            $("SubGraphExpanderButton"),
+            { defaultAlignment: go.Spot.Center },
+            $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),),
         ),
         $(go.Placeholder,     // represents area for all member parts
@@ -204,13 +214,12 @@ diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip,
             wrappingColumn: 4, alignment: go.GridLayout.Position,cellSize: new go.Size(1, 1), spacing: new go.Size(10,10)
         }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
     $(go.Shape, "RoundedRectangle", // surrounds everything
-        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color"),
-        { click: (e, obj) => changeSubGraph(e, obj) }),
+        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
     $(go.Panel, "Vertical",  // position header above the subgraph
         { defaultAlignment: go.Spot.Center },
         $(go.Panel, "Horizontal",  // the header
-            { defaultAlignment: go.Spot.Top },
-            $("SubGraphExpanderButton"),
+            { defaultAlignment: go.Spot.Center },
+            $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),),
         ),
         $(go.Placeholder,     // represents area for all member parts
