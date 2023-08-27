@@ -1,16 +1,21 @@
 let linuxOverviewHTML = `
 OS is b/w applications and H/W, manage storage, memory, GUI, CLI, networking, security, users, and utilities <br/>
 Linux originated from Unix which is leading in 1970-90. <br/>
-GNU mission is to use free tools for Unix. <br/>
+GNU mission is to use free/open source tools for Unix. <br/>
 1992, Linus Torvalds added kernel to GNU and completes Linux OS. <br/> 
 Linux distribution includes kernel, GNU tools, additional software, and a package manager. <br/> 
-`;
-let linuxDistributionsHTML = `
+Support is required for software maintenance. So distributions do that <br/>
 Distributions:  <br/>
 Debian : Ubuntu, Mint, Kali <br/> 
 RedHat : CentOS, Fedora  <br/>
 SUSE   : OpenSUSE  <br/>
 Arch Linux : LinuxHES, Monjaro <br/>
+`;
+
+let shellHTML = `
+Shell is interpreter to execute commands. <br/>
+Commands contains command [options] [arguments] <br/>
+Ex : ls -a /etc <br/>
 `;
 
 let binHTML = `
@@ -26,6 +31,7 @@ su - run a command with substitute user and group ID(Default - root) <br/>
 ssh - Connect to remote servers securely<br/>
 history - display previously executed commands<br/>
 info - read Info documents<br/>
+who - show who is logged on<br/>
 <br/>
 <b>File System Commands</b> <br/>
 chmod - change file mode bits <br/>
@@ -81,10 +87,6 @@ let linuxNodeDataArray = [
     {key: "Linux", color: "LightSteelBlue", isGroup: true, category: "tree", img: "assets/img/linux.png"},
     {key: "Abstract", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", value: "Overview",group: "Linux",
         toolTipHTML: linuxOverviewHTML},
-    {key: "Distributions", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", value: "Distributions",group: "Linux",
-        toolTipHTML: linuxDistributionsHTML},
-
-
 
     {key: "Log In", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree", group: "Linux"},
     {key: "GUI", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Log In"},
@@ -93,7 +95,7 @@ let linuxNodeDataArray = [
     {key: "PuTTY", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Log In"},
 
     {key: "User Space", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree", group: "Linux"},
-    {key: "Shell", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "User Space"},
+    {key: "Shell", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "User Space", toolTipHTML: shellHTML},
     {key: "Applications", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "User Space",
         items: [{text: "Browser", color: "LightBlue"},
             {text: "IDE", color: "LightBlue"},
@@ -106,6 +108,11 @@ let linuxNodeDataArray = [
 
     {key: "Kernel Space", color: "LightSteelBlue", isGroup: true, expand: true, category: "grid", group: "Linux"},
     {key: "System Call Interface", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Kernel Space"},
+    {key: "Storage Management", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Kernel Space"},
+    {key: "Memory Management", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Kernel Space"},
+    {key: "Process Management", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Kernel Space"},
+
+
     {key: "Virtual File System", color: "LightSteelBlue", isGroup: true, expand: false, group: "Kernel Space", category: "grid",
         toolTipHTML: "File system is a software that dictates how to store and read data from disks. <br/>"},
     {key: "/root", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Virtual File System",
@@ -142,8 +149,7 @@ let linuxNodeDataArray = [
         toolTipHTML: "<b>Process and Kernel information files</b> <br/>"
     },
 
-    {key: "Memory Management", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Kernel Space"},
-    {key: "Process Management", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Kernel Space"},
+
     {key: "Network Drivers", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Kernel Space"},
     {key: "IO Drivers", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Kernel Space"},
 
