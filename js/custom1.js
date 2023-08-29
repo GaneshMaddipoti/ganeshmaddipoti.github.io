@@ -1,20 +1,3 @@
-function changeCategory(e, obj) {
-    const node = obj.part;
-    if (node) {
-        const diagram = node.diagram;
-        diagram.startTransaction("changeCategory");
-        let cat = diagram.model.getCategoryForNodeData(node.data);
-        if (cat === "simple")
-            cat = "detailed";
-        else
-            cat = "simple";
-        diagram.model.setCategoryForNodeData(node.data, cat);
-        diagram.commitTransaction("changeCategory");
-        //diagram.scrollToRect(node.actualBounds);
-        //diagram.commandHandler.zoomToFit();
-    }
-}
-
 function textStyle() {
     return [
         { margin: 5, width: 100, textAlign: "center", font: '500 14px Roboto, sans-serif'}
@@ -52,6 +35,15 @@ let diagram = new go.Diagram("myDiagramDiv",{layout: $(go.TreeLayout,
     mouseOver: doMouseOver,
     click: doMouseOver ,
 });
+
+var cxElement = document.getElementById("contextMenu");
+
+// an HTMLInfo object is needed to invoke the code to set up the HTML cxElement
+var myContextMenu = $(go.HTMLInfo, {
+    show: showContextMenu,
+    hide: hideContextMenu
+});
+
 
 //Nodes
 const itemtemplates = new go.Map();
@@ -92,12 +84,23 @@ const picTemplate =
             new go.Binding("text", "text"))
     );
 
+const simpleNodeTemplate =
+    $(go.Node, "Vertical",
+        $(go.Picture,
+            { maxSize: new go.Size(50, 50) },
+            new go.Binding("source", "img")),
+        $(go.TextBlock,
+            { margin: new go.Margin(3, 0, 0, 0),
+                maxSize: new go.Size(100, 30),
+                isMultiline: false },
+            new go.Binding("text", "name"))
+    );
+
 const simpletemplate =
-    $(go.Node, "Auto",{ toolTip: myToolTip, fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: true, shadowOffset: new go.Point(3, 3) },
+    $(go.Node, "Vertical",{ contextMenu: myContextMenu, toolTip: myToolTip, fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, },
         $(go.Shape, new go.Binding("desiredSize", "size"),
-            new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
-        $(go.TextBlock, textStyle(), new go.Binding("text", "key")),
-        { click: (e, obj) => changeCategory(e, obj) }
+            new go.Binding("figure", "shape"), { strokeWidth: 1, fill: "SlateGrey" }, new go.Binding("stroke", "color")),
+        $(go.TextBlock, textStyle(), {editable: true}, new go.Binding("text", "name").makeTwoWay()),
     );
 
 const simpleWithTooltiptemplate =
@@ -105,8 +108,7 @@ const simpleWithTooltiptemplate =
         $(go.Shape, new go.Binding("desiredSize", "size"),
             new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
         $(go.TextBlock,textStyle(), new go.Binding("text", "key")),
-        {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))},
-        { click: (e, obj) => changeCategory(e, obj) }
+        {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))}
     );
 
 // the "detailed" template shows all of the information in a Table Panel
@@ -115,19 +117,19 @@ const detailtemplate =
         $(go.Shape, new go.Binding("desiredSize", "size"),
             new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
         $(go.Panel, "Vertical",
-            $(go.TextBlock, textStyle(), new go.Binding("text", "key")),
+            $(go.TextBlock, textStyle(), {editable: true}, new go.Binding("text", "name").makeTwoWay()),
             $(go.Panel, "Vertical", {defaultAlignment: go.Spot.Left, margin: 0,},
                 new go.Binding("itemArray", "items"),{
                     itemTemplate:
                         $(go.Panel, "Auto", {margin: 2 }, $(go.Shape, "RoundedRectangle", new go.Binding("fill", "color")),
                             $(go.TextBlock, itemStyle(), new go.Binding("text", "text"))
                         )
-                })),
-        { click: (e, obj) => changeCategory(e, obj) }
+                }))
     );
 
 const templmap = new go.Map();
 templmap.add("simple", simpletemplate);
+templmap.add("simpleNode", simpletemplate);
 templmap.add("simpleTooltip", simpleWithTooltiptemplate)
 templmap.add("detailed", detailtemplate);
 templmap.add("picTemplate", picTemplate);
@@ -168,6 +170,23 @@ linktemplmap.add("animatedLink", animatedLinkTemplate);
 linktemplmap.add("", diagram.linkTemplate);
 diagram.linkTemplateMap = linktemplmap;
 
+
+diagram.groupTemplateMap.add("simpleGroup", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
+            { angle: 0, nodeSpacing: 30, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
+    $(go.Shape, "RoundedRectangle", // surrounds everything
+        { parameter1: 5, strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
+    $(go.Panel, "Vertical",  // position header above the subgraph
+        { defaultAlignment: go.Spot.Center },
+        $(go.Panel, "Horizontal",  // the header
+            { defaultAlignment: go.Spot.Center },
+            $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
+            $(go.Picture,{ maxSize: new go.Size(50, 50) }, new go.Binding("source", "img")),
+            $(go.TextBlock, textStyle(), new go.Binding("text", "key"),),
+        ),
+        $(go.Placeholder,     // represents area for all member parts
+            { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
+    ), new go.Binding("isSubGraphExpanded", "expand"),
+));
 
 diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
             { angle: 0, nodeSpacing: 30, layerSpacing: 50 }), isShadowed: true, shadowOffset: new go.Point(3, 3)},
@@ -218,6 +237,7 @@ diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip,
     ), new go.Binding("isSubGraphExpanded", "expand"),
 ));
 diagram.scrollMode = go.Diagram.InfiniteScroll;
+diagram.contextMenu = myContextMenu;
 var myAnimation = null;
 
 function updateAnimation(arg) {
@@ -254,3 +274,126 @@ function updateAnimation(arg) {
 function czoomTofFit() {
     diagram.commandHandler.zoomToFit();
 }
+
+cxElement.addEventListener("contextmenu", e => {
+    e.preventDefault();
+    return false;
+}, false);
+
+function hideCX() {
+    if (diagram.currentTool instanceof go.ContextMenuTool) {
+        diagram.currentTool.doCancel();
+    }
+}
+
+function showContextMenu(obj, diagram, tool) {
+    // Show only the relevant buttons given the current state.
+    var cmd = diagram.commandHandler;
+    var hasMenuItem = false;
+    function maybeShowItem(elt, pred) {
+        if (pred) {
+            elt.style.display = "block";
+            hasMenuItem = true;
+        } else {
+            elt.style.display = "none";
+        }
+    }
+    maybeShowItem(document.getElementById("createNode"), true);
+
+    maybeShowItem(document.getElementById("cut"), cmd.canCutSelection());
+    maybeShowItem(document.getElementById("copy"), cmd.canCopySelection());
+    maybeShowItem(document.getElementById("paste"), cmd.canPasteSelection(diagram.toolManager.contextMenuTool.mouseDownPoint));
+    maybeShowItem(document.getElementById("delete"), cmd.canDeleteSelection());
+    maybeShowItem(document.getElementById("color"), obj !== null);
+    maybeShowItem(document.getElementById("changeType"), obj !== null);
+
+    // Now show the whole context menu element
+    if (hasMenuItem) {
+        cxElement.classList.add("show-menu");
+        // we don't bother overriding positionContextMenu, we just do it here:
+        var mousePt = diagram.lastInput.viewPoint;
+        cxElement.style.left = mousePt.x + 5 + "px";
+        cxElement.style.top = mousePt.y + "px";
+    }
+
+    // Optional: Use a `window` pointerdown listener with event capture to
+    //           remove the context menu if the user clicks elsewhere on the page
+    window.addEventListener("pointerdown", hideCX, true);
+}
+
+function hideContextMenu() {
+    cxElement.classList.remove("show-menu");
+    // Optional: Use a `window` pointerdown listener with event capture to
+    //           remove the context menu if the user clicks elsewhere on the page
+    window.removeEventListener("pointerdown", hideCX, true);
+}
+
+// This is the general menu command handler, parameterized by the name of the command.
+function cxcommand(event, val) {
+    // alert('cx' + event + 'val : ' + val);
+    switch (val) {
+        case "createNode": createNode(); break;
+        case "simpleNode": changeType(event, val); break;
+        case "simpleGroup": changeType(event, val); break;
+
+        case "cut": diagram.commandHandler.cutSelection(); break;
+        case "copy": diagram.commandHandler.copySelection(); break;
+        case "paste": diagram.commandHandler.pasteSelection(diagram.toolManager.contextMenuTool.mouseDownPoint); break;
+        case "delete": diagram.commandHandler.deleteSelection(); break;
+        case "color": {
+            var color = window.getComputedStyle(event.target)['background-color'];
+            changeColor(diagram, color); break;
+        }
+    }
+    diagram.currentTool.stopTool();
+}
+
+// A custom command, for changing the color of the selected node(s).
+function changeColor(diagram, color) {
+    // Always make changes in a transaction, except when initializing the diagram.
+    diagram.startTransaction("change color");
+    diagram.selection.each(node => {
+        if (node instanceof go.Node) {  // ignore any selected Links and simple Parts
+            // Examine and modify the data, not the Node directly.
+            var data = node.data;
+            // Call setDataProperty to support undo/redo as well as
+            // automatically evaluating any relevant bindings.
+            diagram.model.setDataProperty(data, "color", color);
+        }
+    });
+    diagram.commitTransaction("change color");
+}
+
+let keyPivot = 0
+function createNode() {
+    diagram.startTransaction("Create Node");
+    const newNode = { key: ++keyPivot, name: "Node Name", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: ""};
+    diagram.model.addNodeData(newNode);
+    diagram.commitTransaction("Create Node");
+}
+
+function changeType(event, val) {
+    diagram.selection.each(node => {
+        if (node instanceof go.Node) {
+            var data = node.data;
+            if(val === 'simpleGroup') {
+                diagram.model.set(data, "isGroup", true);
+            } else {
+                diagram.model.set(data, "isGroup", false);
+            }
+            diagram.model.setDataProperty(data, "category", val)
+        }});
+}
+
+function save() {
+    document.getElementById("mySavedModel").value = diagram.model.toJson();
+}
+
+function load() {
+    diagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+
+}
+
+// window.onbeforeunload = function() {
+//     return "Data will be lost if you leave the page, are you sure?";
+// };
