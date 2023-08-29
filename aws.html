@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/go.js"></script>
+    <script src="js/OrthogonalLinkReshapingTool.js"></script>
+    <script src="js/ZoomSlider.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/custom1.css">
+</head>
+<body style="align-content: center">
+    <div id="myDiagramDiv" style="width:96%;height: 800px; background-color: WhiteSmoke;margin:0 auto;"></div>
+    <ul id="contextMenu" class="menu" style="left: 182.5px; top: 230px;">
+        <li id="cut" class="menu-item" onpointerdown="cxcommand(event)" style="display: block;">Cut</li>
+        <li id="copy" class="menu-item" onpointerdown="cxcommand(event)" style="display: block;">Copy</li>
+        <li id="paste" class="menu-item" onpointerdown="cxcommand(event)" style="display: none;">Paste</li>
+        <li id="delete" class="menu-item" onpointerdown="cxcommand(event)" style="display: block;">Delete</li>
+        <li id="color" class="menu-item" style="display: block;">Color
+            <ul class="menu">
+                <li class="menu-item" style="background-color: #f38181;" onpointerdown="cxcommand(event, 'color')">Red</li>
+                <li class="menu-item" style="background-color: #eaffd0;" onpointerdown="cxcommand(event, 'color')">Green</li>
+                <li class="menu-item" style="background-color: #95e1d3;" onpointerdown="cxcommand(event, 'color')">Blue</li>
+                <li class="menu-item" style="background-color: #fce38a;" onpointerdown="cxcommand(event, 'color')">Yellow</li>
+            </ul>
+        </li>
+    </ul>
+    <div id="toolTipDIV" class="tooltip"></div>
+    <script src="js/custom.js"></script>
+    <script src="js/aws.js"></script>
+    <div style="width:96%; background-color: WhiteSmoke;margin:0 auto;">
+        <br/>
+        <br/>
+        <button href="#" onclick="czoomTofFit()">Zoom To Fit</button>
+    </div>
+
+    <script>
+        let nodeDataArray = [];
+        let linkDataArray = [];
+        nodeDataArray = nodeDataArray.concat(AWSNodeDataArray);
+        linkDataArray = linkDataArray.concat(AWSLinkDataArray);
+
+        diagram.model = new go.GraphLinksModel(nodeDataArray,linkDataArray);
+        zoomSlider = new ZoomSlider(diagram);
+
+    </script>
+</body>
+</html>
