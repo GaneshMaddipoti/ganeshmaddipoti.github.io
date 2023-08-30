@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body style="align-content: center">
-    <div id="myDiagramDiv" style="width:96%;height: 800px; background-color: WhiteSmoke;margin:0 auto;"></div>
+    <div id="myDiagramDiv" style="width:96%;height: 800px; background-color: DarkSlateGray;margin:0 auto;"></div>
     <div id="toolTipDIV" class="tooltip"></div>
     <script src="js/custom2.js"></script>
     <div style="width:96%; background-color: WhiteSmoke;margin:0 auto;">
@@ -23,26 +23,27 @@
 
             //Datasources
             { key: "Data Sources", color: "LightSteelBlue", isGroup: true, expand: true, category: "grid"},
-            { key: "System of Records", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Data Sources"},
-            { key: "Authoritative Data Sources", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Data Sources"},
+            { key: "System of Records", img: "assets/img/gen/gen-db.svg", category: "picTemplate", group: "Data Sources"},
+            { key: "Authoritative Data Sources", img: "assets/img/gen/gen-db.svg", category: "picTemplate", group: "Data Sources"},
+            { key: "Streams", img: "assets/img/gen/gen-streams.svg", category: "picTemplate", group: "Data Sources"},
 
 
-            { key: "Tools", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree"},
-            { key: "Calculators", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Tools"},
-            { key: "AI/ML Models", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Tools"},
-            { key: "Aggregators", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Tools"},
+            { key: "Tools", img: "assets/img/gen/gen-tools.svg", color: "DodgerBlue", isGroup: true, expand: true, category: "tree"},
+            { key: "Calculators", img: "assets/img/gen/gen-calculator.svg", category: "picTemplate", group: "Tools"},
+            { key: "AI/ML Models", img: "assets/img/gen/gen-models.svg", category: "picTemplate", group: "Tools"},
+            { key: "Aggregators", img: "assets/img/gen/gen-aggregator.svg", category: "picTemplate", group: "Tools"},
 
-            { key: "Outputs", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree"},
-            { key: "Reports", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Outputs"},
-            { key: "Applications", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Outputs"},
-            { key: "Dashboards", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Outputs"},
+            { key: "Outputs", img: "assets/img/gen/gen-report-service.svg", color: "DodgerBlue", isGroup: true, category: "tree"},
+            { key: "Reports", img: "assets/img/gen/gen-reports.svg", category: "picTemplate", group: "Outputs"},
+            { key: "Applications", img: "assets/img/gen/gen-business-apps.svg", category: "picTemplate", group: "Outputs"},
+            { key: "Dashboards", img: "assets/img/gen/gen-dashboard.svg", category: "picTemplate", group: "Outputs"},
 
 
             //Storage & processing
             { key: "Storage and Processing", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree90"},
 
             //Processing
-            { key: "Processing", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree", group: "Storage and Processing"},
+            { key: "Processing", img: "assets/img/gen/gen-compute-group.svg", isGroup: true, color: "DodgerBlue", category: "tree", group: "Storage and Processing"},
             { key: "Registration", color: "LightSteelBlue", isGroup: true, expand: false, group: "Processing", category: "tree",
                 toolTipHTML: "Data owners configure their datasets and models"},
 
@@ -65,23 +66,23 @@
                     "Persist in storage with milestone information."},
 
             //Physical Storage
-            { key: "Everest LOB Storage", color: "LightSteelBlue", isGroup: true, expand: true, group: "Storage and Processing", category: "tree"},
+            { key: "Everest LOB Storage", img: "assets/img/gen/gen-storage-service.svg", isGroup: true, group: "Storage and Processing", color: "DodgerBlue", category: "tree"},
 
-            { key: "HDFS Storage", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "tree"},
-            { key: "Transactions & Positions", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "HDFS Storage"},
-            { key: "Reference Data", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "HDFS Storage"},
+            { key: "HDFS Storage", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "grid"},
+            { key: "Transactions & Positions", img: "assets/img/gen/gen-hdfs-cluster.svg", category: "picTemplate", group: "HDFS Storage"},
+            { key: "Reference Data", img: "assets/img/gen/gen-hdfs-cluster.svg", category: "picTemplate", group: "HDFS Storage"},
 
-            { key: "Hive", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "tree"},
-            { key: "Data Table", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Hive"},
-            { key: "Metadata Table", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Hive"},
+            { key: "Hive", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "grid"},
+            { key: "Data Table", img: "assets/img/gen/gen-table.svg", category: "picTemplate", group: "Hive"},
+            { key: "Metadata Table", img: "assets/img/gen/gen-table.svg", category: "picTemplate", group: "Hive"},
 
-            { key: "Impala", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "tree"},
-            { key: "Data View", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Impala"},
-            { key: "Metadata View", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Impala"},
+            { key: "Impala", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "grid"},
+            { key: "Data View", img: "assets/img/gen/gen-view.svg", category: "picTemplate", group: "Impala"},
+            { key: "Metadata View", img: "assets/img/gen/gen-view.svg", category: "picTemplate", group: "Impala"},
 
-            { key: "Dremio", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "tree"},
-            { key: "PDS", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Dremio"},
-            { key: "VDS", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Dremio"},
+            { key: "Dremio", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "grid"},
+            { key: "PDS", img: "assets/img/gen/gen-view.svg", category: "picTemplate", group: "Dremio"},
+            { key: "VDS", img: "assets/img/gen/gen-view.svg", category: "picTemplate", group: "Dremio"},
 
             // { key: "LOB Storage", color: "LightSteelBlue", isGroup: true, expand: true, group: "Everest LOB Storage", category: "tree"},
             // { key: "Data Source 1", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "LOB Storage"},
@@ -94,64 +95,61 @@
             { key: "Consumption", color: "LightSteelBlue", isGroup: true, expand: true, group: "Processing", category: "tree"},
             // { key: "Start", color: "Wheat", shape: "Ellipse", size: new go.Size(40,40), category: "simple", group: "Consumption",},
             //Components
-            { key: "Consumption Router", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
-                items: [ {text: "Moneta-Boot", color: "LightGreen" },
-                    {text: "Java", color: "LightBlue" },
-                    {text: "Gaia", color: "LightSalmon" },],
+            { key: "Consumption Router", img: "assets/img/gen/gen-servers.svg", category: "picTemplate", group: "Consumption",
                 toolTipHTML: "Forwards Enricher messages to the ce-event-notification. <br/>\n" +
                     "        Transforms and Forwards back Consumption messages from the ce-event-notification.out back to runstatus topic. <br/>\n" +
                     "        Listen to pacman for metadata copy and purge/recall <br/>\n" +
                     "        Keep track of overall consumption status based on events coming in from different components." },
-            { key: "Consumption Hive", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
+            { key: "Consumption Hive", img: "assets/img/gen/gen-servers.svg", category: "picTemplate", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "Creation and Updating of the Metadata and Data table. <br/>\n" +
                     "        And then forwards the message to ce-event-notification." },
-            { key: "Consumption Impala", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
+            { key: "Consumption Impala", img: "assets/img/gen/gen-servers.svg", category: "picTemplate", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "Creates impala views for the dataset supplied on the message sent by consumption-hive. <br/>\n" +
                     "        And then forwards the message to ce-event-notification." },
-            { key: "Consumption Dremio Builder", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
+            { key: "Consumption Dremio Builder", img: "assets/img/gen/gen-servers.svg", category: "picTemplate", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "Responsible for dremio actions such as alter pds, vds and reflection refresh." },
-            { key: "Midas Transformer", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption",
+            { key: "Midas Transformer", img: "assets/img/gen/gen-servers.svg", category: "picTemplate", group: "Consumption",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "Creates and triggers midas workflows for child datasets." },
 
             //Points
-            { key: "CIS", desc: "Consumption In Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption", },
-            { key: "HMS", desc: "Hive Metadata Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption", },
+            { key: "CIS", desc: "Consumption In Stage", color: "CornflowerBlue", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption", },
+            { key: "HMS", desc: "Hive Metadata Stage", color: "CornflowerBlue", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption", },
 
             //End states
-            { key: "Impala Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption", },
-            { key: "Dremio Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption", },
-            { key: "Bitemp Complete", color: "Wheat", shape: "Ellipse", size: new go.Size(80, 40), category: "simple", group: "Consumption", },
+            { key: "Impala Complete", color: "CornflowerBlue", shape: "Ellipse", size: new go.Size(80, 40), category: "simpleTooltip", group: "Consumption", },
+            { key: "Dremio Complete", color: "CornflowerBlue", shape: "Ellipse", size: new go.Size(80, 40), category: "simpleTooltip", group: "Consumption", },
+            { key: "Bitemp Complete", color: "CornflowerBlue", shape: "Ellipse", size: new go.Size(80, 40), category: "simpleTooltip", group: "Consumption", },
 
 
             //Pivot route
             { key: "Pivot Route", color:"LightSteelBlue", isGroup: true, group: "Consumption", expand: true, category: "tree",
                 toolTipHTML: "For Bitemp Pivot enabled datasets" },
-            { key: "Pivot Coordinator", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+            { key: "Pivot Coordinator", img: "assets/img/gen/gen-servers.svg", group: "Pivot Route", category: "picTemplate",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],
                 toolTipHTML: "This involves listening for new RUNIDs on event notification topic. <br/>\n" +
                     "Invoking runner via a call to Nightfort." },
-            { key: "Pivot Maintenance", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+            { key: "Pivot Maintenance", img: "assets/img/gen/gen-servers.svg", group: "Pivot Route", category: "picTemplate",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Scala", color: "LightBlue" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Spark", color: "LightSalmon" },],
                 toolTipHTML: "This is the Spark component invoked by dataprocessor runner in cluster mode. <br/>\n" +
                     "        And then forwards the message to ce-event-notification." },
-            { key: "Dremio Hive", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+            { key: "Dremio Hive", img: "assets/img/gen/gen-servers.svg", group: "Pivot Route", category: "picTemplate",
                 items: [ {text: "Moneta-Boot", color: "LightGreen" },
                     {text: "Java", color: "LightBlue" },
                     {text: "Gaia", color: "LightSalmon" },],

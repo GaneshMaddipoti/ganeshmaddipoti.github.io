@@ -17,7 +17,7 @@ function changeCategory(e, obj) {
 
 function textStyle() {
     return [
-        { margin: 5, width: 100, textAlign: "left", font: '500 14px Roboto, sans-serif', stroke: "WhiteSmoke"}
+        { margin: 5, width: 100, textAlign: "center", font: '500 14px Roboto, sans-serif', stroke: "WhiteSmoke"}
     ];
 }
 
@@ -84,7 +84,7 @@ var myToolTip = $(go.HTMLInfo, {
 const picTemplate =
     $(go.Node, "Vertical",
         $(go.Picture,
-            { maxSize: new go.Size(50, 50) },
+            { maxSize: new go.Size(50, 50), },
             new go.Binding("source", "img")),
         $(go.TextBlock, textStyle(),
             { margin: new go.Margin(3, 0, 0, 0),
@@ -96,7 +96,7 @@ const picTemplate =
 const simpletemplate =
     $(go.Node, "Auto",{ toolTip: myToolTip, fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: false, shadowOffset: new go.Point(3, 3) },
         $(go.Shape, new go.Binding("desiredSize", "size"),
-            new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
+            new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555" }, new go.Binding("stroke", "color")),
         $(go.TextBlock, textStyle(), new go.Binding("text", "key")),
         { click: (e, obj) => changeCategory(e, obj) }
     );
@@ -104,7 +104,7 @@ const simpletemplate =
 const simpleWithTooltiptemplate =
     $(go.Node, "Auto",{ toolTip: myToolTip, fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: false, shadowOffset: new go.Point(3, 3) },
         $(go.Shape, new go.Binding("desiredSize", "size"),
-            new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
+            new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555", fill:"Transparent" }, new go.Binding("stroke", "color")),
         $(go.TextBlock,textStyle(), new go.Binding("text", "key")),
         {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))},
         { click: (e, obj) => changeCategory(e, obj) }
@@ -138,14 +138,14 @@ diagram.nodeTemplateMap = templmap;
 //Links
 const simplelinktemplate =
     $(go.Link, {routing: go.Link.AvoidsNodes, reshapable: true, resegmentable: true, corner: 5},
-        $(go.Shape, { strokeWidth: 1, stroke: "#555" }),
-        $(go.Shape, { toArrow: "Standard" }),
+        $(go.Shape, { strokeWidth: 1, stroke: "WhiteSmoke" }),
+        $(go.Shape, { toArrow: "Standard" }, {stroke: "WhiteSmoke", fill: "WhiteSmoke"}),
     );
 
 const simplelinklabletemplate =
     $(go.Link, {routing: go.Link.AvoidsNodes, reshapable: true, resegmentable: true, corner: 5},
-        $(go.Shape, { strokeWidth: 1, stroke: "#555" }),
-        $(go.Shape, { toArrow: "Standard" }),
+        $(go.Shape, { strokeWidth: 1, stroke: "WhiteSmoke" }),
+        $(go.Shape, { toArrow: "Standard" }, {fill: "WhiteSmoke"}),
         $(go.Panel, "Auto",
             $(go.Shape, "Rectangle", { fill: "lightgrey", stroke: "gray" }, new go.Binding("fill", "color")),
             $(go.TextBlock, { margin: 3 }, new go.Binding("text", "channel"))),
@@ -157,7 +157,7 @@ const animatedLinkTemplate =
         new go.Binding("points").makeTwoWay(),
         // mark each Shape to get the link geometry with isPanelMain: true
         $(go.Shape, { isPanelMain: true, stroke: "black", strokeWidth: 7 }),
-        $(go.Shape, { isPanelMain: true, stroke: "LightSteelBlue", strokeWidth: 5 }),
+        $(go.Shape, { isPanelMain: true, stroke: "SteelBlue", strokeWidth: 5 }),
         $(go.Shape, { isPanelMain: true, stroke: "white", strokeWidth: 3, name: "PIPE", strokeDashArray: [10, 10] }),
         $(go.Shape, { toArrow: "Triangle", scale: 1.3, fill: "gray", stroke: null })
     );
@@ -178,12 +178,12 @@ diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, la
         { defaultAlignment: go.Spot.Left },
         $(go.Panel, "Horizontal",  // the header
             { defaultAlignment: go.Spot.Right },
-            $(go.Picture,{ maxSize: new go.Size(50, 50) }, new go.Binding("source", "img")),
+            $(go.Picture,{ maxSize: new go.Size(40, 40) }, new go.Binding("source", "img")),
             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),),
             $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
         ),
         $(go.Placeholder,     // represents area for all member parts
-            { padding: new go.Margin(10, 10), background: "DarkSlateGray" })
+            { padding: new go.Margin(10, 10), background: "Transparent" })
     ), new go.Binding("isSubGraphExpanded", "expand"),
 ));
 diagram.groupTemplateMap.add("tree90", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
@@ -191,14 +191,15 @@ diagram.groupTemplateMap.add("tree90", $(go.Group, "Auto", {toolTip: myToolTip, 
     $(go.Shape, "RoundedRectangle", // surrounds everything
         { parameter1: 0, strokeWidth: 1, stroke: "#555", fill: null, strokeDashArray: [4, 2] }, new go.Binding("stroke", "color")),
     $(go.Panel, "Vertical",  // position header above the subgraph
-        { defaultAlignment: go.Spot.Center },
+        { defaultAlignment: go.Spot.Left },
         $(go.Panel, "Horizontal",  // the header
-            { defaultAlignment: go.Spot.Center },
-            $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
+            { defaultAlignment: go.Spot.Right },
+            $(go.Picture,{ maxSize: new go.Size(50, 50) }, new go.Binding("source", "img")),
             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),),
+            $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
         ),
         $(go.Placeholder,     // represents area for all member parts
-            { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
+            { padding: new go.Margin(10, 10), background: "Transparent" })
     ), new go.Binding("isSubGraphExpanded", "expand"),
 ));
 diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.GridLayout, {
@@ -215,7 +216,7 @@ diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip, la
             $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
         ),
         $(go.Placeholder,     // represents area for all member parts
-            { padding: new go.Margin(10, 10), background: "DarkSlateGray" })
+            { padding: new go.Margin(10, 10), background: "Transparent" })
     ), new go.Binding("isSubGraphExpanded", "expand"),
 ));
 diagram.scrollMode = go.Diagram.InfiniteScroll;
