@@ -1,52 +1,40 @@
+let awsHTML = `
+Test <br/>
+Test <br/>
+`;
+
+
 let AWSNodeDataArray = [
 
-    {key: "AWS", color: "LightSteelBlue", isGroup: true, category: "tree", img: "assets/img/aws.png"},
-    {key: "Abstract", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", value: "Overview",group: "AWS"},
-
-    {key: "Log In", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree", group: "AWS"},
-    {key: "GUI", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Log In"},
-    {key: "CLI", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Log In"},
-    {key: "SSH", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Log In"},
-    {key: "PuTTY", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Log In"},
-
-    {key: "Gateway", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree", group: "AWS"},
-    {key: "Shell", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Gateway"},
-    {key: "Applications", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Gateway",
-        items: [{text: "Browser", color: "LightBlue"},
-            {text: "IDE", color: "LightBlue"},
-            {text: "Explorer", color: "LightBlue"}]},
-    {key: "System Software", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Gateway"},
-    {key: "User Processes", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Gateway"},
-    {key: "System Utilities", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Gateway"},
-    {key: "Compilers/Interpreters", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Gateway"},
+    {key: "AWS", color: "WhiteSmoke", isGroup: true, category: "tree", img: "assets/img/aws/aws-group.svg", toolTipHTML: awsHTML},
+    {key: "Region", color: "Turquoise", category: "tree", isGroup: true, group: "AWS", img: "assets/img/aws/region-group.svg"},
+    {key: "VPC", color: "MediumPurple", category: "grid", isGroup: true, group: "Region", img: "assets/img/aws/vpc-group.svg"},
 
 
-    {key: "Services", color: "LightSteelBlue", isGroup: true, expand: true, category: "grid", group: "AWS"},
-    {key: "System Call Interface", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Services"},
-    {key: "Storage Management", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Services"},
-    {key: "Memory Management", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Services"},
-    {key: "Process Management", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Services"},
+    {key: "Availability Zone1", color: "Turquoise", category: "tree", isGroup: true, group: "VPC",},
+    {key: "Availability Zone2", color: "Turquoise", category: "tree", isGroup: true, group: "VPC",},
 
+    {key: "Public Subnet", color: "YellowGreen", category: "tree", isGroup: true, group: "Availability Zone1", img: "assets/img/aws/pubsub-group.svg"},
+    {key: "Web Servers", category: "picTemplate", group: "Public Subnet", img: "assets/img/aws/app-servers.svg"},
 
-    {key: "Network Drivers", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Services"},
-    {key: "IO Drivers", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Services"},
+    {key: "Private Subnet1", color: "Turquoise", category: "tree", isGroup: true, group: "Availability Zone1", img: "assets/img/aws/prisub-group.svg"},
+    {key: "App Servers", category: "picTemplate", group: "Private Subnet1", img: "assets/img/aws/app-servers.svg"},
 
-    {key: "Maintenance", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree90", group: "AWS"},
-    {key: "Motherboard", color: "LightSteelBlue", isGroup: true, expand: true, category: "tree90", group: "Maintenance"},
-    {key: "CPU", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Motherboard"},
-    {key: "Memory", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Motherboard"},
-    {key: "Storage", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Maintenance"},
-    {key: "Ethernet", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Maintenance"},
-    {key: "IO", color: "WhiteSmoke", category: "simple", shape: "RoundedRectangle", group: "Maintenance"},
+    {key: "Private Subnet2", color: "Turquoise", category: "tree", isGroup: true, group: "Availability Zone1", img: "assets/img/aws/prisub-group.svg"},
+    {key: "DB Instances", category: "picTemplate", group: "Private Subnet2", img: "assets/img/aws/sql-server.svg"},
+
+    {key: "Public Subnet1", color: "YellowGreen", category: "tree", isGroup: true, group: "Availability Zone2", img: "assets/img/aws/pubsub-group.svg"},
+    {key: "Web Servers", category: "picTemplate", group: "Public Subnet1", img: "assets/img/aws/app-servers.svg"},
+
+    {key: "Private Subnet3", color: "Turquoise", category: "tree", isGroup: true, group: "Availability Zone2", img: "assets/img/aws/prisub-group.svg"},
+    {key: "App Servers", category: "picTemplate", group: "Private Subnet3", img: "assets/img/aws/app-servers.svg"},
+
+    {key: "Private Subnet4", color: "Turquoise", category: "tree", isGroup: true, group: "Availability Zone2", img: "assets/img/aws/prisub-group.svg"},
+    {key: "DB Instances", category: "picTemplate", group: "Private Subnet4", img: "assets/img/aws/sql-server.svg"},
+
 ];
 
 let AWSLinkDataArray = [
-    {name: "logInToUS", from: "Log In", to: "Gateway", category: "simplelink"},
-    {name: "USToKS", from: "Gateway", to: "Services", category: "simplelink"},
 
-    {name:"ksToh", from:"Services", to: "Maintenance", category: "simplelink" },
-
-    {name:"sToM", from:"Storage", to: "Memory", category: "simplelink" },
-    {name:"mToCPU", from:"Memory", to: "CPU", category: "simplelink" },
 
 ];
