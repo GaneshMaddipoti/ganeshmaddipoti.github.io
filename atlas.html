@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/go.js"></script>
+    <script src="js/OrthogonalLinkReshapingTool.js"></script>
+    <script src="js/ZoomSlider.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/custom2.css">
+    <link rel="stylesheet" type="text/css" href="css/custom2.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+<body style="align-content: center">
+    <div id="myDiagramDiv" style="width:96%;height: 800px; background-color: DarkSlateGray;margin:0 auto;"></div>
+    <div id="toolTipDIV" class="tooltip"></div>
+    <script src="js/custom2.js"></script>
+    <script src="js/aws.js"></script>
+    <div style="width:96%; background-color: WhiteSmoke;margin:0 auto;">
+        <br/>
+        <br/>
+        <button href="#" onclick="czoomTofFit()">Zoom To Fit</button>
+    </div>
+
+    <script>
+        let atlasHTML = `
+            Atlas provides a secure, stable and programmatic access to JPMC's chosen public cloud providers and their services,<br/>
+            with Firm network, integrated security, logging and monitoring, development toolchain, and operational systems. <br/>
+            It offers the benefits of public cloud with expansive global footprint,  <br/>
+            while meeting compliance and regulatory requirements to protect the firm and its customers. <br/>
+        `;
+        let cloudNativeHTML = `
+            For building and running applications that exploits the advantages of the cloud computing delivery model. <br/>
+            Cloud-native technologies empower organizations to build and run scalable applications in modern, dynamic environments <br/>
+            such as public, private, and hybrid clouds. <br/>
+            Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach. <br/>
+        `;
+        let twelveFactorAppHTML = `
+            <ul>
+                <li><b>Codebase</b> One codebase tracked in revision control, many deploys</li>
+                <li><b>Dependencies</b> Explicitly declare and isolate dependencies</li>
+                <li><b>Config</b> Store Config in the environment</li>
+                <li><b>Backing Services</b> Treat backing services as attached resources</li>
+                <li><b>Build, Release and Run</b> Strictly separate build and run stages</li>
+                <li><b>Processes</b> Execute the app as one or more stateless processes</li>
+                <li><b>Port Binding</b> Export Services via Port binding</li>
+                <li><b>Concurrency</b> Scale out via the process model</li>
+                <li><b>Disposability</b> Maximize robustness with fast startup and graceful shut down</li>
+                <li><b>Dev/Prod Parity\</b> Keep development, staging and production as similar as possible</li>
+                <li><b>Logs</b> Treat logs as event sources</li>
+                <li><b>Admin Processes</b> Run admin/management tasks as one-off processes</li>
+            </ul>
+        `;
+        let cloudComputingHTML = `
+            <b>What is</b><br/>
+            Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing. <br/>
+            Instead of buying, owning, and maintaining physical data centers and servers, you can access technology services, <br/>
+            such as computing power, storage, and databases, on an as-needed basis from a cloud provider like AWS, GCP, Azure. <br/>
+            <br/><b>Who is using</b><br/>
+            Organizations of every type, size, and industry are using the cloud for a wide variety of use cases, <br/>
+            such as data backup, software development and testing, big data analytics, and customer-facing web applications. <br/>
+            <br/><b>Benefits</b><br/>
+            Agility <br/>
+            Elasticity <br/>
+            Cost Savings <br/>
+            Deploy Globally in Minutes <br/>
+            <br/><b>Types</b><br/>
+            Infrastructure as a service (IaaS) <br/>
+            Platform as a service (PaaS) <br/>
+            Software as a service (SaaS) <br/>
+        `;
+        let nodeDataArray = [
+            {key: "Atlas", color: "WhiteSmoke", isGroup: true, category: "tree", toolTipHTML: atlasHTML},
+            {key: "Users", group:"Atlas", img: "assets/img/gen/gen-users.svg", category: "picTemplate"},
+
+            {key: "Cloud Computing", group:"Atlas", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-cloud.svg", toolTipHTML: cloudComputingHTML},
+            // {key: "Cloud Native", group:"Cloud Computing", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", toolTipHTML: cloudNativeHTML},
+            // {key: "12 Factor App", group:"Cloud Computing", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", toolTipHTML: twelveFactorAppHTML},
+        ];
+        let linkDataArray = [
+            {key: "usersToCc", from: "Users", to: "Edge Location", category: "byDirLink"}
+        ];
+        nodeDataArray = nodeDataArray.concat(AWSNodeDataArray);
+        linkDataArray = linkDataArray.concat(AWSLinkDataArray);
+
+        diagram.model = new go.GraphLinksModel(nodeDataArray,linkDataArray);
+        zoomSlider = new ZoomSlider(diagram);
+        diagram.commandHandler.zoomToFit();
+
+    </script>
+</body>
+</html>
