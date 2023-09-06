@@ -78,7 +78,7 @@ var myToolTip = $(go.HTMLInfo, {
 });
 
 const picTemplate =
-    $(go.Node, "Vertical", {toolTip: myToolTip,},
+    $(go.Node, "Vertical",
         $(go.Picture,
             { maxSize: new go.Size(50, 50), },
             new go.Binding("source", "img")),
