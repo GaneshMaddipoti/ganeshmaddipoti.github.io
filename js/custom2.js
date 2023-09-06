@@ -1,17 +1,11 @@
-function changeCategory(e, obj) {
+function showDetails(e, obj) {
     const node = obj.part;
-    if (node) {
+    if(node) {
         const diagram = node.diagram;
-        diagram.startTransaction("changeCategory");
-        let cat = diagram.model.getCategoryForNodeData(node.data);
-        if (cat === "simple")
-            cat = "detailed";
-        else
-            cat = "simple";
-        diagram.model.setCategoryForNodeData(node.data, cat);
-        diagram.commitTransaction("changeCategory");
-        //diagram.scrollToRect(node.actualBounds);
-        //diagram.commandHandler.zoomToFit();
+        let details = node.data;
+        showToolTip(node, diagram, null);
+    } else {
+        hideToolTip();
     }
 }
 
@@ -51,7 +45,7 @@ var $ = go.GraphObject.make;
 let diagram = new go.Diagram("myDiagramDiv",{layout: $(go.TreeLayout,
         { angle: 0, nodeSpacing: 50, layerSpacing: 50}), "undoManager.isEnabled": true, "linkReshapingTool": new OrthogonalLinkReshapingTool(),
     mouseOver: doMouseOver,
-    click: doMouseOver ,
+    click: hideToolTip ,
 });
 
 //Nodes
@@ -66,6 +60,8 @@ function showToolTip(obj, diagram, tool) {
         toolTipDIV.style.top = (pt.y) + "px";
         toolTipDIV.innerHTML = obj.data.toolTipHTML;
         toolTipDIV.style.display = "block";
+    } else {
+        hideToolTip();
     }
 }
 
@@ -90,29 +86,30 @@ const picTemplate =
             { margin: new go.Margin(3, 0, 0, 0),
                 maxSize: new go.Size(100, 30),
                 isMultiline: false },
-            new go.Binding("text", "key"))
+            new go.Binding("text", "key")),
+        { click: (e, obj) => showDetails(e, obj) }
     );
 
 const simpletemplate =
-    $(go.Node, "Auto",{ toolTip: myToolTip, fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: false, shadowOffset: new go.Point(3, 3) },
+    $(go.Node, "Auto",{ fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: false, shadowOffset: new go.Point(3, 3) },
         $(go.Shape, new go.Binding("desiredSize", "size"),
             new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555", fill:"Transparent" }, new go.Binding("stroke", "color")),
         $(go.TextBlock, textStyle(), new go.Binding("text", "key")),
-        { click: (e, obj) => changeCategory(e, obj) }
+        { click: (e, obj) => showDetails(e, obj) }
     );
 
 const simpleWithTooltiptemplate =
-    $(go.Node, "Auto",{ toolTip: myToolTip, fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: false, shadowOffset: new go.Point(3, 3) },
+    $(go.Node, "Auto",{ fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: false, shadowOffset: new go.Point(3, 3) },
         $(go.Shape, new go.Binding("desiredSize", "size"),
             new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555", fill:"Transparent" }, new go.Binding("stroke", "color")),
         $(go.TextBlock,textStyle(), new go.Binding("text", "key")),
         {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))},
-        { click: (e, obj) => changeCategory(e, obj) }
+        { click: (e, obj) => showDetails(e, obj) }
     );
 
 // the "detailed" template shows all of the information in a Table Panel
 const detailtemplate =
-    $(go.Node, "Auto", { toolTip: myToolTip, fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: false, shadowOffset: new go.Point(3, 3) },
+    $(go.Node, "Auto", { fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides, isShadowed: false, shadowOffset: new go.Point(3, 3) },
         $(go.Shape, new go.Binding("desiredSize", "size"),
             new go.Binding("figure", "shape"), { strokeWidth: 1, stroke: "#555" }, new go.Binding("fill", "color")),
         $(go.Panel, "Vertical",
@@ -124,7 +121,7 @@ const detailtemplate =
                             $(go.TextBlock, itemStyle(), new go.Binding("text", "text"))
                         )
                 })),
-        { click: (e, obj) => changeCategory(e, obj) }
+        { click: (e, obj) => showDetails(e, obj) }
     );
 
 const templmap = new go.Map();
@@ -188,7 +185,7 @@ linktemplmap.add("", diagram.linkTemplate);
 diagram.linkTemplateMap = linktemplmap;
 
 
-diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
+diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {layout: $(go.TreeLayout,
             { angle: 0, nodeSpacing: 30, layerSpacing: 50 }), isShadowed: false, shadowOffset: new go.Point(3, 3)},
     $(go.Shape, "RoundedRectangle", // surrounds everything
         { parameter1: 0, strokeWidth: 1, stroke: "#555", fill: "Transparent", strokeDashArray: [4, 2] }, new go.Binding("stroke", "color")),
@@ -201,7 +198,8 @@ diagram.groupTemplateMap.add("tree", $(go.Group, "Auto", {toolTip: myToolTip, la
             $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
         ),
         $(go.Placeholder,     // represents area for all member parts
-            { padding: new go.Margin(10, 10), background: "Transparent" })
+            { padding: new go.Margin(10, 10), background: "Transparent" }),
+        { click: (e, obj) => showDetails(e, obj) }
     ), new go.Binding("isSubGraphExpanded", "expand"),
 ));
 diagram.groupTemplateMap.add("tree90", $(go.Group, "Auto", {toolTip: myToolTip, layout: $(go.TreeLayout,
@@ -232,6 +230,7 @@ diagram.groupTemplateMap.add("grid", $(go.Group, "Auto", {toolTip: myToolTip, la
             $(go.Picture,{ maxSize: new go.Size(50, 50) }, new go.Binding("source", "img")),
             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),),
             $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
+            { click: (e, obj) => showDetails(e, obj) }
         ),
         $(go.Placeholder,     // represents area for all member parts
             { padding: new go.Margin(10, 10), background: "Transparent" })
