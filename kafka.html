@@ -23,6 +23,8 @@
         let messagingSystemHTML = ``;
         let kafkaHTML = ``;
         let producerHTML = ``;
+        let brokerHTML = `
+        `;
         let propertiesHTML = `
             Contents : <br/>
             bootstrap.servers : broker list <br/>
@@ -38,6 +40,10 @@
             bootstrap.servers : broker list <br/>
             key.deserializer <br/>
             value.deserializer <br/>
+            Topics subscribed <br/>
+            Partitions assigned <br/>
+            enable.auto.commit : true <br/>
+            auto.commit.interval : 5000 <br/>
         `;
         let producerRecordHTML = `
             Contents : <br/>
@@ -63,11 +69,20 @@
             Topics <br/>
             Partitions <br/>
         `;
+        let cmetadataHTML = `
+            Initialized with detailed information of the cluster. <br/>
+            Brokers <br/>
+            Topics <br/>
+            Partitions <br/>
+        `;
         let recordAccumulatorHTML = `
             Sends the messages in RecordBatches <br/>
         `;
         let consumerHTML = `
-            Maintain offset for last read event position
+            Its a single threaded application <br/>
+            Maintain offset for last read event position <br/>
+            Subscribe is to subscribe topics <br/>
+            Assign is to subscribe to partitions <br/>
         `;
         let topicHTML = `
             Its a logic abstraction of physical partition commit logs. <br/>
@@ -89,10 +104,14 @@
             Payload (Binary) <br/>
         `;
 
+        let consumeHTML = `
+            commitSync()/commitAsync() to programmatically commit the record. <br/>
+        `;
+
         let nodeDataArray = [
             {key: "Messaging System", color: "WhiteSmoke", isGroup: true, category: "tree", img: "assets/img/gen/gen-mq.svg", toolTipHTML: messagingSystemHTML},
 
-            {key: "Producer", group:"Messaging System", isGroup: true, category: "grid", img: "assets/img/gen/gen-client.svg", toolTipHTML: producerHTML},
+            {key: "Producer", color: "WhiteSmoke", group:"Messaging System", isGroup: true, category: "grid", img: "assets/img/gen/gen-client.svg", toolTipHTML: producerHTML},
 
             {key: "Producer Record", group:"Producer", img: "assets/img/gen/gen-document.svg", category: "picTemplate", toolTipHTML: producerRecordHTML},
             {key: "Serializers", group:"Producer", img: "assets/img/gen/gen-code.svg", category: "picTemplate", toolTipHTML: serializersHTML},
@@ -110,15 +129,22 @@
 
 
             {key: "Kafka Cluster", group:"Kafka", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-cluster-group.svg", toolTipHTML: kafkaHTML},
-            {key: "Broker", group:"Kafka Cluster", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-broker.svg", toolTipHTML: consumerHTML},
+            {key: "Broker", group:"Kafka Cluster", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-broker.svg", toolTipHTML: brokerHTML},
             {key: "Topic", group:"Broker", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-topic.svg", toolTipHTML: topicHTML},
             {key: "Partition0", group:"Topic", color: "WhiteSmoke", isGroup: true, category: "grid-congested", img: "assets/img/gen/gen-topic.svg", toolTipHTML: partitionHTML},
             {key: "Event1", group:"Partition0", img: "assets/img/gen/gen-message.svg", category: "picTemplate", toolTipHTML: messageHTML},
             {key: "Event2", group:"Partition0", img: "assets/img/gen/gen-message.svg", category: "picTemplate", toolTipHTML: messageHTML},
             {key: "Event3", group:"Partition0", img: "assets/img/gen/gen-message.svg", category: "picTemplate", toolTipHTML: messageHTML},
 
-            {key: "Consumer", group:"Messaging System", isGroup: true, category: "grid", img: "assets/img/gen/gen-client.svg", toolTipHTML: consumerHTML},
+            {key: "Consumer", color: "WhiteSmoke", group:"Messaging System", isGroup: true, category: "grid", img: "assets/img/gen/gen-client.svg", toolTipHTML: consumerHTML},
+            {key: "Consumer Network Client", group:"Consumer", img: "assets/img/gen/gen-code.svg", category: "picTemplate", toolTipHTML: partitionerHTML},
+            {key: "Fetcher", group:"Consumer", img: "assets/img/gen/gen-code.svg", category: "picTemplate", toolTipHTML: partitionerHTML},
+            {key: "Consume", group:"Consumer", img: "assets/img/gen/gen-code.svg", category: "picTemplate", toolTipHTML: consumeHTML},
+
             {key: "Properties", group:"Consumer", img: "assets/img/gen/gen-notebook.svg", category: "picTemplate", toolTipHTML: cpropertiesHTML},
+            {key: "Metadata", group:"Consumer", img: "assets/img/gen/gen-document.svg", category: "picTemplate", toolTipHTML: cmetadataHTML},
+            {key: "Subscription State", group:"Consumer", img: "assets/img/gen/gen-document.svg", category: "picTemplate", toolTipHTML: metadataHTML},
+            {key: "Consumer coordinator", group:"Consumer", img: "assets/img/gen/gen-document.svg", category: "picTemplate", toolTipHTML: metadataHTML},
 
 
         ];
@@ -128,7 +154,9 @@
             {key: "sToPartitioner", from: "Serializers", to: "Partitioner", category: "simplelink"},
             {key: "pToRA", from: "Partitioner", to: "Record Accumulator", category: "simplelink"},
             {key: "kafkaToConsumper", from: "Kafka", to: "Consumer", category: "simplelink"},
-            {key: "azTokc", from: "Apache Zookeeper", to: "Kafka Cluster", category: "simplelink"}
+            {key: "azTokc", from: "Apache Zookeeper", to: "Kafka Cluster", category: "simplelink"},
+            {key: "cncToFetcher", from: "Consumer Network Client", to: "Fetcher", category: "simplelink"},
+            {key: "fetcherToConsume", from: "Fetcher", to: "Consume", category: "simplelink"}
         ];
 
         diagram.model = new go.GraphLinksModel(nodeDataArray,linkDataArray);
