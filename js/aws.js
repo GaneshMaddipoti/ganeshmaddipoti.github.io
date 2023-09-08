@@ -1,4 +1,25 @@
+let cloudComputingHTML = `
+            <b>What is</b><br/>
+            Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing. <br/>
+            Instead of buying, owning, and maintaining physical data centers and servers, you can access technology services, <br/>
+            such as computing power, storage, and databases, on an as-needed basis from a cloud provider like AWS, GCP, Azure. <br/>
+            <br/><b>Who is using</b><br/>
+            Organizations of every type, size, and industry are using the cloud for a wide variety of use cases, <br/>
+            such as data backup, software development and testing, big data analytics, and customer-facing web applications. <br/>
+            <br/><b>Benefits</b><br/>
+            Agility <br/>
+            Elasticity <br/>
+            Cost Savings <br/>
+            Deploy Globally in Minutes <br/>
+            <br/><b>Types</b><br/>
+            Infrastructure as a service (IaaS) <br/>
+            Platform as a service (PaaS) <br/>
+            Software as a service (SaaS) <br/>
+        `;
+
 let awsHTML = `
+    AWS - (Amazon Web Services) is a cloud provider
+    Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing. <br/>
     It has to have a global network of infrastructure to run and manage  <br/>
     its many growing cloud services that support customers around the world. <br/>
     AWS GlobalInfrastructure components are <br/>
@@ -14,8 +35,75 @@ let awsHTML = `
     Currently servicing in 32 Regions and 102 Availability Zones.<br/>
     with 4 additional Regions and 12 additional AZs planned. <br/>  
     AWS GovCloud is an isolated region in the U.S. that is only available to U.S. government agencies <br/>
+    35 Local Zones, 29 Wavelength Zones, 115 direct connect locations. <br/>
+    400+ Edge locaitons, 10+ Regional caches, in 90+ cities across 40+ countries. <br/>
 </ul>
 `;
+
+let mgmtConsoleHTML = `
+    Protected by password + MFA <br/>
+    Access keys are generated via management console <br/>
+    Users manage their access keys, they are like password, and not to be shared <br/>
+    Access Key ID like username, Secret Access Key like password <br/>
+`;
+let awsCliHTML = `Protected by Access Keys <br/>`;
+let awsSdkHTML = `Protected by Access Keys <br/>`;
+
+let cloudShellHTML = `
+`;
+
+let iamHTML = `
+    IAM - Identity and Access Management Service <br/>
+    Root account is created by default, and should not be used or shared <br/>
+    Root account is used to set up users and groups <br/>   
+    AWS use the least privilege principle : Don't give more permissions than needed <br/>
+    
+`;
+let policyHTML = `
+    Users or Groups can be assigned JSON documents called policies/permissions <br/>
+    <pre>
+    {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Describe*",
+                "ec2:GetConsole*"
+            ],
+            "Resource": "*"
+        }
+    ]
+    }
+</pre>
+    In AWS, we can have password policy (min length, char types, change pwd) <br/>   
+`;
+let securityCredsHTML = `
+    These are available for root account and users but not for groups <br/>
+    With MFA, we can protect root account, IAM user accounts. (password + security device) <br/>
+    MFA types - Authenticator(Mobile), Authy(multiDevice), Yubikey(physical) <br/>
+`;
+let iAmRolesHTML = `
+    Some AWS resources need to perform on behalf of user <br/>
+    To do that, we will assign permissions to AWS services with IAM Roles <br/>
+    Common Roles : <br/>
+    EC2 Instance Roles <br/>
+    Lambda Function Roles <br/>
+    Roles for cloud formation <br/>
+`;
+
+let groupsHTML = `
+    Groups only contain users, not other groups <br/>
+`;
+
+let usersHTML = `
+    Users are people within an organization, and can be grouped <br/>
+    Users don't have to belong to a group <br/>
+    Users can belong to multiple groups <br/>
+    Users will inherit groups policy, otherwise its own inline policy applied <br/>
+    
+`;
+
 let availabilityZoneHTML = `
     AZs are essentially the physical data centers of AWS <br/>
     This is where the actual compute, storage, network, and database resources are hosted <br/> 
@@ -29,7 +117,7 @@ let availabilityZoneHTML = `
 `;
 let regionHTML = `
     Its localized geographical grouping of multiple AZs <br/>
-    Every Region will act independently of the others, and each will contain at least two Availability Zones. <br/>
+    Every Region will act independently of the others, and each will contain at least 3 Availability Zones. <br/>
     Having global regions also allows for compliance with regulations, laws, <br/> 
     and governance relating to data storage (at rest and in transit). <br/>
     Similarly to how utilizing multiple AZs within a region creates a level of high availability, <br/> 
@@ -84,12 +172,44 @@ let outpostsHTML = `
 
 let AWSNodeDataArray = [
 
+    {key: "Cloud Computing", color: "WhiteSmoke", isGroup: true, category: "tree", img: "assets/img/gen/gen-cloud.svg", toolTipHTML: cloudComputingHTML},
+    {key: "Users", group:"Cloud Computing", img: "assets/img/gen/gen-users.svg", category: "picTemplate",},
+    // {key: "End Users", group:"Cloud Computing", img: "assets/img/gen/gen-users.svg", category: "picTemplate",},
+
+    {key: "Internet", color: "WhiteSmoke", group: "Cloud Computing", isGroup: true, category: "tree", img: "assets/img/gen/gen-web.svg"},
+    {key: "Client", group:"Internet", img: "assets/img/gen/gen-client.svg", category: "picTemplate", toolTipHTML: awsCliHTML},
+    {key: "Mobile", group:"Internet", img: "assets/img/gen/gen-mobile.svg", category: "picTemplate", toolTipHTML: awsCliHTML},
+
+
+
+    {key: "Login", color: "WhiteSmoke", group: "Cloud Computing", isGroup: true, category: "tree", img: "assets/img/aws/security-service.svg"},
+    {key: "Management Console", group:"Login", img: "assets/img/gen/gen-dashboard.svg", category: "picTemplate", toolTipHTML: mgmtConsoleHTML},
+    {key: "AWS CLI", group:"Login", img: "assets/img/aws/cli.svg", category: "picTemplate", toolTipHTML: awsCliHTML},
+    {key: "AWS SDK", group:"Login", img: "assets/img/aws/sdk.svg", category: "picTemplate", toolTipHTML: awsSdkHTML},
+    {key: "Cloud Shell", group:"Login", img: "assets/img/aws/cloud-shell.svg", category: "picTemplate", toolTipHTML: awsSdkHTML},
 
 
     {key: "AWS", color: "WhiteSmoke", group: "Cloud Computing", isGroup: true, category: "tree", img: "assets/img/aws/aws-group.svg", toolTipHTML: awsHTML},
 
+
+    {key: "IAM", color: "Turquoise", category: "grid", isGroup: true, group: "AWS", img: "assets/img/aws/iam.svg", toolTipHTML: iamHTML, expand: false},
+    {key: "Individual User", group:"IAM", img: "assets/img/aws/user.svg", category: "picTemplate",},
+    {key: "Security Credentials", group:"IAM", img: "assets/img/gen/gen-notebook.svg", category: "picTemplate", toolTipHTML: securityCredsHTML},
+    {key: "IAM Roles", group:"IAM", img: "assets/img/gen/gen-notebook.svg", category: "picTemplate", toolTipHTML: iAmRolesHTML},
+    {key: "Group: developers", color: "Turquoise", category: "grid", isGroup: true, group: "IAM", toolTipHTML: groupsHTML,},
+
+    {key: "Policy", group:"Group: developers", img: "assets/img/gen/gen-notebook.svg", category: "picTemplate", toolTipHTML: policyHTML},
+    {key: "deverloper1", group:"Group: developers", img: "assets/img/aws/user.svg", category: "picTemplate", toolTipHTML: usersHTML},
+    {key: "deverloper2", group:"Group: developers", img: "assets/img/aws/user.svg", category: "picTemplate", toolTipHTML: usersHTML},
+
     {key: "Regional Edge Cache", group:"AWS", img: "assets/img/aws/edge-location.svg", category: "picTemplate", toolTipHTML: regionalEdgeCacheHTML},
     {key: "Edge Location", group:"AWS", img: "assets/img/aws/edge-location.svg", category: "picTemplate", toolTipHTML: edgeLocationsHTML},
+
+
+    {key: "Local Zone", color: "Turquoise", category: "tree", isGroup: true, group: "AWS", img: "assets/img/aws/local-zone.svg", toolTipHTML: localZonesHTML},
+    {key: "Wavelength Zone", color: "Turquoise", category: "tree", isGroup: true, group: "AWS", img: "assets/img/aws/wavelength-zone.svg", toolTipHTML: waveLengthZonesHTML},
+    {key: "Outposts", color: "Turquoise", category: "tree", isGroup: true, group: "AWS", img: "assets/img/aws/outposts.svg", toolTipHTML: outpostsHTML},
+
 
     {key: "Region", color: "Turquoise", category: "tree", isGroup: true, group: "AWS", img: "assets/img/aws/region-group.svg", toolTipHTML: regionHTML},
     {key: "VPC", color: "MediumPurple", category: "grid", isGroup: true, group: "Region", img: "assets/img/aws/vpc-group.svg"},
@@ -120,7 +240,13 @@ let AWSNodeDataArray = [
 
 let AWSLinkDataArray = [
     { name: "aztoaz", from: "Availability Zone1", to: "Availability Zone2", category: "thickLink", channel: "fiber", desc: "low latency resilient fiber connectivity"},
-    { name: "recTows", from: "Regional Edge Cache", to: "Web Servers", category: "byDirLink"},
+    { name: "usersToLogin", from: "Users", to: "Login", category: "simplelink"},
+    { name: "usersToInternet", from: "Users", to: "Internet", category: "simplelink"},
+    { name: "loginToIam", from: "Login", to: "AWS", category: "simplelink"},
+    { name: "internetToEdgeLocation", from: "Internet", to: "AWS", category: "simplelink"},
+
+
     { name: "elTorec", from: "Edge Location", to: "Regional Edge Cache", category: "byDirLink"},
+    { name: "recTows", from: "Regional Edge Cache", to: "Web Servers", category: "byDirLink"},
 
 ];

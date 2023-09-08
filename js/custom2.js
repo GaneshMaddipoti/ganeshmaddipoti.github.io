@@ -78,12 +78,12 @@ var myToolTip = $(go.HTMLInfo, {
 });
 
 const picTemplate =
-    $(go.Node, "Vertical",
+    $(go.Node, "Vertical", {padding: 0, margin: new go.Margin(0, 0, 0, 0),},
         $(go.Picture,
             { maxSize: new go.Size(30, 30), },
             new go.Binding("source", "img")),
         $(go.TextBlock, textStyle(),
-            { margin: new go.Margin(3, 0, 0, 0),
+            { margin: new go.Margin(0, 0, 0, 0),
                 maxSize: new go.Size(100, 30),
                 isMultiline: false },
             new go.Binding("text", "key")),
