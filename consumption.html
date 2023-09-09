@@ -3,135 +3,52 @@
 <head>
     <script src="js/go.js"></script>
     <script src="js/OrthogonalLinkReshapingTool.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body style="align-content: center">
     <div id="myDiagramDiv" style="width:1200px; height:800px; background-color: WhiteSmoke;margin:0 auto;"></div>
+    <div id="toolTipDIV" class="tooltip"></div>
+    <script src="js/custom.js"></script>
     <script>
 
-        function changeCategory(e, obj) {
-            const node = obj.part;
-            if (node) {
-                const diagram = node.diagram;
-                diagram.startTransaction("changeCategory");
-                let cat = diagram.model.getCategoryForNodeData(node.data);
-                if (cat === "simple")
-                    cat = "detailed";
-                else
-                    cat = "simple";
-                diagram.model.setCategoryForNodeData(node.data, cat);
-                diagram.commitTransaction("changeCategory");
-            }
-        }
 
-        function changeSubGraph(e, obj) {
-            const node = obj.part;
-            if (node) {
-                const diagram = node.diagram;
-                diagram.startTransaction("changeSubGraph");
-                if(node.isSubGraphExpanded) {
-                    node.collapseSubGraph();
-                } else {
-                    node.expandSubGraph();
-                }
-                diagram.commitTransaction("changeSubGraph");
-            }
-        }
-
-        var $ = go.GraphObject.make;
-        let diagram = new go.Diagram("myDiagramDiv",{layout: $(go.TreeLayout,
-                { angle: 0, nodeSpacing: 50, layerSpacing: 50 }), "undoManager.isEnabled": true, "linkReshapingTool": new OrthogonalLinkReshapingTool()});
-
-        const itemtemplates = new go.Map();
-        itemtemplates.add("text",$(go.Panel, $(go.TextBlock, new go.Binding("text"))));
-
-        const simpletemplate =
-            $(go.Node, "Auto",{ fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides },
-                $(go.Shape, new go.Binding("desiredSize", "size"),
-                    new go.Binding("figure", "shape"), { strokeWidth: 2, stroke: "#555" }, new go.Binding("fill", "color")),
-                $(go.TextBlock,{ margin: 5, width: 90, textAlign: "center"}, new go.Binding("text", "key")),
-                { click: (e, obj) => changeCategory(e, obj) }
-            );
-
-        const simpleWithTooltiptemplate =
-            $(go.Node, "Auto",{ fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides },
-                $(go.Shape, new go.Binding("desiredSize", "size"),
-                    new go.Binding("figure", "shape"), { strokeWidth: 2, stroke: "#555" }, new go.Binding("fill", "color")),
-                $(go.TextBlock,{ margin: 5, width: 90, textAlign: "center"}, new go.Binding("text", "key")),
-                {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))},
-                { click: (e, obj) => changeCategory(e, obj) }
-            );
-
-        // the "detailed" template shows all of the information in a Table Panel
-        const detailtemplate =
-            $(go.Node, "Auto", { fromSpot: go.Spot.AllSides,  toSpot: go.Spot.AllSides },
-                $(go.Shape, new go.Binding("desiredSize", "size"),
-                    new go.Binding("figure", "shape"), { strokeWidth: 2, stroke: "#555" }, new go.Binding("fill", "color")),
-                $(go.Panel, "Vertical",
-                    $(go.TextBlock,{ margin: 5, width: 90, textAlign: "center"}, new go.Binding("text", "key")),
-                    $(go.Panel, "Vertical", {defaultAlignment: go.Spot.Left, margin: 0,},
-                        new go.Binding("itemArray", "items"),{
-                            itemTemplate:
-                                $(go.Panel, "Auto", {margin: 5 }, $(go.TextBlock, new go.Binding("text", ""), { })
-                                )
-                    })),
-                { click: (e, obj) => changeCategory(e, obj) }
-            );
-
-        const templmap = new go.Map();
-        templmap.add("simple", simpletemplate);
-        templmap.add("simpleTooltip", simpleWithTooltiptemplate)
-        templmap.add("detailed", detailtemplate);
-        templmap.add("", diagram.nodeTemplate);
-        diagram.nodeTemplateMap = templmap;
-
-        const simplelinktemplate =
-            $(go.Link, {routing: go.Link.AvoidsNodes, reshapable: true, resegmentable: true, corner: 5},
-                $(go.Shape, { strokeWidth: 2, stroke: "#555" }),
-                $(go.Shape, { toArrow: "Standard" }),
-            );
-
-        const simplelinklabletemplate =
-            $(go.Link, {routing: go.Link.AvoidsNodes, reshapable: true, resegmentable: true, corner: 5},
-                $(go.Shape, { strokeWidth: 2, stroke: "#555" }),
-                $(go.Shape, { toArrow: "Standard" }),
-                $(go.Panel, "Auto",
-                    $(go.Shape, "Rectangle", { fill: "lightgrey", stroke: "gray" }, new go.Binding("fill", "color")),
-                    $(go.TextBlock, { margin: 3 }, new go.Binding("text", "channel"))),
-                            {toolTip: $("ToolTip", $(go.TextBlock, { margin: 4 }, new go.Binding("text", "desc")))}
-            );
-
-        const linktemplmap = new go.Map();
-        linktemplmap.add("simplelink", simplelinktemplate);
-        linktemplmap.add("simplelinklabel", simplelinklabletemplate);
-        linktemplmap.add("", diagram.linkTemplate);
-        diagram.linkTemplateMap = linktemplmap;
-
-        diagram.groupTemplate =
-            $(go.Group, "Auto", {layout: $(go.TreeLayout,
-                        { angle: 0, nodeSpacing: 50, layerSpacing: 50 })},
-                $(go.Shape, "RoundedRectangle", // surrounds everything
-                    { parameter1: 10, fill: "lightblue",strokeWidth: 2, stroke: "#555" },
-                    { click: (e, obj) => changeSubGraph(e, obj) }),
-                $(go.Panel, "Vertical",  // position header above the subgraph
-                    { defaultAlignment: go.Spot.Center },
-                    $(go.TextBlock,{ margin: 5, width: 90, textAlign: "center"}, new go.Binding("text", "key"),
-                        { click: (e, obj) => changeSubGraph(e, obj) }),
-                    $(go.Placeholder,     // represents area for all member parts
-                        { padding: new go.Margin(10, 10), background: "WhiteSmoke" })
-                ), new go.Binding("isSubGraphExpanded", "expand"),
-            );
 
         var nodeDataArray = [
 
-            { key: "Consumption Flow", isGroup: true, expand: true},
-            { key: "Start", color: "lightgreen", shape: "Ellipse", size: new go.Size(40,40), category: "simple", group: "Consumption Flow",},
+            { key: "Consumption Flow", color: "LightSteelBlue", isGroup: true, expand: true},
+            { key: "Start", color: "Wheat", shape: "Ellipse", size: new go.Size(40,40), category: "simple", group: "Consumption Flow",},
             //Components
-            { key: "Consumption Router", color: "lightblue", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
-                items: ["Routing asdf asfd asdf afds sadfsdf sadf asd fsdf saf sf dfsdsff", "integrating"] },
-            { key: "Consumption Hive", color: "lightblue", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow", },
-            { key: "Consumption Impala", color: "lightblue", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow", },
-            { key: "Consumption Dremio Builder", color: "lightblue", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow", },
-            { key: "Midas Transformer", color: "lightblue", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow", },
+            { key: "Consumption Router", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Listen to PACMAN events - metadata copy, purge, recall<br/>" +
+                    "Forwards to consumption topic for processing <br/>\n" +
+                    "        Transforms and Forwards back Consumption messages from the ce-event-notification.out back to runstatus topic. <br/>\n" +
+                    "        Listen to pacman for metadata copy and purge/recall <br/>\n" +
+                    "        Keep track of overall consumption status based on events coming in from different components." },
+            { key: "Consumption Hive", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Creation and Updating of the Metadata and Data table. <br/>\n" +
+                    "        And then forwards the message to ce-event-notification." },
+            { key: "Consumption Impala", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Creates impala views for the dataset supplied on the message sent by consumption-hive. <br/>\n" +
+                    "        And then forwards the message to ce-event-notification." },
+            { key: "Consumption Dremio Builder", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Responsible for dremio actions such as alter pds, vds and reflection refresh." },
+            { key: "Midas Transformer", color: "WhiteSmoke", shape: "RoundedRectangle", category: "simple", group: "Consumption Flow",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Creates and triggers midas workflows for child datasets." },
 
             //Points
             { key: "CIS", desc: "Consumption In Stage", color: "Wheat", shape: "Diamond",size: new go.Size(50, 40), category: "simpleTooltip", group: "Consumption Flow", },
@@ -144,11 +61,25 @@
 
 
             //Pivot route
-            { key: "Pivot Route", isGroup: true, group: "Consumption Flow", expand: false},
-            { key: "Pivot Coordinator", color: "lightblue", group: "Pivot Route", shape: "RoundedRectangle", category: "simple"
-                    , items: ["Routing asdf asfd asdf afds ", "integrating"]},
-            { key: "Pivot Maintenance", color: "lightblue", group: "Pivot Route", shape: "RoundedRectangle", category: "simple" },
-            { key: "Dremio Hive", color: "lightblue", group: "Pivot Route", shape: "RoundedRectangle", category: "simple" },
+            { key: "Pivot Route", color:"WhiteSmoke", isGroup: true, group: "Consumption Flow", expand: false},
+            { key: "Pivot Coordinator", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "This involves listening for new RUNIDs on event notification topic. <br/>\n" +
+                    "Invoking runner via a call to Nightfort." },
+            { key: "Pivot Maintenance", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Scala", color: "LightBlue" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Spark", color: "LightSalmon" },],
+                toolTipHTML: "This is the Spark component invoked by dataprocessor runner in cluster mode. <br/>\n" +
+                    "        And then forwards the message to ce-event-notification." },
+            { key: "Dremio Hive", color: "WhiteSmoke", group: "Pivot Route", shape: "RoundedRectangle", category: "simple",
+                items: [ {text: "Moneta-Boot", color: "LightGreen" },
+                    {text: "Java", color: "LightBlue" },
+                    {text: "Gaia", color: "LightSalmon" },],
+                toolTipHTML: "Responsible for adding the newly created pivot partition or updating pivot partitions based on updates" },
 
         ];
 
@@ -172,14 +103,7 @@
         ];
 
         diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-        diagram.animationManager.initialAnimationStyle = go.AnimationManager.None;
-        diagram.addDiagramListener('InitialAnimationStarting', e => {
-            var animation = e.subject.defaultAnimation;
-            animation.easing = go.Animation.EaseOutExpo;
-            animation.duration = 2000;
-            animation.add(e.diagram, 'scale', 0.1, 1);
-            animation.add(e.diagram, 'opacity', 0, 1);
-        });
+
 
     </script>
 </body>
