@@ -167,7 +167,44 @@ let outpostsHTML = `
     Outposts allow you to run AWS services such as EC2, ECS, EKS, S3, RDS, and EMR on-premises. <br/>
     AWS will ensure your Outposts are patched and updated as needed. <br/> 
 `;
-
+let ec2HTML = `
+    EC2 stands for elastic compute cloud - IaaS <br/>
+    It has the capability of : <br/>
+    1) Renting Virtual Machines (EC2) <br/>
+    2) Storing data in virtual drivers (EBS) <br/>
+    3) Distributing load across machines (ELB) <br/>
+    4) Scaling the services using an auto-scaling group (ASG) <br/><br/>    
+    EC2 Sizing and configuration options <br/>
+    1) Operating System: Linux, Windows, Mac <br/>
+    2) How much computer power and cores (CPU) <br/>
+    3) How much Random access memory (RAM) <br/>
+    4) How much Storage space (EBS, EFS, EC2 Instance Store) <br/>
+    5) Network card, Public IP <br/>
+    6) Firewalls rules : security groups <br/>
+    7) Bootstrap Script (configure at first launch) : EC2 user data <br/><br/>
+    EC2 Instance Types : <br/>
+    General purpose, compute optimized, memory optimized, storage optimized, accelerated computing, instance features, measing instance performance <br/>
+    Ex : m5.8xlarge - meaning general purpose 5th generation, 8x size machine. <br/>    
+    1) t2.micro - 1 cpu, 1GB RAM, Low to moderate n/w speed <br/>
+    2) t2.xlarge - 4 cpu, 16GB RAM, moderate n/w speed <br/>
+    3) c5d.4xlarge - 16 cpu, 32GB RAM, 10 Gbps <br/>
+    4) r5.16xlarge - 64 cpu, 512GB RAM, 20 Gbps <br/>
+    5) m5.8xlarge - 32 cpu, 128GB RAM, 10 Gbps <br/> <br/>
+    Key pair(Pem/PPK) is required to create, in order to securely connect to EC2 instance using SSH <br/>
+    Security groups are firewall rules that control the traffic for your instance <br/>
+    Security groups works by referring IP address/port, and other security groups <br/>
+    Security groups can be attached to multiple instances, an instance can have multiple security groups <br/>
+    Security groups are locked down to region/VPC combination. <br/>
+    All inbound traffic is blocked and outbound traffic is allowed by default <br/>
+    EC2 purchasing options <br/>
+    On-demand Instances: short workload, predictable pricing, pay by second <br/>
+    Reserved: long workloads <br/>
+    Saving plans: 1-3 years long workloads <br/>
+    Spot instances: short workloads, cheap, can lose instances <br/>
+    Dedicated Hosts: book an entire physical server, control instance placement <br/>
+    Dedicated Instances: no other use share your hardware <br/>
+    Capacity Reservations: reserve a capacity in AZ <br/>    
+`;
 
 
 let AWSNodeDataArray = [
@@ -219,7 +256,8 @@ let AWSNodeDataArray = [
     {key: "Availability Zone2", color: "Turquoise", category: "tree", isGroup: true, group: "VPC", toolTipHTML: availabilityZoneHTML},
 
     {key: "Public Subnet", color: "YellowGreen", category: "tree", isGroup: true, group: "Availability Zone1", img: "assets/img/aws/pubsub-group.svg"},
-    {key: "Web Servers", category: "picTemplate", group: "Public Subnet", img: "assets/img/aws/app-servers.svg"},
+    {key: "EC2 Servers", category: "tree", isGroup: true,  group: "Public Subnet", img: "assets/img/aws/app-servers.svg", toolTipHTML: ec2HTML},
+
 
     {key: "Private Subnet1", color: "Turquoise", category: "tree", isGroup: true, group: "Availability Zone1", img: "assets/img/aws/prisub-group.svg"},
     {key: "App Servers", category: "picTemplate", group: "Private Subnet1", img: "assets/img/aws/app-servers.svg"},
@@ -228,7 +266,7 @@ let AWSNodeDataArray = [
     {key: "DB Instances", category: "picTemplate", group: "Private Subnet2", img: "assets/img/aws/sql-server.svg"},
 
     {key: "Public Subnet1", color: "YellowGreen", category: "tree", isGroup: true, group: "Availability Zone2", img: "assets/img/aws/pubsub-group.svg"},
-    {key: "Web Servers", category: "picTemplate", group: "Public Subnet1", img: "assets/img/aws/app-servers.svg"},
+    {key: "EC2 Servers", category: "tree", isGroup: true,  group: "Public Subnet1", img: "assets/img/aws/app-servers.svg"},
 
     {key: "Private Subnet3", color: "Turquoise", category: "tree", isGroup: true, group: "Availability Zone2", img: "assets/img/aws/prisub-group.svg"},
     {key: "App Servers", category: "picTemplate", group: "Private Subnet3", img: "assets/img/aws/app-servers.svg"},
@@ -247,6 +285,6 @@ let AWSLinkDataArray = [
 
 
     { name: "elTorec", from: "Edge Location", to: "Regional Edge Cache", category: "byDirLink"},
-    { name: "recTows", from: "Regional Edge Cache", to: "Web Servers", category: "byDirLink"},
+    { name: "recTows", from: "Regional Edge Cache", to: "EC2 Servers", category: "byDirLink"},
 
 ];
