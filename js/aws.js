@@ -205,6 +205,41 @@ let ec2HTML = `
     Dedicated Instances: no other use share your hardware <br/>
     Capacity Reservations: reserve a capacity in AZ <br/>    
 `;
+let scalabilityHTML = `
+    Scalability means that the application/system can handle greater loads by adapting.
+    1) Vertical Scaling : Increasing the size of the instance.
+    2) Horizontal Scaling : Increasing the number of instances.
+    
+    Availability means that the application/system is available in case of failures.
+    It can be achieved by running the application/system in multiple AZ.
+    
+    Autoscaling, Load balancing comes under these.    
+`;
+
+let loadBalancingHTML = `
+    ELB - Elastic Load Balancer managed by AWS.
+    It is a server, which forwards/spread the traffic it received to multiple downstream EC2 instances.
+    It exposes single point of access (DNS) to the application.
+    It handles health status of all instances
+    Enforce stickiness with cookies.
+    Provide SSL termination of the application.
+    Its integrated with Route 53, auto scaling groups, WAF, Global Accelerator, etc..
+    1) Classic Load Balancer
+    2) Application load balancer (HTTP, HTTPS, Websocket) - Layer 7
+    3) Network load balancer (TCP, TLS, UDP)
+    4) Gateway load balancer (IP)
+    Load balancers can be setup as private and public.
+`;
+
+let albHTML = `
+    Routing tables to different target groups.
+    1) Based on path
+    2) Based on hostname
+    3) Based on query string
+    These are used in micro services and container based applications (Docker, ECS)
+    It has part mapping feature to redirect to dynamic port in ECS.    
+`;
+
 
 
 let AWSNodeDataArray = [
