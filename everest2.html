@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/go.js"></script>
+    <script src="js/OrthogonalLinkReshapingTool.js"></script>
+    <script src="js/ZoomSlider.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+<body style="align-content: center">
+    <div id="myDiagramDiv" style="width:96%;height: 1000px; background-color: DarkSlateGray;margin:0 auto;"></div>
+    <div id="toolTipDIV" class="tooltip"></div>
+    <script src="js/custom2.js"></script>
+    <script src="js/everest2.js"></script>
+    <div style="width:96%; background-color: WhiteSmoke;margin:0 auto;">
+        <br/>
+        <br/>
+        <button href="#" onclick="czoomTofFit()">Zoom To Fit</button>
+    </div>
+    <script>
+
+        diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+        zoomSlider = new ZoomSlider(diagram);
+        diagram.commandHandler.zoomToFit();
+
+    </script>
+</body>
+</html>
