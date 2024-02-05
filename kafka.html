@@ -20,13 +20,21 @@
     </div>
 
     <script>
-        let messagingSystemHTML = ``;
-        let kafkaHTML = ``;
+        let messagingSystemHTML = `Messaging system will move data from one system to other`;
+        let kafkaHTML = `Kafka is a distributed messaging system (pub-sub model)
+        Kafka is designed for
+        1) High throughput
+        2) Fault tolerant
+        3) Distributed
+        4) Scalable
+        Internally its a distributed commit log`;
+        let zooKeeperHTML = ``;
+        let kafkaClusterHTML = `Kafka cluster is a group of brokers.
+        Kafka cluster size = number of brokers`;
         let producerHTML = ``;
-        let brokerHTML = `
-        `;
-        let propertiesHTML = `
-            Contents : <br/>
+        let brokerHTML = `Which is a server running deamon/executable for storing messages to Topics
+        Broker will store the data in Topics which use file system in that server`;
+        let propertiesHTML = `Contents : <br/>
             bootstrap.servers : broker list <br/>
             key.serializer <br/>
             value.serializer <br/>
@@ -122,13 +130,13 @@
 
             {key: "Kafka", group:"Messaging System", color: "WhiteSmoke", isGroup: true, category: "tree90", img: "assets/img/gen/gen-cluster-group.svg", toolTipHTML: kafkaHTML},
 
-            {key: "Apache Zookeeper", group:"Kafka", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-cluster-group.svg", toolTipHTML: kafkaHTML},
+            {key: "Apache Zookeeper", group:"Kafka", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-cluster-group.svg", toolTipHTML: zooKeeperHTML},
             {key: "Configuration", group:"Apache Zookeeper", img: "assets/img/gen/gen-notebook.svg", category: "picTemplate", toolTipHTML: consumerHTML},
             {key: "Group Membership", group:"Apache Zookeeper", img: "assets/img/gen/gen-broker.svg", category: "picTemplate", toolTipHTML: consumerHTML},
             {key: "Health Status", group:"Apache Zookeeper", img: "assets/img/gen/gen-dashboard.svg", category: "picTemplate", toolTipHTML: consumerHTML},
 
 
-            {key: "Kafka Cluster", group:"Kafka", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-cluster-group.svg", toolTipHTML: kafkaHTML},
+            {key: "Kafka Cluster", group:"Kafka", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-cluster-group.svg", toolTipHTML: kafkaClusterHTML},
             {key: "Broker", group:"Kafka Cluster", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-broker.svg", toolTipHTML: brokerHTML},
             {key: "Topic", group:"Broker", color: "WhiteSmoke", isGroup: true, category: "grid", img: "assets/img/gen/gen-topic.svg", toolTipHTML: topicHTML},
             {key: "Partition0", group:"Topic", color: "WhiteSmoke", isGroup: true, category: "grid-congested", img: "assets/img/gen/gen-topic.svg", toolTipHTML: partitionHTML},

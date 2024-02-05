@@ -213,6 +213,7 @@ diagram.groupTemplateMap.add("tree90", $(go.Group, "Auto", {toolTip: myToolTip, 
             $(go.Picture,{ maxSize: new go.Size(30, 30) }, new go.Binding("source", "img")),
             $(go.TextBlock, textStyle(), new go.Binding("text", "key"),),
             $("SubGraphExpanderButton", subGraphExpanderButtonStyle()),
+            { click: (e, obj) => showDetails(e, obj) }
         ),
         $(go.Placeholder,     // represents area for all member parts
             { padding: new go.Margin(10, 10), background: "Transparent" })
