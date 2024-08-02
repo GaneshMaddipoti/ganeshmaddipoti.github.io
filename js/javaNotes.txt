@@ -1,0 +1,6 @@
+Functional programming is a way of writing code more declaratively.
+FP uses lambda expression to write code.
+Lambda expression is a block of code that gets passed around.
+Ex: a -> {a.canHop()}
+@FunctionalInterface annotation tells the compiler we intend the interface should have SAM(Single abstract method)
+
