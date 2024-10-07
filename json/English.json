@@ -1,0 +1,125 @@
+{
+  "props": {
+    "tag": "svg",
+    "id": "foreignObject0",
+    "x": 173,
+    "y": 108,
+    "style": {
+      "width": "1250px",
+      "height": "391px"
+    }
+  },
+  "nodes": {
+    "foreignObject1": {
+      "props": {
+        "tag": "text",
+        "id": "foreignObject1",
+        "counter": 1,
+        "x": -3,
+        "y": -3,
+        "text": "English",
+        "style": {
+          "width": "66px",
+          "height": "24px"
+        }
+      }
+    },
+    "foreignObject2": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject2",
+        "counter": 2,
+        "x": 25,
+        "y": 180,
+        "text": "Basically a language is used for communication. And, English language is the most used communication language in the world.",
+        "children": [
+          "path0"
+        ],
+        "style": {
+          "width": "268px",
+          "height": "97px"
+        }
+      }
+    },
+    "foreignObject3": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject3",
+        "counter": 3,
+        "x": 445,
+        "y": 123,
+        "parents": [
+          "path0"
+        ],
+        "children": [
+          "path1"
+        ],
+        "style": {
+          "width": "307px",
+          "height": "201px"
+        }
+      },
+      "nodes": {
+        "foreignObject4": {
+          "props": {
+            "tag": "text",
+            "id": "foreignObject4",
+            "counter": 4,
+            "x": -5,
+            "y": 7,
+            "text": "Syntax",
+            "style": {
+              "width": "100px",
+              "height": "25px"
+            }
+          }
+        }
+      }
+    },
+    "foreignObject4": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject4",
+        "counter": 4,
+        "x": 924,
+        "y": 188,
+        "parents": [
+          "path1"
+        ],
+        "style": {
+          "width": "138px",
+          "height": "42px"
+        }
+      }
+    }
+  },
+  "paths": {
+    "path0": {
+      "props": {
+        "id": "path0",
+        "x1": 323,
+        "y1": 239,
+        "x2": 446,
+        "y2": 216,
+        "d": "M 323 239 C 384.5 239 384.5 216 446 216",
+        "start": "foreignObject2",
+        "end": "foreignObject3",
+        "position": 1
+      }
+    },
+    "path1": {
+      "props": {
+        "id": "path1",
+        "counter": 1,
+        "x1": 776,
+        "y1": 219,
+        "x2": 923,
+        "y2": 223,
+        "d": "M 776 219 C 849.5 219 849.5 223 923 223",
+        "start": "foreignObject3",
+        "end": "foreignObject4",
+        "position": 1
+      }
+    }
+  }
+}
