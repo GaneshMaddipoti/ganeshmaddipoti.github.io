@@ -1,0 +1,77 @@
+{
+  "props": {
+    "tag": "svg",
+    "id": "foreignObject0",
+    "x": 99,
+    "y": 101,
+    "style": {
+      "width": "988px",
+      "height": "403px"
+    }
+  },
+  "nodes": {
+    "foreignObject5": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject5",
+        "counter": 5,
+        "x": 310,
+        "y": 64,
+        "text": "Syntax\nKeywords\nDatatypes",
+        "parents": [
+          "path2"
+        ],
+        "style": {
+          "width": "150px",
+          "height": "50px"
+        }
+      }
+    },
+    "foreignObject3": {
+      "props": {
+        "tag": "text",
+        "id": "foreignObject3",
+        "counter": 3,
+        "x": -5,
+        "text": "Java",
+        "style": {
+          "width": "100px",
+          "height": "25px"
+        }
+      }
+    },
+    "foreignObject4": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject4",
+        "counter": 4,
+        "x": 12,
+        "y": 125,
+        "text": "Introduction\nJames Gosling\n1995",
+        "children": [
+          "path2"
+        ],
+        "style": {
+          "width": "150px",
+          "height": "53px"
+        }
+      }
+    }
+  },
+  "paths": {
+    "path2": {
+      "props": {
+        "id": "path2",
+        "counter": 2,
+        "x1": 191,
+        "y1": 163,
+        "x2": 308,
+        "y2": 100,
+        "d": "M 191 163 C 249.5 163 249.5 100 308 100",
+        "start": "foreignObject4",
+        "end": "foreignObject5",
+        "position": 1
+      }
+    }
+  }
+}
