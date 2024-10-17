@@ -2,93 +2,123 @@
   "props": {
     "tag": "svg",
     "id": "foreignObject0",
-    "x": 173,
-    "y": 108,
+    "x": 100,
+    "y": 100,
     "style": {
-      "width": "1250px",
-      "height": "391px"
+      "width": "1163px",
+      "height": "514px"
     }
   },
   "nodes": {
     "foreignObject1": {
       "props": {
-        "tag": "text",
+        "tag": "textarea",
         "id": "foreignObject1",
         "counter": 1,
-        "x": -3,
-        "y": -3,
+        "x": -4,
+        "y": -8,
         "text": "English",
+        "toolTipText": "* Language is used for communication\n* Most used language in the world",
         "style": {
-          "width": "66px",
-          "height": "24px"
+          "width": "61px",
+          "height": "18px",
+          "toolTipWidth": "248px",
+          "toolTipHeight": "33px"
         }
       }
     },
     "foreignObject2": {
       "props": {
-        "tag": "textarea",
+        "tag": "svg",
         "id": "foreignObject2",
         "counter": 2,
-        "x": 25,
-        "y": 180,
-        "text": "Basically a language is used for communication. And, English language is the most used communication language in the world.",
-        "children": [
-          "path0"
-        ],
+        "x": 29,
+        "y": 53,
         "style": {
-          "width": "268px",
-          "height": "97px"
-        }
-      }
-    },
-    "foreignObject3": {
-      "props": {
-        "tag": "svg",
-        "id": "foreignObject3",
-        "counter": 3,
-        "x": 445,
-        "y": 123,
-        "parents": [
-          "path0"
-        ],
-        "children": [
-          "path1"
-        ],
-        "style": {
-          "width": "307px",
-          "height": "201px"
+          "width": "476px",
+          "height": "317px"
         }
       },
       "nodes": {
-        "foreignObject4": {
+        "foreignObject10": {
           "props": {
-            "tag": "text",
-            "id": "foreignObject4",
-            "counter": 4,
-            "x": -5,
-            "y": 7,
-            "text": "Syntax",
+            "tag": "textarea",
+            "id": "foreignObject10",
+            "counter": 10,
+            "x": 10,
+            "y": 195,
+            "text": "Words:\nWords are formed by grouping of letters, \nwhich are used to represent a thing.\nEx: India, She, Smart, Write, Fast, And, In, Oops! etc...",
             "style": {
-              "width": "100px",
-              "height": "25px"
+              "width": "370px",
+              "height": "77px"
             }
           }
-        }
-      }
-    },
-    "foreignObject4": {
-      "props": {
-        "tag": "svg",
-        "id": "foreignObject4",
-        "counter": 4,
-        "x": 924,
-        "y": 188,
-        "parents": [
-          "path1"
-        ],
-        "style": {
-          "width": "138px",
-          "height": "42px"
+        },
+        "foreignObject5": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject5",
+            "counter": 5,
+            "x": 288,
+            "y": 14,
+            "text": "Vowels:\nA E I O U",
+            "parents": [
+              "path0"
+            ],
+            "style": {
+              "width": "67px",
+              "height": "33px"
+            }
+          }
+        },
+        "foreignObject6": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject6",
+            "counter": 6,
+            "x": 285,
+            "y": 88,
+            "text": "Consonants:\nB C D F G H J K L M N P Q R S T V W X Y Z",
+            "parents": [
+              "path1"
+            ],
+            "style": {
+              "width": "155px",
+              "height": "52px"
+            }
+          }
+        },
+        "foreignObject3": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject3",
+            "counter": 3,
+            "x": -8,
+            "y": -11,
+            "text": "Syntax",
+            "style": {
+              "width": "52px",
+              "height": "17px"
+            }
+          }
+        },
+        "foreignObject4": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject4",
+            "counter": 4,
+            "x": 15,
+            "y": 56,
+            "text": "Letters : (26)\nA B C D E F G H I J K L M N O P Q R S T U V W X Y Z",
+            "children": [
+              "path0",
+              "path1"
+            ],
+            "style": {
+              "width": "184px",
+              "height": "61px"
+            }
+          }
         }
       }
     }
@@ -97,13 +127,13 @@
     "path0": {
       "props": {
         "id": "path0",
-        "x1": 323,
-        "y1": 239,
-        "x2": 446,
-        "y2": 216,
-        "d": "M 323 239 C 384.5 239 384.5 216 446 216",
-        "start": "foreignObject2",
-        "end": "foreignObject3",
+        "x1": 265,
+        "y1": 156.5,
+        "x2": 325,
+        "y2": 104,
+        "d": "M 265 156.5 C 295 156.5 295 104 325 104",
+        "start": "foreignObject4",
+        "end": "foreignObject5",
         "position": 1
       }
     },
@@ -111,13 +141,13 @@
       "props": {
         "id": "path1",
         "counter": 1,
-        "x1": 776,
-        "y1": 219,
-        "x2": 923,
-        "y2": 223,
-        "d": "M 776 219 C 849.5 219 849.5 223 923 223",
-        "start": "foreignObject3",
-        "end": "foreignObject4",
+        "x1": 266,
+        "y1": 159.5,
+        "x2": 323,
+        "y2": 186,
+        "d": "M 266 159.5 C 294.5 159.5 294.5 186 323 186",
+        "start": "foreignObject4",
+        "end": "foreignObject6",
         "position": 1
       }
     }
