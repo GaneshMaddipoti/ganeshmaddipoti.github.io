@@ -1,0 +1,224 @@
+{
+  "props": {
+    "tag": "svg",
+    "id": "foreignObject0",
+    "x": 193,
+    "y": 58,
+    "title": "TRE",
+    "showChildren": true,
+    "style": {
+      "width": "854px",
+      "height": "759px"
+    }
+  },
+  "nodes": {
+    "foreignObject1": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject1",
+        "counter": 1,
+        "x": 42,
+        "y": 128,
+        "title": "MDTP",
+        "showChildren": true,
+        "style": {
+          "width": "772px",
+          "height": "312px"
+        }
+      },
+      "nodes": {
+        "foreignObject25": {
+          "props": {
+            "tag": "svg",
+            "id": "foreignObject25",
+            "counter": 25,
+            "x": 20,
+            "y": 172,
+            "title": "Protected Zo",
+            "showChildren": true,
+            "style": {
+              "width": "712px",
+              "height": "110px"
+            }
+          },
+          "nodes": {
+            "foreignObject27": {
+              "props": {
+                "tag": "svg",
+                "id": "foreignObject27",
+                "counter": 27,
+                "x": 522,
+                "y": 30,
+                "title": "TRE DataStor",
+                "style": {
+                  "width": "150px",
+                  "height": "50px"
+                }
+              }
+            },
+            "foreignObject8": {
+              "props": {
+                "tag": "svg",
+                "id": "foreignObject8",
+                "counter": 8,
+                "x": 295,
+                "y": 28,
+                "title": "TRE Backend",
+                "style": {
+                  "width": "150px",
+                  "height": "50px"
+                }
+              }
+            }
+          }
+        },
+        "foreignObject15": {
+          "props": {
+            "tag": "svg",
+            "id": "foreignObject15",
+            "counter": 15,
+            "x": 20,
+            "y": 44,
+            "title": "Public Zone",
+            "showChildren": true,
+            "style": {
+              "width": "491px",
+              "height": "95px"
+            }
+          },
+          "nodes": {
+            "foreignObject3": {
+              "props": {
+                "tag": "svg",
+                "id": "foreignObject3",
+                "counter": 3,
+                "x": 301,
+                "y": 15,
+                "title": "TRE Frontend",
+                "style": {
+                  "width": "150px",
+                  "height": "50px"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "foreignObject2": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject2",
+        "counter": 2,
+        "x": 47,
+        "y": 482,
+        "title": "EIS",
+        "showChildren": true,
+        "style": {
+          "width": "640px",
+          "height": "131px"
+        }
+      },
+      "nodes": {
+        "foreignObject10": {
+          "props": {
+            "tag": "svg",
+            "id": "foreignObject10",
+            "counter": 10,
+            "x": 8,
+            "y": 47,
+            "title": "Reg API",
+            "style": {
+              "width": "150px",
+              "height": "50px"
+            }
+          }
+        },
+        "foreignObject11": {
+          "props": {
+            "tag": "svg",
+            "id": "foreignObject11",
+            "counter": 11,
+            "x": 231,
+            "y": 51,
+            "title": "TRE API",
+            "style": {
+              "width": "150px",
+              "height": "50px"
+            }
+          }
+        },
+        "foreignObject9": {
+          "props": {
+            "tag": "svg",
+            "id": "foreignObject9",
+            "counter": 9,
+            "x": 450,
+            "y": 51,
+            "title": "Sub API",
+            "style": {
+              "width": "150px",
+              "height": "50px"
+            }
+          }
+        }
+      }
+    },
+    "foreignObject4": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject4",
+        "counter": 4,
+        "x": 288,
+        "y": 679,
+        "title": "CDAP",
+        "style": {
+          "width": "150px",
+          "height": "50px"
+        }
+      }
+    },
+    "foreignObject18": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject18",
+        "counter": 18,
+        "x": 300,
+        "y": 56,
+        "text": "Agent",
+        "style": {
+          "width": "100px",
+          "height": "15px"
+        }
+      }
+    },
+    "foreignObject17": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject17",
+        "counter": 17,
+        "x": 124,
+        "y": 57,
+        "text": "Trader",
+        "style": {
+          "width": "100px",
+          "height": "15px"
+        }
+      }
+    },
+    "foreignObject28": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject28",
+        "counter": 28,
+        "x": 49,
+        "y": 678,
+        "title": "ETMP",
+        "style": {
+          "width": "150px",
+          "height": "50px"
+        }
+      }
+    }
+  }
+}
