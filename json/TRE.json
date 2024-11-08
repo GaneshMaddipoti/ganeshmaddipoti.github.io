@@ -7,7 +7,7 @@
     "title": "TRE",
     "showChildren": true,
     "style": {
-      "width": "854px",
+      "width": "852px",
       "height": "759px"
     }
   },
@@ -21,9 +21,18 @@
         "y": 128,
         "title": "MDTP",
         "showChildren": true,
+        "itiPaths": [
+          "path0",
+          "path1",
+          "path2"
+        ],
+        "itoPaths": [
+          "path2",
+          "path3"
+        ],
         "style": {
-          "width": "772px",
-          "height": "312px"
+          "width": "770px",
+          "height": "310px"
         }
       },
       "nodes": {
@@ -32,10 +41,16 @@
             "tag": "svg",
             "id": "foreignObject25",
             "counter": 25,
-            "x": 20,
-            "y": 172,
+            "x": 18,
+            "y": 170,
             "title": "Protected Zo",
             "showChildren": true,
+            "itiPaths": [
+              "path2"
+            ],
+            "itoPaths": [
+              "path3"
+            ],
             "style": {
               "width": "712px",
               "height": "110px"
@@ -64,6 +79,12 @@
                 "x": 295,
                 "y": 28,
                 "title": "TRE Backend",
+                "iPaths": [
+                  "path2"
+                ],
+                "oPaths": [
+                  "path3"
+                ],
                 "style": {
                   "width": "150px",
                   "height": "50px"
@@ -77,12 +98,19 @@
             "tag": "svg",
             "id": "foreignObject15",
             "counter": 15,
-            "x": 20,
-            "y": 44,
+            "x": 77,
+            "y": 26,
             "title": "Public Zone",
             "showChildren": true,
+            "itiPaths": [
+              "path0",
+              "path1"
+            ],
+            "itoPaths": [
+              "path2"
+            ],
             "style": {
-              "width": "491px",
+              "width": "534px",
               "height": "95px"
             }
           },
@@ -92,9 +120,16 @@
                 "tag": "svg",
                 "id": "foreignObject3",
                 "counter": 3,
-                "x": 301,
+                "x": 344,
                 "y": 15,
                 "title": "TRE Frontend",
+                "iPaths": [
+                  "path0",
+                  "path1"
+                ],
+                "oPaths": [
+                  "path2"
+                ],
                 "style": {
                   "width": "150px",
                   "height": "50px"
@@ -110,10 +145,16 @@
         "tag": "svg",
         "id": "foreignObject2",
         "counter": 2,
-        "x": 47,
-        "y": 482,
+        "x": 119,
+        "y": 486,
         "title": "EIS",
         "showChildren": true,
+        "itiPaths": [
+          "path3"
+        ],
+        "itoPaths": [
+          "path4"
+        ],
         "style": {
           "width": "640px",
           "height": "131px"
@@ -139,9 +180,15 @@
             "tag": "svg",
             "id": "foreignObject11",
             "counter": 11,
-            "x": 231,
-            "y": 51,
+            "x": 226,
+            "y": 48,
             "title": "TRE API",
+            "iPaths": [
+              "path3"
+            ],
+            "oPaths": [
+              "path4"
+            ],
             "style": {
               "width": "150px",
               "height": "50px"
@@ -169,9 +216,12 @@
         "tag": "svg",
         "id": "foreignObject4",
         "counter": 4,
-        "x": 288,
-        "y": 679,
+        "x": 367,
+        "y": 671,
         "title": "CDAP",
+        "iPaths": [
+          "path4"
+        ],
         "style": {
           "width": "150px",
           "height": "50px"
@@ -183,9 +233,12 @@
         "tag": "textarea",
         "id": "foreignObject18",
         "counter": 18,
-        "x": 300,
-        "y": 56,
+        "x": 598,
+        "y": 55,
         "text": "Agent",
+        "oPaths": [
+          "path1"
+        ],
         "style": {
           "width": "100px",
           "height": "15px"
@@ -197,9 +250,12 @@
         "tag": "textarea",
         "id": "foreignObject17",
         "counter": 17,
-        "x": 124,
-        "y": 57,
+        "x": 313,
+        "y": 45,
         "text": "Trader",
+        "oPaths": [
+          "path0"
+        ],
         "style": {
           "width": "100px",
           "height": "15px"
@@ -211,13 +267,79 @@
         "tag": "svg",
         "id": "foreignObject28",
         "counter": 28,
-        "x": 49,
-        "y": 678,
+        "x": 102,
+        "y": 679,
         "title": "ETMP",
         "style": {
           "width": "150px",
           "height": "50px"
         }
+      }
+    }
+  },
+  "paths": {
+    "path0": {
+      "props": {
+        "id": "path0",
+        "x1": 373,
+        "y1": 90,
+        "x2": 568,
+        "y2": 184,
+        "d": "M 373 90 C 373 137 568 137 568 184",
+        "sNode": "foreignObject17",
+        "tNode": "foreignObject3"
+      }
+    },
+    "path1": {
+      "props": {
+        "id": "path1",
+        "counter": 1,
+        "x1": 658,
+        "y1": 100,
+        "x2": 568,
+        "y2": 184,
+        "d": "M 658 100 C 658 142 568 142 568 184",
+        "sNode": "foreignObject18",
+        "tNode": "foreignObject3"
+      }
+    },
+    "path2": {
+      "props": {
+        "id": "path2",
+        "counter": 2,
+        "x1": 568,
+        "y1": 264,
+        "x2": 460,
+        "y2": 341,
+        "d": "M 568 264 C 568 302.5 460 302.5 460 341",
+        "sNode": "foreignObject3",
+        "tNode": "foreignObject8"
+      }
+    },
+    "path3": {
+      "props": {
+        "id": "path3",
+        "counter": 3,
+        "x1": 460,
+        "y1": 421,
+        "x2": 440,
+        "y2": 539,
+        "d": "M 460 421 C 460 480 440 480 440 539",
+        "sNode": "foreignObject8",
+        "tNode": "foreignObject11"
+      }
+    },
+    "path4": {
+      "props": {
+        "id": "path4",
+        "counter": 4,
+        "x1": 440,
+        "y1": 619,
+        "x2": 452,
+        "y2": 666,
+        "d": "M 440 619 C 440 642.5 452 642.5 452 666",
+        "sNode": "foreignObject11",
+        "tNode": "foreignObject4"
       }
     }
   }
