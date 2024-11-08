@@ -7,8 +7,8 @@
     "title": "TRE",
     "showChildren": true,
     "style": {
-      "width": "852px",
-      "height": "759px"
+      "width": "1145px",
+      "height": "907px"
     }
   },
   "nodes": {
@@ -17,22 +17,24 @@
         "tag": "svg",
         "id": "foreignObject1",
         "counter": 1,
-        "x": 42,
-        "y": 128,
+        "x": 39,
+        "y": 124,
         "title": "MDTP",
         "showChildren": true,
         "itiPaths": [
           "path0",
           "path1",
-          "path2"
+          "path2",
+          "path5"
         ],
         "itoPaths": [
           "path2",
-          "path3"
+          "path3",
+          "path5"
         ],
         "style": {
-          "width": "770px",
-          "height": "310px"
+          "width": "1066px",
+          "height": "451px"
         }
       },
       "nodes": {
@@ -41,8 +43,8 @@
             "tag": "svg",
             "id": "foreignObject25",
             "counter": 25,
-            "x": 18,
-            "y": 170,
+            "x": 112,
+            "y": 311,
             "title": "Protected Zo",
             "showChildren": true,
             "itiPaths": [
@@ -98,31 +100,51 @@
             "tag": "svg",
             "id": "foreignObject15",
             "counter": 15,
-            "x": 77,
-            "y": 26,
+            "x": 72,
+            "y": 32,
             "title": "Public Zone",
             "showChildren": true,
             "itiPaths": [
               "path0",
-              "path1"
+              "path1",
+              "path5"
             ],
             "itoPaths": [
-              "path2"
+              "path2",
+              "path5"
             ],
             "style": {
-              "width": "534px",
-              "height": "95px"
+              "width": "954px",
+              "height": "206px"
             }
           },
           "nodes": {
+            "foreignObject43": {
+              "props": {
+                "tag": "svg",
+                "id": "foreignObject43",
+                "counter": 43,
+                "x": 764,
+                "y": 102,
+                "title": "Auth API",
+                "iPaths": [
+                  "path5"
+                ],
+                "style": {
+                  "width": "150px",
+                  "height": "50px"
+                }
+              }
+            },
             "foreignObject3": {
               "props": {
                 "tag": "svg",
                 "id": "foreignObject3",
                 "counter": 3,
-                "x": 344,
-                "y": 15,
+                "x": 289,
+                "y": 48,
                 "title": "TRE Frontend",
+                "showChildren": true,
                 "iPaths": [
                   "path0",
                   "path1"
@@ -130,9 +152,31 @@
                 "oPaths": [
                   "path2"
                 ],
+                "itoPaths": [
+                  "path5"
+                ],
                 "style": {
-                  "width": "150px",
-                  "height": "50px"
+                  "width": "381px",
+                  "height": "128px"
+                }
+              },
+              "nodes": {
+                "foreignObject42": {
+                  "props": {
+                    "tag": "svg",
+                    "id": "foreignObject42",
+                    "counter": 42,
+                    "x": 191,
+                    "y": 48,
+                    "title": "Auth Client",
+                    "oPaths": [
+                      "path5"
+                    ],
+                    "style": {
+                      "width": "150px",
+                      "height": "50px"
+                    }
+                  }
                 }
               }
             }
@@ -146,7 +190,7 @@
         "id": "foreignObject2",
         "counter": 2,
         "x": 119,
-        "y": 486,
+        "y": 636,
         "title": "EIS",
         "showChildren": true,
         "itiPaths": [
@@ -216,8 +260,8 @@
         "tag": "svg",
         "id": "foreignObject4",
         "counter": 4,
-        "x": 367,
-        "y": 671,
+        "x": 528,
+        "y": 824,
         "title": "CDAP",
         "iPaths": [
           "path4"
@@ -267,8 +311,8 @@
         "tag": "svg",
         "id": "foreignObject28",
         "counter": 28,
-        "x": 102,
-        "y": 679,
+        "x": 111,
+        "y": 827,
         "title": "ETMP",
         "style": {
           "width": "150px",
@@ -283,9 +327,9 @@
         "id": "path0",
         "x1": 373,
         "y1": 90,
-        "x2": 568,
-        "y2": 184,
-        "d": "M 373 90 C 373 137 568 137 568 184",
+        "x2": 620.5,
+        "y2": 219,
+        "d": "M 373 90 C 373 154.5 620.5 154.5 620.5 219",
         "sNode": "foreignObject17",
         "tNode": "foreignObject3"
       }
@@ -296,9 +340,9 @@
         "counter": 1,
         "x1": 658,
         "y1": 100,
-        "x2": 568,
-        "y2": 184,
-        "d": "M 658 100 C 658 142 568 142 568 184",
+        "x2": 620.5,
+        "y2": 219,
+        "d": "M 658 100 C 658 159.5 620.5 159.5 620.5 219",
         "sNode": "foreignObject18",
         "tNode": "foreignObject3"
       }
@@ -307,11 +351,11 @@
       "props": {
         "id": "path2",
         "counter": 2,
-        "x1": 568,
-        "y1": 264,
-        "x2": 460,
-        "y2": 341,
-        "d": "M 568 264 C 568 302.5 460 302.5 460 341",
+        "x1": 620.5,
+        "y1": 377,
+        "x2": 551,
+        "y2": 478,
+        "d": "M 620.5 377 C 620.5 427.5 551 427.5 551 478",
         "sNode": "foreignObject3",
         "tNode": "foreignObject8"
       }
@@ -320,11 +364,11 @@
       "props": {
         "id": "path3",
         "counter": 3,
-        "x1": 460,
-        "y1": 421,
+        "x1": 551,
+        "y1": 558,
         "x2": 440,
-        "y2": 539,
-        "d": "M 460 421 C 460 480 440 480 440 539",
+        "y2": 689,
+        "d": "M 551 558 C 551 623.5 440 623.5 440 689",
         "sNode": "foreignObject8",
         "tNode": "foreignObject11"
       }
@@ -334,12 +378,26 @@
         "id": "path4",
         "counter": 4,
         "x1": 440,
-        "y1": 619,
-        "x2": 452,
-        "y2": 666,
-        "d": "M 440 619 C 440 642.5 452 642.5 452 666",
+        "y1": 769,
+        "x2": 613,
+        "y2": 819,
+        "d": "M 440 769 C 440 794 613 794 613 819",
         "sNode": "foreignObject11",
         "tNode": "foreignObject4"
+      }
+    },
+    "path5": {
+      "props": {
+        "id": "path5",
+        "counter": 5,
+        "x1": 811,
+        "y1": 317,
+        "x2": 890,
+        "y2": 313,
+        "d": "M 811 317 C 850.5 317 850.5 313 890 313",
+        "sNode": "foreignObject42",
+        "tNode": "foreignObject43",
+        "position": 1
       }
     }
   }
