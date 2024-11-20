@@ -2,317 +2,541 @@
   "props": {
     "tag": "svg",
     "id": "foreignObject0",
-    "x": 193,
-    "y": 58,
+    "x": 91,
+    "y": 78,
     "title": "TRE",
     "showChildren": true,
     "style": {
-      "width": "1145px",
-      "height": "907px"
+      "width": "1054px",
+      "height": "959px"
     }
   },
   "nodes": {
-    "foreignObject1": {
+    "foreignObject1732109512": {
       "props": {
         "tag": "svg",
-        "id": "foreignObject1",
-        "counter": 1,
-        "x": 39,
-        "y": 124,
-        "title": "MDTP",
-        "showChildren": true,
-        "itiPaths": [
-          "path0",
-          "path1",
-          "path2",
-          "path5"
-        ],
-        "itoPaths": [
-          "path2",
-          "path3",
-          "path5"
-        ],
-        "style": {
-          "width": "1066px",
-          "height": "451px"
-        }
-      },
-      "nodes": {
-        "foreignObject25": {
-          "props": {
-            "tag": "svg",
-            "id": "foreignObject25",
-            "counter": 25,
-            "x": 112,
-            "y": 311,
-            "title": "Protected Zo",
-            "showChildren": true,
-            "itiPaths": [
-              "path2"
-            ],
-            "itoPaths": [
-              "path3"
-            ],
-            "style": {
-              "width": "712px",
-              "height": "110px"
-            }
-          },
-          "nodes": {
-            "foreignObject27": {
-              "props": {
-                "tag": "svg",
-                "id": "foreignObject27",
-                "counter": 27,
-                "x": 522,
-                "y": 30,
-                "title": "TRE DataStor",
-                "style": {
-                  "width": "150px",
-                  "height": "50px"
-                }
-              }
-            },
-            "foreignObject8": {
-              "props": {
-                "tag": "svg",
-                "id": "foreignObject8",
-                "counter": 8,
-                "x": 295,
-                "y": 28,
-                "title": "TRE Backend",
-                "iPaths": [
-                  "path2"
-                ],
-                "oPaths": [
-                  "path3"
-                ],
-                "style": {
-                  "width": "150px",
-                  "height": "50px"
-                }
-              }
-            }
-          }
-        },
-        "foreignObject15": {
-          "props": {
-            "tag": "svg",
-            "id": "foreignObject15",
-            "counter": 15,
-            "x": 72,
-            "y": 32,
-            "title": "Public Zone",
-            "showChildren": true,
-            "itiPaths": [
-              "path0",
-              "path1",
-              "path5"
-            ],
-            "itoPaths": [
-              "path2",
-              "path5"
-            ],
-            "style": {
-              "width": "954px",
-              "height": "206px"
-            }
-          },
-          "nodes": {
-            "foreignObject43": {
-              "props": {
-                "tag": "svg",
-                "id": "foreignObject43",
-                "counter": 43,
-                "x": 764,
-                "y": 102,
-                "title": "Auth API",
-                "iPaths": [
-                  "path5"
-                ],
-                "style": {
-                  "width": "150px",
-                  "height": "50px"
-                }
-              }
-            },
-            "foreignObject3": {
-              "props": {
-                "tag": "svg",
-                "id": "foreignObject3",
-                "counter": 3,
-                "x": 289,
-                "y": 48,
-                "title": "TRE Frontend",
-                "showChildren": true,
-                "iPaths": [
-                  "path0",
-                  "path1"
-                ],
-                "oPaths": [
-                  "path2"
-                ],
-                "itoPaths": [
-                  "path5"
-                ],
-                "style": {
-                  "width": "381px",
-                  "height": "128px"
-                }
-              },
-              "nodes": {
-                "foreignObject42": {
-                  "props": {
-                    "tag": "svg",
-                    "id": "foreignObject42",
-                    "counter": 42,
-                    "x": 191,
-                    "y": 48,
-                    "title": "Auth Client",
-                    "oPaths": [
-                      "path5"
-                    ],
-                    "style": {
-                      "width": "150px",
-                      "height": "50px"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "foreignObject2": {
-      "props": {
-        "tag": "svg",
-        "id": "foreignObject2",
-        "counter": 2,
-        "x": 119,
-        "y": 636,
-        "title": "EIS",
-        "showChildren": true,
-        "itiPaths": [
-          "path3"
-        ],
-        "itoPaths": [
-          "path4"
-        ],
-        "style": {
-          "width": "640px",
-          "height": "131px"
-        }
-      },
-      "nodes": {
-        "foreignObject10": {
-          "props": {
-            "tag": "svg",
-            "id": "foreignObject10",
-            "counter": 10,
-            "x": 8,
-            "y": 47,
-            "title": "Reg API",
-            "style": {
-              "width": "150px",
-              "height": "50px"
-            }
-          }
-        },
-        "foreignObject11": {
-          "props": {
-            "tag": "svg",
-            "id": "foreignObject11",
-            "counter": 11,
-            "x": 226,
-            "y": 48,
-            "title": "TRE API",
-            "iPaths": [
-              "path3"
-            ],
-            "oPaths": [
-              "path4"
-            ],
-            "style": {
-              "width": "150px",
-              "height": "50px"
-            }
-          }
-        },
-        "foreignObject9": {
-          "props": {
-            "tag": "svg",
-            "id": "foreignObject9",
-            "counter": 9,
-            "x": 450,
-            "y": 51,
-            "title": "Sub API",
-            "style": {
-              "width": "150px",
-              "height": "50px"
-            }
-          }
-        }
-      }
-    },
-    "foreignObject4": {
-      "props": {
-        "tag": "svg",
-        "id": "foreignObject4",
-        "counter": 4,
-        "x": 528,
-        "y": 824,
+        "id": "foreignObject1732109512",
+        "counter": 1732109512,
+        "x": 311,
+        "y": 879,
         "title": "CDAP",
-        "iPaths": [
-          "path4"
-        ],
         "style": {
           "width": "150px",
           "height": "50px"
         }
       }
     },
-    "foreignObject18": {
-      "props": {
-        "tag": "textarea",
-        "id": "foreignObject18",
-        "counter": 18,
-        "x": 598,
-        "y": 55,
-        "text": "Agent",
-        "oPaths": [
-          "path1"
-        ],
-        "style": {
-          "width": "100px",
-          "height": "15px"
-        }
-      }
-    },
-    "foreignObject17": {
-      "props": {
-        "tag": "textarea",
-        "id": "foreignObject17",
-        "counter": 17,
-        "x": 313,
-        "y": 45,
-        "text": "Trader",
-        "oPaths": [
-          "path0"
-        ],
-        "style": {
-          "width": "100px",
-          "height": "15px"
-        }
-      }
-    },
-    "foreignObject28": {
+    "foreignObject1732109455": {
       "props": {
         "tag": "svg",
-        "id": "foreignObject28",
-        "counter": 28,
-        "x": 111,
-        "y": 827,
+        "id": "foreignObject1732109455",
+        "counter": 1732109455,
+        "x": 81,
+        "y": 204,
+        "title": "MDTP",
+        "showChildren": true,
+        "style": {
+          "width": "933px",
+          "height": "502px"
+        }
+      },
+      "nodes": {
+        "foreignObject1732109469": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1732109469",
+            "counter": 1732109469,
+            "x": 793,
+            "y": 319,
+            "text": "SDES",
+            "style": {
+              "width": "100px",
+              "height": "20px"
+            }
+          }
+        },
+        "foreignObject1732109476": {
+          "props": {
+            "tag": "svg",
+            "id": "foreignObject1732109476",
+            "counter": 1732109476,
+            "x": 66,
+            "y": 29,
+            "title": "Public Zone",
+            "showChildren": true,
+            "style": {
+              "width": "481px",
+              "height": "141px"
+            }
+          },
+          "nodes": {
+            "foreignObject1732109577": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732109577",
+                "counter": 1732109577,
+                "x": 222,
+                "y": 25,
+                "text": "TRE Account",
+                "iPaths": [
+                  "path1732111176"
+                ],
+                "oPaths": [
+                  "path1732111484"
+                ],
+                "style": {
+                  "width": "100px",
+                  "height": "20px"
+                }
+              }
+            },
+            "foreignObject1732109588": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732109588",
+                "counter": 1732109588,
+                "x": 341,
+                "y": 91,
+                "text": "TRE Reports",
+                "iPaths": [
+                  "path1732111185"
+                ],
+                "oPaths": [
+                  "path1732111488"
+                ],
+                "style": {
+                  "width": "100px",
+                  "height": "20px"
+                }
+              }
+            },
+            "foreignObject1732109553": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732109553",
+                "counter": 1732109553,
+                "x": 42,
+                "y": 42,
+                "text": "TRE FE",
+                "toolTipText": "Web pages",
+                "iPaths": [
+                  "path1732111138"
+                ],
+                "oPaths": [
+                  "path1732111154",
+                  "path1732111176",
+                  "path1732111185"
+                ],
+                "style": {
+                  "width": "100px",
+                  "height": "20px",
+                  "toolTipWidth": "175px",
+                  "toolTipHeight": "30px"
+                }
+              }
+            }
+          },
+          "paths": {
+            "path1732111185": {
+              "props": {
+                "id": "path1732111185",
+                "counter": 1732111185,
+                "x1": 160.5,
+                "y1": 57,
+                "x2": 341,
+                "y2": 107,
+                "d": "M 160.5 57 C 250.75 57 250.75 107 341 107",
+                "sNode": "foreignObject1732109553",
+                "tNode": "foreignObject1732109588",
+                "position": 1,
+                "sRad": 75,
+                "tRad": 80
+              }
+            },
+            "path1732111176": {
+              "props": {
+                "id": "path1732111176",
+                "counter": 1732111176,
+                "x1": 160.5,
+                "y1": 50,
+                "x2": 222,
+                "y2": 44,
+                "d": "M 160.5 50 C 191.25 50 191.25 44 222 44",
+                "sNode": "foreignObject1732109553",
+                "tNode": "foreignObject1732109577",
+                "position": 1,
+                "sRad": 40,
+                "tRad": 95
+              }
+            }
+          }
+        },
+        "foreignObject1732109485": {
+          "props": {
+            "tag": "svg",
+            "id": "foreignObject1732109485",
+            "counter": 1732109485,
+            "x": 41,
+            "y": 206,
+            "title": "Private Zone",
+            "showChildren": true,
+            "style": {
+              "width": "664px",
+              "height": "266px"
+            }
+          },
+          "nodes": {
+            "foreignObject1732111449": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732111449",
+                "counter": 1732111449,
+                "x": 222,
+                "y": 216,
+                "text": "Account DB",
+                "iPaths": [
+                  "path1732111455"
+                ],
+                "style": {
+                  "width": "100px",
+                  "height": "20px"
+                }
+              }
+            },
+            "foreignObject1732109601": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732109601",
+                "counter": 1732109601,
+                "x": 25,
+                "y": 56,
+                "text": "TRE BE",
+                "iPaths": [
+                  "path1732111154"
+                ],
+                "style": {
+                  "width": "100px",
+                  "height": "20px",
+                  "toolTipWidth": "175px",
+                  "toolTipHeight": "30px"
+                }
+              }
+            },
+            "foreignObject1732111409": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732111409",
+                "counter": 1732111409,
+                "x": 320,
+                "y": 50,
+                "text": "TRE Report BE",
+                "iPaths": [
+                  "path1732111488"
+                ],
+                "oPaths": [
+                  "path1732111462"
+                ],
+                "style": {
+                  "width": "111px",
+                  "height": "25px"
+                }
+              }
+            },
+            "foreignObject1732111210": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732111210",
+                "counter": 1732111210,
+                "x": 355,
+                "y": 214,
+                "text": "Reports DB",
+                "iPaths": [
+                  "path1732111221"
+                ],
+                "style": {
+                  "width": "100px",
+                  "height": "20px"
+                }
+              }
+            },
+            "foreignObject1732111397": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732111397",
+                "counter": 1732111397,
+                "x": 160,
+                "y": 49,
+                "text": "TRE Account BE",
+                "iPaths": [
+                  "path1732111484"
+                ],
+                "oPaths": [
+                  "path1732111465"
+                ],
+                "style": {
+                  "width": "116px",
+                  "height": "27px"
+                }
+              }
+            },
+            "foreignObject1732109607": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732109607",
+                "counter": 1732109607,
+                "x": 491,
+                "y": 47,
+                "text": "TRE Notifications",
+                "style": {
+                  "width": "133px",
+                  "height": "25px"
+                }
+              }
+            },
+            "foreignObject1732109934": {
+              "props": {
+                "tag": "textarea",
+                "id": "foreignObject1732109934",
+                "counter": 1732109934,
+                "x": 287,
+                "y": 130,
+                "text": "TRE Datastore",
+                "iPaths": [
+                  "path1732111462",
+                  "path1732111465"
+                ],
+                "oPaths": [
+                  "path1732111221",
+                  "path1732111455"
+                ],
+                "style": {
+                  "width": "104px",
+                  "height": "28px"
+                }
+              }
+            }
+          },
+          "paths": {
+            "path1732111221": {
+              "props": {
+                "id": "path1732111221",
+                "counter": 1732111221,
+                "x1": 361,
+                "y1": 170,
+                "x2": 423,
+                "y2": 214,
+                "d": "M 361 170 C 361 192 423 192 423 214",
+                "sNode": "foreignObject1732109934",
+                "tNode": "foreignObject1732111210",
+                "position": 2,
+                "sRad": 71.15384615384616,
+                "tRad": 68
+              }
+            },
+            "path1732111462": {
+              "props": {
+                "id": "path1732111462",
+                "counter": 1732111462,
+                "x1": 390,
+                "y1": 87,
+                "x2": 368,
+                "y2": 130,
+                "d": "M 390 87 C 390 108.5 368 108.5 368 130",
+                "sNode": "foreignObject1732111409",
+                "tNode": "foreignObject1732109934",
+                "position": 2,
+                "sRad": 63.06306306306306,
+                "tRad": 77.88461538461539
+              }
+            },
+            "path1732111465": {
+              "props": {
+                "id": "path1732111465",
+                "counter": 1732111465,
+                "x1": 225,
+                "y1": 88,
+                "x2": 335,
+                "y2": 130,
+                "d": "M 225 88 C 225 109 335 109 335 130",
+                "sNode": "foreignObject1732111397",
+                "tNode": "foreignObject1732109934",
+                "position": 2,
+                "sRad": 56.03448275862068,
+                "tRad": 46.15384615384615
+              }
+            },
+            "path1732111455": {
+              "props": {
+                "id": "path1732111455",
+                "counter": 1732111455,
+                "x1": 334,
+                "y1": 170,
+                "x2": 280,
+                "y2": 216,
+                "d": "M 334 170 C 334 193 280 193 280 216",
+                "sNode": "foreignObject1732109934",
+                "tNode": "foreignObject1732111449",
+                "position": 2,
+                "sRad": 45.19230769230769,
+                "tRad": 57.99999999999999
+              }
+            }
+          }
+        }
+      },
+      "paths": {
+        "path1732111154": {
+          "props": {
+            "id": "path1732111154",
+            "counter": 1732111154,
+            "x1": 164,
+            "y1": 109,
+            "x2": 123,
+            "y2": 268,
+            "d": "M 164 109 C 164 188.5 123 188.5 123 268",
+            "sNode": "foreignObject1732109553",
+            "tNode": "foreignObject1732109601",
+            "position": 2,
+            "sRad": 50,
+            "tRad": 51
+          }
+        },
+        "path1732111484": {
+          "props": {
+            "id": "path1732111484",
+            "counter": 1732111484,
+            "x1": 331,
+            "y1": 92,
+            "x2": 279,
+            "y2": 261,
+            "d": "M 331 92 C 331 176.5 279 176.5 279 261",
+            "sNode": "foreignObject1732109577",
+            "tNode": "foreignObject1732111397",
+            "position": 2,
+            "sRad": 37,
+            "tRad": 62.06896551724138
+          }
+        },
+        "path1732111488": {
+          "props": {
+            "id": "path1732111488",
+            "counter": 1732111488,
+            "x1": 477,
+            "y1": 158,
+            "x2": 447,
+            "y2": 262,
+            "d": "M 477 158 C 477 210 447 210 447 262",
+            "sNode": "foreignObject1732109588",
+            "tNode": "foreignObject1732111409",
+            "position": 2,
+            "sRad": 64,
+            "tRad": 72.07207207207207
+          }
+        }
+      }
+    },
+    "foreignObject1732109493": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject1732109493",
+        "counter": 1732109493,
+        "x": 99,
+        "y": 744,
+        "title": "EIS",
+        "showChildren": true,
+        "style": {
+          "width": "369px",
+          "height": "99px",
+          "toolTipWidth": "175px",
+          "toolTipHeight": "30px"
+        }
+      },
+      "nodes": {
+        "foreignObject1732109536": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1732109536",
+            "counter": 1732109536,
+            "x": 229,
+            "y": 49,
+            "text": "CDAP API",
+            "style": {
+              "width": "100px",
+              "height": "20px"
+            }
+          }
+        },
+        "foreignObject1732109521": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1732109521",
+            "counter": 1732109521,
+            "x": 21,
+            "y": 43,
+            "text": "ETMP API",
+            "style": {
+              "width": "100px",
+              "height": "20px"
+            }
+          }
+        }
+      }
+    },
+    "foreignObject1732109409": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject1732109409",
+        "counter": 1732109409,
+        "x": 86,
+        "y": 61,
+        "title": "External",
+        "showChildren": true,
+        "style": {
+          "width": "391px",
+          "height": "120px"
+        }
+      },
+      "nodes": {
+        "foreignObject1732109414": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1732109414",
+            "counter": 1732109414,
+            "x": 251,
+            "y": 55,
+            "text": "Trader",
+            "style": {
+              "width": "100px",
+              "height": "20px"
+            }
+          }
+        },
+        "foreignObject1732109442": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1732109442",
+            "counter": 1732109442,
+            "x": 66,
+            "y": 46,
+            "text": "Third Party Agent",
+            "oPaths": [
+              "path1732111138"
+            ],
+            "style": {
+              "width": "118px",
+              "height": "44px"
+            }
+          }
+        }
+      }
+    },
+    "foreignObject1732109505": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject1732109505",
+        "counter": 1732109505,
+        "x": 100,
+        "y": 875,
         "title": "ETMP",
         "style": {
           "width": "150px",
@@ -322,82 +546,20 @@
     }
   },
   "paths": {
-    "path0": {
+    "path1732111138": {
       "props": {
-        "id": "path0",
-        "x1": 373,
-        "y1": 90,
-        "x2": 620.5,
-        "y2": 219,
-        "d": "M 373 90 C 373 154.5 620.5 154.5 620.5 219",
-        "sNode": "foreignObject17",
-        "tNode": "foreignObject3"
-      }
-    },
-    "path1": {
-      "props": {
-        "id": "path1",
-        "counter": 1,
-        "x1": 658,
-        "y1": 100,
-        "x2": 620.5,
-        "y2": 219,
-        "d": "M 658 100 C 658 159.5 620.5 159.5 620.5 219",
-        "sNode": "foreignObject18",
-        "tNode": "foreignObject3"
-      }
-    },
-    "path2": {
-      "props": {
-        "id": "path2",
-        "counter": 2,
-        "x1": 620.5,
-        "y1": 377,
-        "x2": 551,
-        "y2": 478,
-        "d": "M 620.5 377 C 620.5 427.5 551 427.5 551 478",
-        "sNode": "foreignObject3",
-        "tNode": "foreignObject8"
-      }
-    },
-    "path3": {
-      "props": {
-        "id": "path3",
-        "counter": 3,
-        "x1": 551,
-        "y1": 558,
-        "x2": 440,
-        "y2": 689,
-        "d": "M 551 558 C 551 623.5 440 623.5 440 689",
-        "sNode": "foreignObject8",
-        "tNode": "foreignObject11"
-      }
-    },
-    "path4": {
-      "props": {
-        "id": "path4",
-        "counter": 4,
-        "x1": 440,
-        "y1": 769,
-        "x2": 613,
-        "y2": 819,
-        "d": "M 440 769 C 440 794 613 794 613 819",
-        "sNode": "foreignObject11",
-        "tNode": "foreignObject4"
-      }
-    },
-    "path5": {
-      "props": {
-        "id": "path5",
-        "counter": 5,
-        "x1": 811,
-        "y1": 317,
-        "x2": 890,
-        "y2": 313,
-        "d": "M 811 317 C 850.5 317 850.5 313 890 313",
-        "sNode": "foreignObject42",
-        "tNode": "foreignObject43",
-        "position": 1
+        "id": "path1732111138",
+        "counter": 1732111138,
+        "x1": 208,
+        "y1": 169,
+        "x2": 256,
+        "y2": 287,
+        "d": "M 208 169 C 208 228 256 228 256 287",
+        "sNode": "foreignObject1732109442",
+        "tNode": "foreignObject1732109553",
+        "position": 2,
+        "sRad": 42.3728813559322,
+        "tRad": 55.00000000000001
       }
     }
   }
