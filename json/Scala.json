@@ -1,0 +1,393 @@
+{
+  "props": {
+    "tag": "svg",
+    "id": "foreignObject0",
+    "x": 128,
+    "y": 96,
+    "title": "Scala",
+    "showChildren": true,
+    "toolTipText": "The name Scala stands for “scalable language.”\nIt runs on both JVM and Javascript platforms and interoperates.\nIt can be used to write small scripts to building large systems.\nScala is a blend of object-oriented and functional programming concepts.\n\nScala is an object-oriented language in pure form: \n1) every value is an object \n2) and every operation is a method call.\n\nFunctional programming is guided by two main ideas. \n1) The first idea is that functions are first-class values.\n2) The operations of a program should map input values to output values rather than change data in place. (Pure functions)\n\nFeatures\n1) Scala is compatible\n2) Scala is concise\n3) Scala is high-level\n4) Scala is statically typed",
+    "style": {
+      "width": "579px",
+      "height": "582px",
+      "toolTipWidth": "522px",
+      "toolTipHeight": "357px"
+    }
+  },
+  "nodes": {
+    "foreignObject1732697008": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1732697008",
+        "counter": 1732697008,
+        "x": 16,
+        "y": 101,
+        "text": "Methods",
+        "toolTipText": "def max(x: Int, y: Int): Int = if (x > y) x else y \n\nmax: (Int,Int)Int",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "327px",
+          "toolTipHeight": "59px"
+        }
+      }
+    },
+    "foreignObject1737651148": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737651148",
+        "counter": 1737651148,
+        "x": 397,
+        "y": 465,
+        "text": "Script",
+        "toolTipText": "Must end with result of an expression\n",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "345px",
+          "toolTipHeight": "167px"
+        }
+      }
+    },
+    "foreignObject1737457865": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737457865",
+        "counter": 1737457865,
+        "x": 16,
+        "y": 149,
+        "text": "Functions",
+        "toolTipText": "val f1 = (x: Int, y: Int) => if x > y then y else x\n\nval f1: (Int, Int) => Int",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "332px",
+          "toolTipHeight": "55px"
+        }
+      }
+    },
+    "foreignObject1737488524": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject1737488524",
+        "counter": 1737488524,
+        "x": 363,
+        "y": 47,
+        "title": "Collections",
+        "showChildren": true,
+        "style": {
+          "width": "176px",
+          "height": "313px"
+        }
+      },
+      "nodes": {
+        "foreignObject1737556249": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737556249",
+            "counter": 1737556249,
+            "x": 33,
+            "y": 212,
+            "text": "Sets",
+            "toolTipText": "To store unique objects of same type\nval res = Set(\"one\", \"two\")",
+            "style": {
+              "width": "100px",
+              "height": "20px",
+              "toolTipWidth": "324px",
+              "toolTipHeight": "107px"
+            }
+          }
+        },
+        "foreignObject1737488539": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737488539",
+            "counter": 1737488539,
+            "x": 36,
+            "y": 48,
+            "text": "Arrays",
+            "toolTipText": "To store collections of same type values\nval res = new Array[String](3)\nval res1 = Array(1,2,3)",
+            "style": {
+              "width": "100px",
+              "height": "20px",
+              "toolTipWidth": "340px",
+              "toolTipHeight": "93px"
+            }
+          }
+        },
+        "foreignObject1737488959": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737488959",
+            "counter": 1737488959,
+            "x": 35,
+            "y": 102,
+            "text": "Lists",
+            "toolTipText": "To store immutable sequence of objects with same type\nval list = List(1, 2, 3)\n\nOperations\n:::            - for concatenation\n::             - cons - prepend \nIf a method ends with :, it will be applied on right operand.\n:+            - for append, rarely used because the time it take to append grows linearly with list size, instead use prepend and reverse.\n\n\n",
+            "style": {
+              "width": "100px",
+              "height": "20px",
+              "toolTipWidth": "503px",
+              "toolTipHeight": "265px"
+            }
+          }
+        },
+        "foreignObject1737556284": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737556284",
+            "counter": 1737556284,
+            "x": 36,
+            "y": 263,
+            "text": "Maps",
+            "toolTipText": "To store key value pairs \nvar states = scala.collection.mutable.Map[String, String]()\nvar states = scala.collection.mutable.Map(\"AL\" -> \"Alabama\", \"AK\" -> \"Alaska\")\n",
+            "style": {
+              "width": "100px",
+              "height": "20px",
+              "toolTipWidth": "544px",
+              "toolTipHeight": "129px"
+            }
+          }
+        },
+        "foreignObject1737555988": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737555988",
+            "counter": 1737555988,
+            "x": 32,
+            "y": 158,
+            "text": "Tuples",
+            "toolTipText": "To store immutable objects of different type\nval res = (1, \"test\")",
+            "style": {
+              "width": "100px",
+              "height": "20px",
+              "toolTipWidth": "340px",
+              "toolTipHeight": "98px"
+            }
+          }
+        }
+      }
+    },
+    "foreignObject1737462003": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737462003",
+        "counter": 1737462003,
+        "x": 19,
+        "y": 196,
+        "text": "Control Structures",
+        "toolTipText": "Almost all control structures result in a value in scala\nThe assignment operation result a unit value in scala\n\nDecisions\nif x > y then y else x\n\nLoops\nwhile i < args.length do println(args(i))    - it returns unit value\n\nIterations\nargs.foreach(arg => println(arg))\nfor arg <- args do println(arg) \nwe can also combine for with if and assignments\nfor\n    if true\n    temp = \"text\"\ndo println(\"test\")\n\nTransformations\nfor arg <- args yield arg + \"&\"\nargs.map(arg => arg + \"&\")\n\nException Handling\ntry\n    if d != 0 then print(\"test\") else throw new Exception\ncatch\n    case ex: Exception => print(\"exception\")\nfinally\n    print(\"complete\")\nScala does not require you to handle checked exceptions.\nfinally block normally do cleanup activities and does not return values.\n\nmatch - lets you select from number of alternatives\narg match\n    case \"1\" => print(\"one\")\n    case \"2\" => print(\"two\")\n    case _\n\nString Interpolation\nval number = 4\nprint(s\"Number $number\")\nprint(s\"the answer is ${6 * 7}\")\nprint(raw\"escape sequences \\\\\\\\\") - escape sequences are not recognised\nprint(f\"${math.pi}%.5f\") - for formatting floating point numbers\n",
+        "style": {
+          "width": "101px",
+          "height": "39px",
+          "toolTipWidth": "720px",
+          "toolTipHeight": "572px"
+        }
+      }
+    },
+    "foreignObject1737651837": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737651837",
+        "counter": 1737651837,
+        "x": 195,
+        "y": 111,
+        "text": "Literals",
+        "toolTipText": "A way to write a constant value in code\n\nBoolean Literals - true, false\n\nInteger Literals - \nInteges - all numbers not starts with 0\nHexadecimal - starts with 0x or 0X - all digits + a to f \nWe can use _ for large numbers for better readability\nval res = 1_000_000_000\nIt the integer literal ends with l or L, its a Long value\n\nFloat point Literals\nHaving digits an options decimal point and optional e for exponent\nIf the floating point literal ends with f or F, its Float otherwise Double\n\nExperimental literals to remove size limit of numbers\nBigInt, BigDecimal\n\nCharacter Literals\nsurrounded with 'A'\n\nString Literals\nsurrounded with \"test\"\nfor raw strings use \"\"\"testing             multi line s\"\"\"\n\n\n\n ",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "493px",
+          "toolTipHeight": "464px"
+        }
+      }
+    },
+    "foreignObject1732696396": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1732696396",
+        "counter": 1732696396,
+        "x": 18,
+        "y": 52,
+        "text": "Variables",
+        "toolTipText": "Variables are used to manage values.\nScala has two kinds of variables,\n1) val - constants, once initialised never changes its value\n2) var - can have values reassigned\n val msg: String  = \"Hello, world!\"\n\n\n",
+        "style": {
+          "width": "78px",
+          "height": "20px",
+          "toolTipWidth": "410px",
+          "toolTipHeight": "99px"
+        }
+      }
+    },
+    "foreignObject1737652817": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737652817",
+        "counter": 1737652817,
+        "x": 195,
+        "y": 57,
+        "text": "Data Types",
+        "toolTipText": "Boolean        - 1 bit\nByte               - 1 byte - 8 bits\nShort             - 2 bytes \nInt                  - 4 bytes\nLong              - 8 bytes\nFloat              - 4 bytes\nDouble           - 8 bytes\nChar               - 2 bytes\nString             - sequence of chars",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "244px",
+          "toolTipHeight": "175px"
+        }
+      }
+    },
+    "foreignObject1737707816": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737707816",
+        "counter": 1737707816,
+        "x": 203,
+        "y": 220,
+        "text": "Identifiers",
+        "toolTipText": "Alpha-numeric identifiers\nFor naming variables, methods, functions, classes, etc...\n\nConstant Identifiers : XOffset\n\nOperator Identifier : consists of one or more operators\n\nMixed Identifier : consists of alpha-numberic identifier followed by _ and an operator identifier\n\nLiteral Identifier : `yeild`",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "566px",
+          "toolTipHeight": "232px"
+        }
+      }
+    },
+    "foreignObject1737634413": {
+      "props": {
+        "tag": "svg",
+        "id": "foreignObject1737634413",
+        "counter": 1737634413,
+        "x": 16,
+        "y": 401,
+        "title": "OOP",
+        "showChildren": true,
+        "toolTipText": "Scala has 2 namespaces\nvalues - fields, methods, packages, singleton objects\ntypes - class, trait\n\n",
+        "style": {
+          "width": "312px",
+          "height": "151px",
+          "toolTipWidth": "420px",
+          "toolTipHeight": "184px"
+        }
+      },
+      "nodes": {
+        "foreignObject1737634428": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737634428",
+            "counter": 1737634428,
+            "x": 25,
+            "y": 53,
+            "text": "Class",
+            "toolTipText": "A class is blueprint for creating objects\nclass Person\nval p = new Person\n\nInside class we will place fields and methods\nFields - holds the state with val or var\nMethods - holds the executable code that use fields to do work\n\nClasses can take parameters directly, and they can be used inside body of the class\nThe body of the class(not a field or method) will go to primary constructor\nclass Person(id:String, name: String)\n    print(\"Person object created : \" + name)\nConstructors other than primary constructor are called auxiliary constructors\nclass Person\n    def this(arg: String) = this\n\nWe can create objects using universal apply method\nPerson(\"1\", \"test\")\nWe can override default behavior of a class using override,\nclass Person\n    override def toString = \"\"\n\nAccess Modifiers\npublic is default access\nprivate - will restrict the access to within the class\nMethod parameters are vals\nThe last computed value of a method will be the return value\nMethods with side affects are called procedures\n\ncase class\ncase class Person(id: String, name: String)\nCase classes by default implement default methods such as equals, toString, etc...\nCase classes will generate companion object by default\nIn case classes, compiler will store all parameters in fields and accessor methods for them\n\nclass Person(id: String) - id is parameter only\nclass Person(val id:String) - id is both parameter and field also\n\n",
+            "style": {
+              "width": "100px",
+              "height": "20px",
+              "toolTipWidth": "761px",
+              "toolTipHeight": "713px"
+            }
+          }
+        },
+        "foreignObject1737637933": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737637933",
+            "counter": 1737637933,
+            "x": 172,
+            "y": 51,
+            "text": "Object",
+            "toolTipText": "Only one instance is maintained in memory\nobject Person\nClass and Object those share same name are called companions\nCompanions should be in one file\nCompanions can access each others private members\nObject methods can be invoked with its name \nPerson.work(\"arg\")\nWe can instantiate a object with new, so it wont take any parameters.\n\n",
+            "style": {
+              "width": "100px",
+              "height": "20px",
+              "toolTipWidth": "537px",
+              "toolTipHeight": "180px"
+            }
+          }
+        },
+        "foreignObject1737822117": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737822117",
+            "counter": 1737822117,
+            "x": 19,
+            "y": 101,
+            "text": "Trait",
+            "style": {
+              "width": "100px",
+              "height": "20px"
+            }
+          }
+        }
+      }
+    },
+    "foreignObject1737653446": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737653446",
+        "counter": 1737653446,
+        "x": 205,
+        "y": 165,
+        "text": "Operators",
+        "toolTipText": "Operators are methods\nAny single parameter methods can be operator\nInfix : 7 + 2\nPrefix : -7   ( +, -, ! )\nPostfix : 7 toLong\n\nArithmetic  : +, -, *, /, %\nRelational : >, <, >=, <=, ==, !=\nLogical : &, |, !  (&&, || - short circuit)\nBitwise : &, |, ^, ~\n",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "423px",
+          "toolTipHeight": "261px"
+        }
+      }
+    },
+    "foreignObject1737632157": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737632157",
+        "counter": 1737632157,
+        "x": 19,
+        "y": 298,
+        "text": "Functional Programming",
+        "toolTipText": "Use val instead of var, wherever possible\nPrefer immutable objects\nPrefer methods without side effects\n\nWe can write functions within functions\nInner function can access outer function parameters.\n\nFunction Literal\n(x: Int) => x + 1\nargs.foreach(_ > 0) - multiple underscores mean multiple parameters not reuse\n\nPartially applied functions\ndef sum(a:Int, b:Int) = a + b\nval s = sum(_, _)\n\nClosures\nAny function defined with free variables is called open term.\n(x: Int) => x + more\nAt run time, it will create value by binding with more reference available and close\nIf free variable changed after closure creation, closure call can see the change.\n\nHigher Order Functions\nFunctions that take functions as parameters.\n\nCurrying\nIt is applied to functions that take multiple parameters.\ndef oldSum(x: Int, y: Int) = x + y\ndef curriedSum(x: Int)(y: Int) = x + y\nWhen you invoke curriedSum, it will invoke 2 functions calls back to back.\nFirst function call return function value to second function\nFunction with one argument can be put in curly braces\n\nLast parameter to a function can be repeated, using *\nWe can have named arguments and default parameter values while defining the function.\nTail recursive function will not create new stack for each recursion.\n",
+        "style": {
+          "width": "104px",
+          "height": "42px",
+          "toolTipWidth": "726px",
+          "toolTipHeight": "556px"
+        }
+      }
+    },
+    "foreignObject1737652786": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737652786",
+        "counter": 1737652786,
+        "x": 397,
+        "y": 419,
+        "text": "Application",
+        "toolTipText": "Any object with proper main method can act as starting point of the application.\n\nobject App\n    def main(args: String*):Unit =\n        print(\"Hi\")\n\nScala imports java.lang and scala package members \n",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "472px",
+          "toolTipHeight": "163px"
+        }
+      }
+    },
+    "foreignObject1737825956": {
+      "props": {
+        "tag": "textarea",
+        "id": "foreignObject1737825956",
+        "counter": 1737825956,
+        "x": 399,
+        "y": 518,
+        "text": "Packaging",
+        "toolTipText": "Packages gives the modularity to the application code\npackage com.jtechy\nclass Person\n\nWe can define different packages in same file by\npackage com.jtechy.model:\nclass Person\npackage com.jtechy.service:\nclass PersonService\n\nA class can be accessed within the package without a prefix.\nOnly nested packaging syntax, the names available outside package also available inside\nIf one package per file, then only names available will be in same package/file.\n\nImports\nIn Scala, packages and their members can be imported by using import clause\nImported items can be accessed with simple names without FQN\n1) may appear anywhere\n2) can be used for objects also in addition to packages\n3) let you hide or rename some of the imported members\n\nAccess modifies\n1) private - accessed within the class\n2) protected - within the sub class\n3) public - with no explicit modifier, can be accessed from anywhere\n\nAny definition that goes inside class, can also be placed at top level package\nWe can import and use them like classes, objects, or traits\n\n",
+        "style": {
+          "width": "100px",
+          "height": "20px",
+          "toolTipWidth": "650px",
+          "toolTipHeight": "539px"
+        }
+      }
+    }
+  }
+}

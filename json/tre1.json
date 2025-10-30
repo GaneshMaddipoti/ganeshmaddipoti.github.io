@@ -8,7 +8,7 @@
     "showChildren": true,
     "style": {
       "width": "1505px",
-      "height": "493px"
+      "height": "492px"
     }
   },
   "nodes": {
@@ -74,10 +74,24 @@
         ],
         "style": {
           "width": "180px",
-          "height": "135px"
+          "height": "200px"
         }
       },
       "nodes": {
+        "foreignObject1737981187": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1737981187",
+            "counter": 1737981187,
+            "x": 42,
+            "y": 128,
+            "text": "Customs Data Store",
+            "style": {
+              "width": "95px",
+              "height": "42px"
+            }
+          }
+        },
         "foreignObject1733224765": {
           "props": {
             "tag": "textarea",
@@ -119,24 +133,10 @@
         "showChildren": true,
         "style": {
           "width": "595px",
-          "height": "413px"
+          "height": "410px"
         }
       },
       "nodes": {
-        "foreignObject1737983596": {
-          "props": {
-            "tag": "textarea",
-            "id": "foreignObject1737983596",
-            "counter": 1737983596,
-            "x": 174,
-            "y": 343,
-            "text": "Customs Data Store",
-            "style": {
-              "width": "79px",
-              "height": "40px"
-            }
-          }
-        },
         "foreignObject1733220016": {
           "props": {
             "tag": "svg",
@@ -148,7 +148,8 @@
             "showChildren": true,
             "toolTipText": "Can be multiple micro services\n1) Routing\n2) Notification\n3) Data Store\n4) User Account\n5) Reports",
             "iPaths": [
-              "path1733225015"
+              "path1733225015",
+              "path1737981143"
             ],
             "oPaths": [
               "path1733225026",
@@ -272,6 +273,26 @@
             }
           }
         },
+        "foreignObject1733225347": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1733225347",
+            "counter": 1733225347,
+            "x": 95,
+            "y": 349,
+            "text": "TRE-Performance Tests",
+            "toolTipText": "API Performance tests",
+            "oPaths": [
+              "path1737981143"
+            ],
+            "style": {
+              "width": "183px",
+              "height": "24px",
+              "toolTipWidth": "175px",
+              "toolTipHeight": "30px"
+            }
+          }
+        },
         "foreignObject1733220026": {
           "props": {
             "tag": "textarea",
@@ -358,6 +379,21 @@
             "tRad": 78.84615384615384
           }
         },
+        "path1737981143": {
+          "props": {
+            "id": "path1737981143",
+            "counter": 1737981143,
+            "x1": 244,
+            "y1": 349,
+            "x2": 244,
+            "y2": 328,
+            "d": "M 244 349 L 244 336 244 336 244 328",
+            "sNode": "foreignObject1733225347",
+            "tNode": "foreignObject1733220016",
+            "sRad": 81.4207650273224,
+            "tRad": 27.225130890052355
+          }
+        },
         "path1733225026": {
           "props": {
             "id": "path1733225026",
@@ -420,7 +456,7 @@
         ],
         "style": {
           "width": "361px",
-          "height": "420px"
+          "height": "419px"
         }
       },
       "nodes": {
@@ -466,7 +502,8 @@
             "showChildren": true,
             "toolTipText": "Can be multiple micro services\n1) Auth\n2) User Account\n3) Reports",
             "iPaths": [
-              "path1733224983"
+              "path1733224983",
+              "path1737981011"
             ],
             "oPaths": [
               "path1733224997",
@@ -575,7 +612,7 @@
             "id": "foreignObject1733219963",
             "counter": 1733219963,
             "x": 249,
-            "y": 355,
+            "y": 354,
             "text": "Session DB",
             "toolTipText": "Store user sessions data\nInvalidate session after TTL\n",
             "iPaths": [
@@ -588,6 +625,23 @@
               "toolTipHeight": "40px"
             }
           }
+        },
+        "foreignObject1733227933": {
+          "props": {
+            "tag": "textarea",
+            "id": "foreignObject1733227933",
+            "counter": 1733227933,
+            "x": 34,
+            "y": 357,
+            "text": "TRE-ui-journey-tests",
+            "oPaths": [
+              "path1737981011"
+            ],
+            "style": {
+              "width": "167px",
+              "height": "24px"
+            }
+          }
         }
       },
       "paths": {
@@ -598,13 +652,28 @@
             "x1": 285,
             "y1": 335,
             "x2": 285,
-            "y2": 350,
-            "d": "M 285 335 L 285 345 285 345 285 350",
+            "y2": 349,
+            "d": "M 285 335 L 285 344.5 285 344.5 285 349",
             "sNode": "foreignObject1733219632",
             "tNode": "foreignObject1733219963",
             "position": 2,
             "sRad": 78.57142857142857,
             "tRad": 56.92307692307692
+          }
+        },
+        "path1737981011": {
+          "props": {
+            "id": "path1737981011",
+            "counter": 1737981011,
+            "x1": 190,
+            "y1": 357,
+            "x2": 190,
+            "y2": 340,
+            "d": "M 190 357 L 190 346 190 346 190 340",
+            "sNode": "foreignObject1733227933",
+            "tNode": "foreignObject1733219632",
+            "sRad": 93.41317365269461,
+            "tRad": 22.61904761904762
           }
         },
         "path1733224983": {
@@ -634,8 +703,8 @@
         "x1": 186,
         "y1": 253,
         "x2": 219,
-        "y2": 253,
-        "d": "M 186 253 L 205 253 205 253 219 253",
+        "y2": 252.5,
+        "d": "M 186 253 L 205 253 205 252.5 219 252.5",
         "sNode": "foreignObject1733219506",
         "tNode": "foreignObject1733219582",
         "position": 1,
@@ -666,8 +735,8 @@
         "x1": 1052,
         "y1": 237,
         "x2": 1280,
-        "y2": 204.5,
-        "d": "M 1052 237 L 1271.5 237 1271.5 204.5 1280 204.5",
+        "y2": 237,
+        "d": "M 1052 237 L 1271.5 237 1271.5 237 1280 237",
         "sNode": "foreignObject1733220016",
         "tNode": "foreignObject1733224759",
         "position": 1,
