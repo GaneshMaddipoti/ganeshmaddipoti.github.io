@@ -1,2 +1,2 @@
-# ganeshmaddipoti.github.io
+# schemabot.in
 About Technology
