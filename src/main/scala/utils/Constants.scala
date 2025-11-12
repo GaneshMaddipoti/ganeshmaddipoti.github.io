@@ -7,6 +7,7 @@ object Constants {
   val CODE_BG_COLOR    = "#555"
   val PAGE_BG_COLOR    = "#E0E0E0"
   val FONT_COLOR       = "#000000"
+  val GREEN_COLOR      = "#00A896"
 
   val CONTAINER    = "Container"
   val NODE         = "Node"
