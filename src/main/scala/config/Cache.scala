@@ -2,37 +2,17 @@ package config
 
 import elements.AbstractElement
 import elements.AbstractElement.{addElement, addPath}
-import extensions.HtmlElementExtension.*
 import models.GraphElement
 import org.scalajs.dom
 import org.scalajs.dom.*
 import upickle.legacy.{read, write}
 import utils.Constants.*
-import utils.HtmlElementUtil.div
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 import scala.scalajs.js
 
-import scala.scalajs.js
-import scala.scalajs.js.annotation.JSGlobal
-
-@js.native
-@JSGlobal("hljs")
-object HLJS extends js.Object {
-  def highlightAll(): Unit = js.native
-}
-
 object Cache {
-  val pageBody: HTMLElement                          = div
-    .uid("pageBody")
-    .styles(
-      "position"         -> "absolute",
-      "width"            -> "6000px",
-      "height"           -> "6000px",
-      "background-color" -> PAGE_BG_COLOR,
-      "overflow"         -> "hidden"
-    )
   var fileName: Option[String]                       = None
   var state: ListBuffer[GraphElement]                = ListBuffer()
   var stateMap: mutable.Map[String, AbstractElement] = mutable.Map()
@@ -69,7 +49,6 @@ object Cache {
         val elements = read[ListBuffer[GraphElement]](jsonStr)
         renderElements(elements, None)
         renderPaths(elements)
-        HLJS.highlightAll()
       }
       reader.readAsText(file)
     }

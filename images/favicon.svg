@@ -1,8 +1,116 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-      <circle cx="26" cy="16" r="5" fill="#eee"/>
-      <circle cx="6" cy="6" r="5" fill="#eee"/>
-      <circle cx="6" cy="26" r="5" fill="#eee"/>
-      <line x1="26" y1="16" x2="6" y2="6" stroke="#eee" stroke-width="1"/>
-      <line x1="26" y1="16" x2="6" y2="26" stroke="#eee" stroke-width="1"/>
-      <line x1="6" y1="6" x2="6" y2="26" stroke="#eee" stroke-width="1"/>
-    </svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 1024 1024">
+    <defs>
+        <!-- Base gradient -->
+        <linearGradient id="gBase" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#48e0e6"/>
+            <stop offset="55%" stop-color="#55c0e8"/>
+            <stop offset="100%" stop-color="#6b4bd6"/>
+        </linearGradient>
+
+        <!-- Inner capsule gradient (face rim) -->
+        <linearGradient id="gRim" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#9ed6f6"/>
+            <stop offset="100%" stop-color="#7fbde6"/>
+        </linearGradient>
+
+        <!-- Dark face gradient -->
+        <linearGradient id="gFace" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#143a59"/>
+            <stop offset="100%" stop-color="#0f2f4f"/>
+        </linearGradient>
+
+        <!-- Eye gradient -->
+        <radialGradient id="gEye" cx="30%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#5ff0e9"/>
+            <stop offset="50%" stop-color="#26cfe0"/>
+            <stop offset="100%" stop-color="#18a8c5"/>
+        </radialGradient>
+
+        <!-- soft drop shadow -->
+        <filter id="drop" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity="0.15"/>
+        </filter>
+
+        <!-- inner inset shadow for face -->
+        <filter id="inset" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="blur"/>
+            <feOffset dx="0" dy="8" result="off"/>
+            <feComposite in="off" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="inner"/>
+            <feColorMatrix in="inner" type="matrix"
+                           values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.35" result="shadow"/>
+            <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
+        </filter>
+
+        <!-- Clip the glossy overlay to the rounded hex so it won't produce sharp humps -->
+        <clipPath id="hexClip">
+            <path d="M 536.012 165.856
+                     L 799.988 318.144
+                     A 48 48 0 0 1 824 359.712
+                     L 824 664.288
+                     A 48 48 0 0 1 799.988 705.856
+                     L 536.012 858.144
+                     A 48 48 0 0 1 487.988 858.144
+                     L 224.012 705.856
+                     A 48 48 0 0 1 200 664.288
+                     L 200 359.712
+                     A 48 48 0 0 1 224.012 318.144
+                     L 487.988 165.856
+                     A 48 48 0 0 1 536.012 165.856
+                     Z"/>
+        </clipPath>
+    </defs>
+
+    <!-- Hexagon base with true rounded corners (48px radius using arcs) -->
+    <path d="M 536.012 165.856
+             L 799.988 318.144
+             A 48 48 0 0 1 824 359.712
+             L 824 664.288
+             A 48 48 0 0 1 799.988 705.856
+             L 536.012 858.144
+             A 48 48 0 0 1 487.988 858.144
+             L 224.012 705.856
+             A 48 48 0 0 1 200 664.288
+             L 200 359.712
+             A 48 48 0 0 1 224.012 318.144
+             L 487.988 165.856
+             A 48 48 0 0 1 536.012 165.856
+             Z"
+          fill="#00A896" filter="url(#drop)"/>
+
+    <!-- Group internal shapes and clip them to the rounded hex so nothing protrudes at corners -->
+    <g clip-path="url(#hexClip)">
+        <!-- Slight glossy overlay at top -->
+        <path d="M512,152 L742,292 L742,332 L512,212 L282,332 L282,292 Z"
+              fill="white" opacity="0.06"/>
+
+        <!-- Face rim (outer rounded capsule) -->
+        <rect x="232" y="360" rx="120" ry="120" width="560" height="240"
+              fill="url(#gRim)" />
+
+        <!-- Face inner (dark capsule) with inset shadow -->
+        <rect x="260" y="392" rx="96" ry="96" width="504" height="176"
+              fill="url(#gFace)" filter="url(#inset)"/>
+
+        <!-- Rim stroke to create the lighter bezel -->
+        <rect x="232" y="360" rx="120" ry="120" width="560" height="240"
+              fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="16"/>
+
+        <!-- Left eye -->
+        <circle cx="372" cy="480" r="40" fill="url(#gEye)" filter="url(#drop)"/>
+
+        <!-- Right eye -->
+        <circle cx="652" cy="480" r="40" fill="url(#gEye)" filter="url(#drop)"/>
+
+        <!-- subtle inner highlight on eyes -->
+        <circle cx="360" cy="468" r="14" fill="rgba(255,255,255,0.18)"/>
+        <circle cx="640" cy="468" r="14" fill="rgba(255,255,255,0.18)"/>
+
+        <!-- small bottom glossy highlight on hexagon -->
+        <path d="M512,832 c40,0 70,-34 140,-80 0,0 -160,120 -280,0 70,46 100,80 140,80z"
+              fill="white" opacity="0.03"/>
+    </g>
+</svg>

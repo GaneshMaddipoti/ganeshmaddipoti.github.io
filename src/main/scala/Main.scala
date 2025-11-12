@@ -1,5 +1,7 @@
 import config.Cache.*
 import elements.ContextMenu
+import elements.PageBody.pageBody
+import elements.PageSidebar.sidebar
 import extensions.DocumentExtension.*
 import extensions.HtmlElementExtension.{attrs, dragover, drop}
 import utils.Constants.*
@@ -11,6 +13,7 @@ object Main {
     document
       .onContentLoad { () =>
         document.body.appendChild(pageBody)
+        document.body.appendChild(sidebar)
       }
       .onContextMenu { (e: MouseEvent) =>
         ContextMenu.render(e, None)
