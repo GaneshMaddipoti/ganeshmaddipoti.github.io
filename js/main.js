@@ -1074,7 +1074,8 @@ function $h_LMain$() {
 $h_LMain$.prototype = $c_LMain$.prototype;
 $c_LMain$.prototype.main__AT__V = (function(args) {
   $m_Lextensions_DocumentExtension$().mclick__Lorg_scalajs_dom_Document__F1__Lorg_scalajs_dom_Document($m_Lextensions_DocumentExtension$().onContextMenu__Lorg_scalajs_dom_Document__F1__Lorg_scalajs_dom_Document($m_Lextensions_DocumentExtension$().onContentLoad__Lorg_scalajs_dom_Document__F0__Lorg_scalajs_dom_Document(document, new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => {
-    document.body.appendChild($m_Lconfig_Cache$().Lconfig_Cache$__f_pageBody);
+    document.body.appendChild($m_Lelements_PageBody$().Lelements_PageBody$__f_pageBody);
+    document.body.appendChild($m_Lelements_PageSidebar$().Lelements_PageSidebar$__f_sidebar);
   }))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e) => {
     $m_Lelements_ContextMenu$().render__Lorg_scalajs_dom_MouseEvent__s_Option__V(e, $m_s_None$());
   }))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e$2) => {
@@ -1087,10 +1088,10 @@ $c_LMain$.prototype.main__AT__V = (function(args) {
     }
     $m_Lconfig_Cache$().Lconfig_Cache$__f_selectedElement = $m_s_None$();
   })));
-  $m_Lextensions_HtmlElementExtension$().dragover__Lorg_scalajs_dom_HTMLElement__F1__Lorg_scalajs_dom_HTMLElement($m_Lconfig_Cache$().Lconfig_Cache$__f_pageBody, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e$3) => {
+  $m_Lextensions_HtmlElementExtension$().dragover__Lorg_scalajs_dom_HTMLElement__F1__Lorg_scalajs_dom_HTMLElement($m_Lelements_PageBody$().Lelements_PageBody$__f_pageBody, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e$3) => {
     e$3.preventDefault();
   })));
-  $m_Lextensions_HtmlElementExtension$().drop__Lorg_scalajs_dom_HTMLElement__F1__Lorg_scalajs_dom_HTMLElement($m_Lconfig_Cache$().Lconfig_Cache$__f_pageBody, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e$4) => {
+  $m_Lextensions_HtmlElementExtension$().drop__Lorg_scalajs_dom_HTMLElement__F1__Lorg_scalajs_dom_HTMLElement($m_Lelements_PageBody$().Lelements_PageBody$__f_pageBody, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e$4) => {
     e$4.preventDefault();
     var id = $as_T(e$4.dataTransfer.getData("text/plain"));
     var this$3 = $n($n($m_Lconfig_Cache$().Lconfig_Cache$__f_stateMap).get__O__s_Option(id));
@@ -1122,14 +1123,14 @@ $c_LMain$.prototype.main__AT__V = (function(args) {
   })));
   $m_Lextensions_DocumentExtension$().kdown__Lorg_scalajs_dom_Document__F1__Lorg_scalajs_dom_Document(document, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e$5) => {
     if (($as_T(e$5.key) === "Shift")) {
-      var \u03b41$ = $m_Lconfig_Cache$().Lconfig_Cache$__f_pageBody.style;
+      var \u03b41$ = $m_Lelements_PageBody$().Lelements_PageBody$__f_pageBody.style;
       \u03b41$.setProperty("cursor", "crosshair");
       $m_Lconfig_Cache$().Lconfig_Cache$__f_pathFlag = true;
     }
   })));
   $m_Lextensions_DocumentExtension$().kup__Lorg_scalajs_dom_Document__F1__Lorg_scalajs_dom_Document(document, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e$6) => {
     if (($as_T(e$6.key) === "Shift")) {
-      var \u03b42$ = $m_Lconfig_Cache$().Lconfig_Cache$__f_pageBody.style;
+      var \u03b42$ = $m_Lelements_PageBody$().Lelements_PageBody$__f_pageBody.style;
       \u03b42$.setProperty("cursor", "default");
       $m_Lconfig_Cache$().Lconfig_Cache$__f_pathFlag = false;
     }
@@ -1217,7 +1218,6 @@ function $p_Lconfig_Cache$__renderPaths__scm_ListBuffer__V($thiz, elements) {
 }
 /** @constructor */
 function $c_Lconfig_Cache$() {
-  this.Lconfig_Cache$__f_pageBody = null;
   this.Lconfig_Cache$__f_fileName = null;
   this.Lconfig_Cache$__f_state = null;
   this.Lconfig_Cache$__f_stateMap = null;
@@ -1227,7 +1227,6 @@ function $c_Lconfig_Cache$() {
   this.Lconfig_Cache$__f_pathFlag = false;
   this.Lconfig_Cache$__f_pathStartElement = null;
   $n_Lconfig_Cache$ = this;
-  this.Lconfig_Cache$__f_pageBody = $m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().uid__Lorg_scalajs_dom_HTMLElement__T__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().div__Lorg_scalajs_dom_HTMLElement(), "pageBody"), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("position", "absolute"), new $c_T2("width", "6000px"), new $c_T2("height", "6000px"), new $c_T2("background-color", "#E0E0E0"), new $c_T2("overflow", "hidden")])));
   this.Lconfig_Cache$__f_fileName = $m_s_None$();
   var elems = $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_Lmodels_GraphElement.getArrayOf().constr)([]));
   this.Lconfig_Cache$__f_state = new $c_scm_ListBuffer().scala$collection$mutable$ListBuffer$$freshFrom__sc_IterableOnce__scm_ListBuffer(elems);
@@ -1298,7 +1297,6 @@ $c_Lconfig_Cache$.prototype.loadState__V = (function() {
       var elements = $as_scm_ListBuffer($f_Lupickle_Api__read__Lujson_Readable__Z__Lupickle_core_Types$Reader__O(this$8, s, trace, evidence$2));
       $p_Lconfig_Cache$__renderElements__scm_ListBuffer__s_Option__V($m_Lconfig_Cache$(), elements, $m_s_None$());
       $p_Lconfig_Cache$__renderPaths__scm_ListBuffer__V($m_Lconfig_Cache$(), elements);
-      hljs.highlightAll();
     });
     reader.readAsText(file);
   });
@@ -2044,6 +2042,54 @@ function $m_Lelements_ContextMenu$() {
     $n_Lelements_ContextMenu$ = new $c_Lelements_ContextMenu$();
   }
   return $n_Lelements_ContextMenu$;
+}
+/** @constructor */
+function $c_Lelements_PageBody$() {
+  this.Lelements_PageBody$__f_pageBody = null;
+  $n_Lelements_PageBody$ = this;
+  this.Lelements_PageBody$__f_pageBody = $m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().uid__Lorg_scalajs_dom_HTMLElement__T__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().div__Lorg_scalajs_dom_HTMLElement(), "pageBody"), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("position", "absolute"), new $c_T2("width", "6000px"), new $c_T2("height", "6000px"), new $c_T2("background-color", "#E0E0E0"), new $c_T2("overflow", "hidden")])));
+}
+$c_Lelements_PageBody$.prototype = new $h_O();
+$c_Lelements_PageBody$.prototype.constructor = $c_Lelements_PageBody$;
+/** @constructor */
+function $h_Lelements_PageBody$() {
+}
+$h_Lelements_PageBody$.prototype = $c_Lelements_PageBody$.prototype;
+var $d_Lelements_PageBody$ = new $TypeData().initClass($c_Lelements_PageBody$, "elements.PageBody$", ({
+  Lelements_PageBody$: 1
+}));
+var $n_Lelements_PageBody$;
+function $m_Lelements_PageBody$() {
+  if ((!$n_Lelements_PageBody$)) {
+    $n_Lelements_PageBody$ = new $c_Lelements_PageBody$();
+  }
+  return $n_Lelements_PageBody$;
+}
+/** @constructor */
+function $c_Lelements_PageSidebar$() {
+  this.Lelements_PageSidebar$__f_logo = null;
+  this.Lelements_PageSidebar$__f_title = null;
+  this.Lelements_PageSidebar$__f_sidebar = null;
+  $n_Lelements_PageSidebar$ = this;
+  this.Lelements_PageSidebar$__f_logo = $m_Lextensions_HtmlElementExtension$().attrs__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().img__Lorg_scalajs_dom_HTMLElement(), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("width", "50%")]))), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("src", "./images/favicon.svg")])));
+  this.Lelements_PageSidebar$__f_title = $m_Lextensions_HtmlElementExtension$().itext__Lorg_scalajs_dom_HTMLElement__T__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().span__Lorg_scalajs_dom_HTMLElement(), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("color", "#00A896"), new $c_T2("font-size", "20px"), new $c_T2("font-weight", "bold")]))), "Schemabot");
+  this.Lelements_PageSidebar$__f_sidebar = $m_Lextensions_HtmlElementExtension$().appends__Lorg_scalajs_dom_HTMLElement__sci_List__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().div__Lorg_scalajs_dom_HTMLElement(), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("position", "fixed"), new $c_T2("width", "150px"), new $c_T2("height", "100%"), new $c_T2("background-color", "#222"), new $c_T2("box-sizing", "border-box"), new $c_T2("overflow", "auto"), new $c_T2("text-align", "center")]))), new $c_sci_$colon$colon(this.Lelements_PageSidebar$__f_logo, new $c_sci_$colon$colon(this.Lelements_PageSidebar$__f_title, $m_sci_Nil$())));
+}
+$c_Lelements_PageSidebar$.prototype = new $h_O();
+$c_Lelements_PageSidebar$.prototype.constructor = $c_Lelements_PageSidebar$;
+/** @constructor */
+function $h_Lelements_PageSidebar$() {
+}
+$h_Lelements_PageSidebar$.prototype = $c_Lelements_PageSidebar$.prototype;
+var $d_Lelements_PageSidebar$ = new $TypeData().initClass($c_Lelements_PageSidebar$, "elements.PageSidebar$", ({
+  Lelements_PageSidebar$: 1
+}));
+var $n_Lelements_PageSidebar$;
+function $m_Lelements_PageSidebar$() {
+  if ((!$n_Lelements_PageSidebar$)) {
+    $n_Lelements_PageSidebar$ = new $c_Lelements_PageSidebar$();
+  }
+  return $n_Lelements_PageSidebar$;
 }
 /** @constructor */
 function $c_Lextensions_DocumentExtension$() {
@@ -10408,6 +10454,9 @@ $c_Lutils_HtmlElementUtil$.prototype.pre__Lorg_scalajs_dom_HTMLElement = (functi
 });
 $c_Lutils_HtmlElementUtil$.prototype.code__Lorg_scalajs_dom_HTMLElement = (function() {
   return document.createElement("Code");
+});
+$c_Lutils_HtmlElementUtil$.prototype.span__Lorg_scalajs_dom_HTMLElement = (function() {
+  return document.createElement("span");
 });
 $c_Lutils_HtmlElementUtil$.prototype.img__Lorg_scalajs_dom_HTMLElement = (function() {
   return document.createElement("img");
