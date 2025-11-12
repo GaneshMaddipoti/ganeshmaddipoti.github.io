@@ -1,0 +1,1 @@
+cp target/scala-3.5.0/schemabot-fastopt/main.js js/main.js
