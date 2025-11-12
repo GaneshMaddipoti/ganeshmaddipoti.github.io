@@ -8,10 +8,11 @@ import utils.Constants.GREEN_COLOR
 object PageSidebar {
 
   val logo = img.styles(
-    "width" -> "50%",
+    "margin-top" -> "10px",
+    "width" -> "25%",
   ).attrs("src" -> "./images/favicon.svg")
 
-  val title = span.styles(
+  val title = div.styles(
     "color" -> GREEN_COLOR,
     "font-size" -> "20px",
     "font-weight" -> "bold"
