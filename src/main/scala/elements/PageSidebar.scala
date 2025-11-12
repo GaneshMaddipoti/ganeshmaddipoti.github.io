@@ -22,7 +22,7 @@ object PageSidebar {
     "position" -> "fixed",
     "width" -> "150px",
     "height" -> "100%",
-    "background-color" -> "#222",
+    "background-color" -> "#444",
     "box-sizing" -> "border-box",
     "overflow" -> "auto",
     "text-align" -> "center",
