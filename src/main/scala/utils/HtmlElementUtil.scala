@@ -1,0 +1,40 @@
+package utils
+
+import org.scalajs.dom.{HTMLElement, document}
+import utils.Constants.*
+
+object HtmlElementUtil {
+  def header: HTMLElement        = document.createElement(HEADER).asInstanceOf[HTMLElement]
+  def footer: HTMLElement        = document.createElement(FOOTER).asInstanceOf[HTMLElement]
+  def nav: HTMLElement           = document.createElement(NAV).asInstanceOf[HTMLElement]
+  def div: HTMLElement           = document.createElement(DIV).asInstanceOf[HTMLElement]
+  def pre: HTMLElement           = document.createElement(PRE).asInstanceOf[HTMLElement]
+  def code: HTMLElement           = document.createElement(CODE_FORMAT).asInstanceOf[HTMLElement]
+  def span: HTMLElement          = document.createElement(SPAN).asInstanceOf[HTMLElement]
+  def ul: HTMLElement            = document.createElement(UL).asInstanceOf[HTMLElement]
+  def img: HTMLElement           = document.createElement(IMG).asInstanceOf[HTMLElement]
+  def textE: HTMLElement         = document.createElement(TEXT).asInstanceOf[HTMLElement]
+  def button: HTMLElement        = document.createElement(BUTTON).asInstanceOf[HTMLElement]
+  def input: HTMLElement         = document.createElement(INPUT).asInstanceOf[HTMLElement]
+  def textArea: HTMLElement      = document.createElement(TEXTAREA).asInstanceOf[HTMLElement]
+  def canvas: HTMLElement        = document.createElement(CANVAS).asInstanceOf[HTMLElement]
+  def select: HTMLElement        = document.createElement(SELECT).asInstanceOf[HTMLElement]
+  def option: HTMLElement        = document.createElement(OPTION).asInstanceOf[HTMLElement]
+  def table: HTMLElement         = document.createElement(TABLE).asInstanceOf[HTMLElement]
+  def tableRow: HTMLElement      = document.createElement(TABLE_ROW).asInstanceOf[HTMLElement]
+  def tableCell: HTMLElement     = document.createElement(TABLE_CELL).asInstanceOf[HTMLElement]
+  def uList: HTMLElement         = document.createElement(UL).asInstanceOf[HTMLElement]
+  def oList: HTMLElement         = document.createElement(OL).asInstanceOf[HTMLElement]
+  def listItem: HTMLElement      = document.createElement(LI).asInstanceOf[HTMLElement]
+  def anchor: HTMLElement        = document.createElement(ANCHOR).asInstanceOf[HTMLElement]
+  def foreignObject: HTMLElement = document.createElementNS(SVG_NS, FOREIGN_OBJECT).asInstanceOf[HTMLElement]
+  def svg: HTMLElement           = document.createElementNS(SVG_NS, SVG).asInstanceOf[HTMLElement]
+  def textPath: HTMLElement      = document.createElementNS(SVG_NS, TEXT_PATH).asInstanceOf[HTMLElement]
+  def path: HTMLElement          = document.createElementNS(SVG_NS, PATH).asInstanceOf[HTMLElement]
+  def circle: HTMLElement        = document.createElementNS(SVG_NS, CIRCLE).asInstanceOf[HTMLElement]
+  def rectangle: HTMLElement     = document.createElementNS(SVG_NS, RECTANGLE).asInstanceOf[HTMLElement]
+  def defs: HTMLElement          = document.createElementNS(SVG_NS, DEFS).asInstanceOf[HTMLElement]
+  def marker: HTMLElement        = document.createElementNS(SVG_NS, MARKER).asInstanceOf[HTMLElement]
+  def pattern: HTMLElement       = document.createElementNS(SVG_NS, PATTERN).asInstanceOf[HTMLElement]
+  def image: HTMLElement         = document.createElementNS(SVG_NS, IMAGE).asInstanceOf[HTMLElement]
+}
