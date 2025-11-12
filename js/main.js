@@ -2071,8 +2071,8 @@ function $c_Lelements_PageSidebar$() {
   this.Lelements_PageSidebar$__f_title = null;
   this.Lelements_PageSidebar$__f_sidebar = null;
   $n_Lelements_PageSidebar$ = this;
-  this.Lelements_PageSidebar$__f_logo = $m_Lextensions_HtmlElementExtension$().attrs__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().img__Lorg_scalajs_dom_HTMLElement(), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("width", "50%")]))), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("src", "./images/favicon.svg")])));
-  this.Lelements_PageSidebar$__f_title = $m_Lextensions_HtmlElementExtension$().itext__Lorg_scalajs_dom_HTMLElement__T__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().span__Lorg_scalajs_dom_HTMLElement(), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("color", "#00A896"), new $c_T2("font-size", "20px"), new $c_T2("font-weight", "bold")]))), "Schemabot");
+  this.Lelements_PageSidebar$__f_logo = $m_Lextensions_HtmlElementExtension$().attrs__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().img__Lorg_scalajs_dom_HTMLElement(), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("margin-top", "10px"), new $c_T2("width", "25%")]))), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("src", "./images/favicon.svg")])));
+  this.Lelements_PageSidebar$__f_title = $m_Lextensions_HtmlElementExtension$().itext__Lorg_scalajs_dom_HTMLElement__T__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().div__Lorg_scalajs_dom_HTMLElement(), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("color", "#00A896"), new $c_T2("font-size", "20px"), new $c_T2("font-weight", "bold")]))), "Schemabot");
   this.Lelements_PageSidebar$__f_sidebar = $m_Lextensions_HtmlElementExtension$().appends__Lorg_scalajs_dom_HTMLElement__sci_List__Lorg_scalajs_dom_HTMLElement($m_Lextensions_HtmlElementExtension$().styles__Lorg_scalajs_dom_HTMLElement__sci_Seq__Lorg_scalajs_dom_HTMLElement($m_Lutils_HtmlElementUtil$().div__Lorg_scalajs_dom_HTMLElement(), $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("position", "fixed"), new $c_T2("width", "150px"), new $c_T2("height", "100%"), new $c_T2("background-color", "#222"), new $c_T2("box-sizing", "border-box"), new $c_T2("overflow", "auto"), new $c_T2("text-align", "center")]))), new $c_sci_$colon$colon(this.Lelements_PageSidebar$__f_logo, new $c_sci_$colon$colon(this.Lelements_PageSidebar$__f_title, $m_sci_Nil$())));
 }
 $c_Lelements_PageSidebar$.prototype = new $h_O();
@@ -10454,9 +10454,6 @@ $c_Lutils_HtmlElementUtil$.prototype.pre__Lorg_scalajs_dom_HTMLElement = (functi
 });
 $c_Lutils_HtmlElementUtil$.prototype.code__Lorg_scalajs_dom_HTMLElement = (function() {
   return document.createElement("Code");
-});
-$c_Lutils_HtmlElementUtil$.prototype.span__Lorg_scalajs_dom_HTMLElement = (function() {
-  return document.createElement("span");
 });
 $c_Lutils_HtmlElementUtil$.prototype.img__Lorg_scalajs_dom_HTMLElement = (function() {
   return document.createElement("img");
