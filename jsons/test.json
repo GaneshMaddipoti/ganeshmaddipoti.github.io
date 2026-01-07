@@ -1,0 +1,12 @@
+{
+  "id": "test123",
+  "name": "Test Object",
+  "attributes": {
+    "color": "blue",
+    "size": "medium",
+    "shape": "circle"
+  },
+  "tags": ["sample", "json", "test"],
+  "isActive": true,
+  "createdAt": "2024-06-15T12:00:00Z"
+}
