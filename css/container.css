@@ -1,0 +1,186 @@
+.container-title {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+  font-size: 1.5em;
+  outline: none;
+  color: var(--node-color);
+  flex-shrink: 0;
+  transition: padding 0.5s ease;
+  transform-origin: center;
+}
+
+/* Body wrapper: holds description + canvas content in a row */
+.container-body {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  position: relative; /* Add position relative for absolute positioning of children */
+  overflow: hidden; /* Contain children */
+}
+
+/* Description Sidebar: collapsed by default */
+.container-description {
+  position: absolute; /* Changed to absolute to overlay */
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  border-right: none;
+  overflow: hidden;
+  transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  white-space: pre-wrap; /* For text wrapping */
+  background-color: var(--node-background-light); /* Background required for overlay */
+  z-index: 10; /* Ensure on top */
+  box-sizing: border-box; /* padding inside width */
+}
+
+.dark-theme .container-description {
+    background-color: var(--node-background-dark);
+}
+
+/* Sidebar Open State */
+.sidebar-open > .container-body > .container-description {
+  width: var(--sidebar-width, 25%); /* Fixed sidebar width or dynamic */
+  padding: 10px;
+  opacity: 0.95; /* Slight transparency */
+  /*border-right: 1px solid var(--node-color);*/
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Shadow for depth */
+}
+
+.sidebar-resizer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px; /* Hit area */
+  cursor: col-resize;
+  z-index: 12;
+  display: none;
+  background-color: transparent;
+  margin-left: -4px; /* Center on the edge (assuming left aligns with width) */
+}
+
+.sidebar-resizer:hover, .sidebar-resizer.resizing {
+  background-color: rgba(100, 100, 100, 0.2);
+}
+
+.sidebar-open > .container-body > .sidebar-resizer {
+  display: block;
+  left: var(--sidebar-width, 25%);
+}
+
+/* Container Content (SVG area) takes full space */
+.container-content {
+  width: 100%; /* Ensure full width */
+  height: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  outline: none;
+  transition: opacity 0.5s ease, flex-grow 0.5s ease;
+  transform-origin: center;
+}
+
+.hamburger-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-user-drag: none;
+}
+
+.dark-theme .hamburger-icon {
+  filter: invert(100%);
+}
+
+/* This targets the span inside container-title that is contenteditable */
+.container-title > span[contenteditable="true"] {
+  cursor: text;
+  outline: none;
+  min-width: 50px; /* Ensure there is a clickable area even if empty */
+}
+
+.container-title > span {
+  flex-grow: 1;
+  outline: none; /* Ensure no outline even in non-edit focus if that happens */
+}
+
+/* These were targeting container-title directly which no longer has contenteditable */
+.container-title > span:empty:not(:focus)::before,
+.container-description:empty:not(:focus)::before {
+  content: attr(data-placeholder);
+  color: rgba(125, 125, 125, 0.5);
+}
+
+/* Removed duplicate definitions */
+
+.container-description[contenteditable="true"] {
+  cursor: text;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  outline: none;
+}
+
+.container-description::-webkit-scrollbar {
+  display: none;
+}
+
+.container-description {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.layout-small > .container-title {
+  display: flex;
+  flex-direction: column; /* Stack vertically: Icon on top, Title below */
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: auto;
+}
+
+.layout-small .hamburger-icon {
+  display: block; /* Show icon */
+  margin-right: 0; /* Remove right margin since it's centered */
+  width: auto;
+  height: 50%;
+  min-height: 40px;
+}
+
+.layout-small > .container-title > span {
+  text-align: center;
+  flex-grow: 0; /* Let it wrap or adjust naturally in column mode */
+}
+
+.layout-small > .container-content,
+.layout-small > .container-description {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  flex-grow: 0;
+  overflow: hidden;
+}
+
+.layout-large > .container-title {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  outline: none;
+}
+
+.layout-large > .container-description {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+}

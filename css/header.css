@@ -1,0 +1,65 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+  background-color: transparent;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.dark-theme .header {
+  background-color: transparent;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.header-logo {
+  height: 30px;
+  width: 30px;
+}
+
+.header-title {
+  font-family: 'Amazon Ember Display', 'Amazon Ember', sans-serif;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: var(--text-color-light);
+}
+
+.dark-theme .header-title {
+  color: var(--text-color-dark);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: #6c757d;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-theme .theme-toggle-button {
+  background-color: #343a40;
+}

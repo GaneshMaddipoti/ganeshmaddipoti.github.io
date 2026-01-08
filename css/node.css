@@ -1,0 +1,84 @@
+.node {
+  cursor: move;
+  -webkit-user-select: none;
+  user-select: none;
+  will-change: transform;
+}
+
+.node-content {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.light-theme .node-content {
+  background-color: var(--node-background-light);
+  border: 1px solid var(--node-color);
+}
+
+.light-theme .node > foreignObject {
+  filter: var(--node-shadow-light);
+}
+
+.dark-theme .node-content {
+  background-color: var(--node-background-dark);
+  border: 1px solid var(--node-color);
+}
+
+.dark-theme .node > foreignObject {
+  filter: var(--node-shadow-dark);
+}
+
+.node.selected > foreignObject {
+  filter: drop-shadow(0 0 4px grey);
+}
+
+.node.pinned > foreignObject {
+  filter: drop-shadow(0 0 4px #1c7ed6);
+}
+
+.node-content textarea,
+.node-content .codebox-content {
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+}
+
+.node-content textarea:focus,
+.node-content .codebox-content:focus {
+  outline: none;
+}
+
+.resizer {
+  visibility: hidden;
+  background-color: gray;
+  cursor: nwse-resize;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  min-width: 4px;
+  min-height: 4px;
+  z-index: 10;
+}
+
+.node.selected > foreignObject > .node-content > .resizer {
+  visibility: visible;
+}
+
+.layout-small.node-content {
+}
+

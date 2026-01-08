@@ -1,0 +1,111 @@
+.textbox-title, .textbox-description, .textbox-content {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  width: 100%;
+  transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease, flex-grow 0.5s ease;
+  transform-origin: center;
+}
+
+.textbox-title[contenteditable="true"],
+.textbox-description[contenteditable="true"],
+.textbox-content[contenteditable="true"] {
+  cursor: text;
+}
+
+.textbox-title:empty:not(:focus)::before,
+.textbox-description:empty:not(:focus)::before,
+.textbox-content:empty:not(:focus)::before {
+  content: attr(data-placeholder);
+  color: rgba(125, 125, 125, 0.5);
+}
+
+.textbox-title *,
+.textbox-description *,
+.textbox-content * {
+  outline: none;
+  border: none;
+}
+
+.textbox-title {
+  font-weight: bold;
+  text-align: center;
+  flex-shrink: 0;
+  outline: none;
+  font-size: 1.5em;
+}
+
+.textbox-description {
+  flex-grow: 1;
+  overflow-y: auto;
+  outline: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-size: 1.2em;
+}
+
+.textbox-content {
+  flex-grow: 1;
+  outline: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-size: 1.2em;
+}
+
+.textbox-content:not([contenteditable="true"]) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.textbox-content[contenteditable="true"] {
+  overflow-y: auto;
+}
+
+.textbox-description::-webkit-scrollbar,
+.textbox-content::-webkit-scrollbar {
+  display: none;
+}
+
+.textbox-description,
+.textbox-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.layout-small > .textbox-description,
+.layout-small > .textbox-content {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  flex-grow: 0;
+  overflow: hidden;
+}
+
+.layout-small > .textbox-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.layout-large > .textbox-title {
+  text-align: left;
+}
+
+.layout-large > .textbox-description {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  flex-grow: 0;
+  overflow: hidden;
+}
+
+.layout-large > .textbox-content {
+  opacity: 1;
+  max-height: 100%;
+  flex-grow: 1;
+}
