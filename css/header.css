@@ -44,6 +44,7 @@
 .header-right {
   display: flex;
   align-items: center;
+  gap: 15px;
 }
 
 .theme-toggle-button {
@@ -62,4 +63,34 @@
 
 .dark-theme .theme-toggle-button {
   background-color: #343a40;
+}
+
+.auth-ui {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-button {
+  background: none;
+  border: 1px solid var(--text-color-light);
+  color: var(--text-color-light);
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.dark-theme .auth-button {
+  border-color: var(--text-color-dark);
+  color: var(--text-color-dark);
+}
+
+.auth-button:hover {
+  background-color: rgba(125, 125, 125, 0.1);
+}
+
+.user-name {
+  font-size: 0.9em;
+  font-weight: 500;
 }
