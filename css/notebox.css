@@ -1,0 +1,43 @@
+.notebox-content {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-size: 1em;
+  overflow-y: auto;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: wheat;
+  color: #333;
+}
+
+.notebox-content[contenteditable="true"] {
+  cursor: text;
+}
+
+.notebox-content:empty:not(:focus)::before {
+  content: attr(data-placeholder);
+  color: rgba(125, 125, 125, 0.5);
+}
+
+.notebox-content::-webkit-scrollbar {
+  display: none;
+}
+
+.notebox-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.notebox-container {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: wheat !important;
+}
+
+.node.selected > foreignObject > .notebox-container {
+  border: 2px solid grey !important;
+}

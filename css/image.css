@@ -1,0 +1,14 @@
+.image-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: auto; /* Ensure events like dblclick work */
+  -webkit-user-drag: none; /* Prevent browser native drag of image */
+  user-drag: none;
+}
+
+.node.selected .image-content {
+  /* Optional: visual feedback when selected */
+}
+

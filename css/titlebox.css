@@ -1,0 +1,50 @@
+.titlebox-content {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 2.5em; /* Large size */
+  font-weight: bold;
+  overflow-y: auto;
+  font-family: 'Amazon Ember Display', sans-serif;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.titlebox-content[contenteditable="true"] {
+  cursor: text;
+  background: rgba(0,0,0,0.05); /* Slight highlight when editing */
+  border-radius: 4px;
+}
+
+.titlebox-content::-webkit-scrollbar {
+  display: none;
+}
+
+.titlebox-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.titlebox-content:empty:not(:focus)::before {
+  content: attr(data-placeholder);
+  color: rgba(125, 125, 125, 0.5);
+}
+
+.titlebox-container {
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.node.selected > foreignObject > .titlebox-container {
+  border: 2px solid grey !important;
+}

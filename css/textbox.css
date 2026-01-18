@@ -31,7 +31,7 @@
   text-align: center;
   flex-shrink: 0;
   outline: none;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .textbox-description {
@@ -40,7 +40,6 @@
   outline: none;
   white-space: pre-wrap;
   overflow-wrap: break-word;
-  font-size: 1.2em;
 }
 
 .textbox-content {
@@ -48,7 +47,6 @@
   outline: none;
   white-space: pre-wrap;
   overflow-wrap: break-word;
-  font-size: 1.2em;
 }
 
 .textbox-content:not([contenteditable="true"]) {
