@@ -1,0 +1,175 @@
+/* Landing Page Specific Styles */
+
+.landing-page {
+    font-family: "Amazon Ember", "Helvetica Neue", Roboto, Arial, sans-serif;
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-theme .landing-page {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+}
+
+.landing-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(28,126,214,0.1) 0%, rgba(0,0,0,0) 100%);
+}
+
+.landing-title {
+    font-family: 'Amazon Ember Display', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #1c7ed6, #ae3ec9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.landing-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    max-width: 600px;
+    color: inherit;
+    opacity: 0.8;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #1c7ed6;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(28,126,214,0.4);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    background-color: #1864ab;
+    box-shadow: 0 6px 20px rgba(28,126,214,0.6);
+}
+
+.features-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features-list {
+    margin-top: 40px;
+    list-style-type: none; /* Remove defaults */
+    padding: 0;
+}
+
+.feature-item {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    opacity: 0.9;
+}
+
+.feature-item::before {
+    content: "✓";
+    color: #1c7ed6;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+.section-title {
+    font-family: 'Amazon Ember Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: inherit;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 40px 20px;
+    text-align: center;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+/* Sample Content Links */
+.samples-section {
+    padding: 60px 20px;
+    background-color: rgba(0,0,0,0.02);
+    text-align: center;
+}
+
+body.dark-theme .samples-section {
+    background-color: rgba(255,255,255,0.02);
+}
+
+.sample-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.sample-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s;
+    width: 250px;
+}
+
+.sample-card:hover {
+    transform: translateY(-5px);
+}
+
+.sample-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: var(--node-background-light);
+    border: 1px solid var(--node-border-light);
+    border-radius: 8px; /* Slightly reduced border radius for smoother look */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    object-fit: cover; /* Ensure image covers the area nicely */
+    transition: box-shadow 0.2s;
+}
+
+body.dark-theme .sample-image {
+    background-color: var(--node-background-dark);
+    border-color: var(--node-border-dark);
+}
+
+.sample-card:hover .sample-image {
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    border-color: #1c7ed6;
+}
+
+.sample-title {
+    font-family: 'Amazon Ember Display', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1c7ed6;
+}

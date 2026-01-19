@@ -6,165 +6,7 @@
     <title>Schemabot - Visualize Your Ideas</title>
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .landing-page {
-            font-family: "Amazon Ember", "Helvetica Neue", Roboto, Arial, sans-serif;
-            background-color: var(--background-color-light);
-            color: var(--text-color-light);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        body.dark-theme .landing-page {
-            background-color: var(--background-color-dark);
-            color: var(--text-color-dark);
-        }
-
-        .landing-hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(28,126,214,0.1) 0%, rgba(0,0,0,0) 100%);
-        }
-
-        .landing-title {
-            font-family: 'Amazon Ember Display', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #1c7ed6, #ae3ec9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .landing-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-            color: inherit;
-            opacity: 0.8;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: white;
-            background-color: #1c7ed6;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(28,126,214,0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            background-color: #1864ab;
-            box-shadow: 0 6px 20px rgba(28,126,214,0.6);
-        }
-
-        .features-section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background-color: var(--node-background-light);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: var(--node-shadow-light);
-            transition: transform 0.2s;
-            border: 1px solid var(--node-border-light);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        body.dark-theme .feature-card {
-            background-color: var(--node-background-dark);
-            box-shadow: var(--node-shadow-dark);
-            border-color: var(--node-border-dark);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #1c7ed6;
-        }
-
-        .feature-title {
-            font-family: 'Amazon Ember Display', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .feature-description {
-            font-size: 1rem;
-            line-height: 1.6;
-            opacity: 0.8;
-        }
-
-        .footer {
-            margin-top: auto;
-            padding: 40px 20px;
-            text-align: center;
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
-
-        /* Sample Content Links */
-        .samples-section {
-            padding: 60px 20px;
-            background-color: rgba(0,0,0,0.02);
-            text-align: center;
-        }
-
-        body.dark-theme .samples-section {
-            background-color: rgba(255,255,255,0.02);
-        }
-
-        .sample-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .sample-link {
-            color: #1c7ed6;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: 1px solid #1c7ed6;
-            border-radius: 20px;
-            transition: all 0.2s;
-        }
-
-        .sample-link:hover {
-            background-color: rgba(28,126,214,0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body class="light-theme"> <!-- Default to light theme, script will update -->
     <div class="landing-page">
@@ -187,48 +29,30 @@
             <a href="editor.html" class="cta-button">Launch Editor</a>
         </div>
 
-        <div class="features-section">
-            <h2 style="font-family: 'Amazon Ember Display',serif; font-size: 2.5rem; text-align: center;">Key Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3 class="feature-title">Fast & Fluid</h3>
-                    <p class="feature-description">Built with performance in mind. Experience smooth zooming, panning, and interaction even with complex graphs.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📂</div>
-                    <h3 class="feature-title">Hierarchical Organization</h3>
-                    <p class="feature-description">Group related nodes into Containers. Zoom into containers to focus on details, or zoom out for the big picture.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3 class="feature-title">Rich Styling</h3>
-                    <p class="feature-description">Customize node colors, switch between Light and Dark themes, and enjoy a polished visual aesthetic.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💾</div>
-                    <h3 class="feature-title">Save & Load</h3>
-                    <p class="feature-description">Your work is automatically saved. Export your graphs to JSON and load them back anytime.</p>
-                </div>
-                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Keyboard Shortcuts</h3>
-                    <p class="feature-description">Efficiency at your fingertips. Use 'T' for Textbox, 'G' for Container, and familiar shortcuts like Delete and ESC.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔗</div>
-                    <h3 class="feature-title">Smart Connections</h3>
-                    <p class="feature-description">Connect nodes effortlessly with Shift+Drag. Create directed paths to visualize relationships and flows.</p>
-                </div>
+        <div class="samples-section">
+            <h2 class="section-title">Try Samples</h2>
+            <div class="sample-links">
+                <a href="editor.html?file=AWS" class="sample-card">
+                     <img src="img/content/aws.png" class="sample-image" alt="AWS Infrastructure">
+                     <span class="sample-title">AWS</span>
+                </a>
+                <a href="editor.html?file=ApacheSpark" class="sample-card">
+                     <img src="img/content/spark.png" class="sample-image" alt="Concept Map">
+                     <span class="sample-title">Apache Spark</span>
+                </a>
             </div>
         </div>
 
-        <div class="samples-section">
-            <h2 style="font-family: 'Amazon Ember Display',serif; font-size: 2rem;">Get Started with Samples</h2>
-            <div class="sample-links">
-                <a href="editor.html?file=AWS" class="sample-link">AWS</a>
-                <a href="editor.html?file=ApacheSpark" class="sample-link">Apache Spark</a>
-            </div>
+        <div class="features-section">
+            <h2 class="section-title">Key Features</h2>
+            <ul class="features-list">
+                <li class="feature-item"><strong>Panning & Zooming:</strong> Navigate infinite canvas with precision.</li>
+                <li class="feature-item"><strong>Hierarchical Nodes:</strong> Nested containers for organizing complex structures.</li>
+                <li class="feature-item"><strong>Paths & Lines:</strong> Connect nodes flexibly to define relationships.</li>
+                <li class="feature-item"><strong>Save & Load:</strong> Persist your work effortlessly to/from JSON.</li>
+                <li class="feature-item"><strong>Keyboard Shortcuts:</strong> Boost productivity with Cut, Paste, Delete, Zoom shortcuts.</li>
+                <li class="feature-item"><strong>Rich Styling:</strong> Uniform design with Light/Dark themes supports.</li>
+            </ul>
         </div>
 
         <div class="footer">
