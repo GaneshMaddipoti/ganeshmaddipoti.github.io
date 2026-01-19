@@ -173,3 +173,29 @@ body.dark-theme .sample-image {
     font-weight: bold;
     color: #1c7ed6;
 }
+
+/* Re-adding Feature Card styles for Quick Start Guide */
+.feature-card {
+    background-color: var(--node-background-light);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--node-shadow-light);
+    border: 1px solid var(--node-border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+body.dark-theme .feature-card {
+    background-color: var(--node-background-dark);
+    box-shadow: var(--node-shadow-dark);
+    border-color: var(--node-border-dark);
+}
+
+.feature-title {
+    font-family: 'Amazon Ember Display', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1c7ed6;
+}

@@ -8,6 +8,35 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<button class="help-float-btn" onclick="document.getElementById('helpModal').style.display='block'" title="Help">?</button>
+
+<div id="helpModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="document.getElementById('helpModal').style.display='none'">&times;</span>
+        <h2 style="margin-top: 0;">Schemabot Help</h2>
+
+        <div class="help-section">
+            <div class="help-title">Creation & Toolbar</div>
+            <ul style="padding-left: 20px;">
+                <li><strong>Nodes:</strong> Click toolbar icon (Box/Container), then click on canvas.</li>
+                <li><strong>Lines:</strong> Click Line tool -> Click Start Node -> Click End Node.</li>
+                <li><strong>Color:</strong> Select node -> Click Color icon in toolbar.</li>
+            </ul>
+        </div>
+
+        <div class="help-section">
+            <div class="help-title">Shortcuts</div>
+            <table class="key-table">
+                <tr><td>Move/Pan</td><td>Click & Drag Node / Background</td></tr>
+                <tr><td>Zoom</td><td>Mouse Wheel</td></tr>
+                <tr><td>Save / Load</td><td>Ctrl+S / Ctrl+O</td></tr>
+                <tr><td>Copy / Paste</td><td>Ctrl+C / Ctrl+V</td></tr>
+                <tr><td>Delete</td><td>Del / Backspace</td></tr>
+                <tr><td>Cancel</td><td>Esc</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
 <script src="NodeEditor.js"></script>
 </body>
 </html>

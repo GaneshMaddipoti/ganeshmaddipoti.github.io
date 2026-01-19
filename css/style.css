@@ -10,6 +10,7 @@
 @import url('line.css');
 @import url('toolbar.css');
 @import url('fontawesome.css');
+@import url('editor.css');
 
 :root {
   --background-color-light: #ffffff;
