@@ -1,12 +1,15 @@
-@import 'header.css';
-@import 'toolbar.css';
-@import 'node.css';
-@import 'textbox.css';
-@import 'codebox.css';
-@import 'container.css';
-@import 'image.css';
-@import 'notebox.css';
-@import 'titlebox.css';
+@import url('codebox.css');
+@import url('notebox.css');
+@import url('path.css');
+@import url('image.css');
+@import url('textbox.css');
+@import url('container.css');
+@import url('titlebox.css');
+@import url('header.css');
+@import url('node.css');
+@import url('line.css');
+@import url('toolbar.css');
+@import url('fontawesome.css');
 
 :root {
   --background-color-light: #ffffff;

@@ -1,0 +1,12 @@
+.path-hit-area {
+    cursor: pointer;
+    pointer-events: stroke;
+}
+
+.path-hit-area:hover {
+    stroke: rgba(0, 0, 0, 0.1);
+}
+
+.node.selected > .path-hit-area {
+    stroke: rgba(0, 0, 0, 0.1);
+}

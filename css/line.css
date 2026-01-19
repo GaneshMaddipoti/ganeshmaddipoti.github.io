@@ -1,0 +1,25 @@
+.line-hit-area {
+  stroke: transparent;
+  stroke-width: 15;
+  cursor: pointer;
+}
+
+.node.selected > .line-hit-area {
+  stroke: rgba(128, 128, 128, 0.3);
+}
+
+.line-handle {
+  fill: #1c7ed6;
+  opacity: 0.8;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.node.selected > .line-handle {
+  visibility: visible;
+}
+
+.line-element {
+    pointer-events: none; /* Let clicks pass through to hit area */
+}
+

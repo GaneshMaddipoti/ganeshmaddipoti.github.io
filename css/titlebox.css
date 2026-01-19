@@ -7,22 +7,24 @@
   border: none;
   background: transparent;
   color: inherit;
-  font-size: 2.5em; /* Large size */
+  font-size: 1.5em;
   font-weight: bold;
-  overflow-y: auto;
   font-family: 'Amazon Ember Display', sans-serif;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: normal;
 }
 
 .titlebox-content[contenteditable="true"] {
   cursor: text;
   background: rgba(0,0,0,0.05); /* Slight highlight when editing */
   border-radius: 4px;
+  white-space: pre-wrap;
+  overflow: auto;
+  text-overflow: clip;
 }
 
 .titlebox-content::-webkit-scrollbar {

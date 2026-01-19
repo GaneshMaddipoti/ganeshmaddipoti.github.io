@@ -30,10 +30,6 @@
   border: 2px solid grey;
 }
 
-.node.selected > .line-hit-area {
-  stroke: rgba(128, 128, 128, 0.3);
-}
-
 .node.pinned > foreignObject > .node-content {
   border: 2px solid #1c7ed6;
 }
@@ -73,10 +69,6 @@
   visibility: visible;
 }
 
-.node.selected > .line-handle {
-  display: block !important;
-}
-
 .layout-small.node-content {
 }
 
@@ -84,4 +76,3 @@
   content: attr(data-placeholder);
   color: rgba(125, 125, 125, 0.5);
 }
-
