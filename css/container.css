@@ -147,6 +147,10 @@
   text-wrap: auto;
 }
 
+.layout-small .hamburger-icon[src*="image-holder.svg"] {
+  display: none;
+}
+
 .layout-small .hamburger-icon {
   display: block; /* Show icon */
   margin-right: 0; /* Remove right margin since it's centered */
