@@ -4,6 +4,10 @@
   will-change: transform;
 }
 
+.node foreignObject {
+  overflow: visible;
+}
+
 .node-content {
   box-sizing: border-box;
   width: 100%;
@@ -18,12 +22,12 @@
 
 .light-theme .node-content {
   background-color: var(--node-background-light);
-  border: 1px solid var(--node-color);
+  border: none;
 }
 
 .dark-theme .node-content {
   background-color: var(--node-background-dark);
-  border: 1px solid var(--node-color);
+  border: none;
 }
 
 .node.selected > foreignObject > .node-content {
@@ -49,6 +53,14 @@
 .node-content textarea:focus,
 .node-content {
   outline: none;
+}
+
+.light-theme .container-node {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.dark-theme .container-node {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.4), 0 8px 10px 1px rgba(0, 0, 0, 0.28), 0 3px 14px 2px rgba(0, 0, 0, 0.24);
 }
 
 .resizer {
