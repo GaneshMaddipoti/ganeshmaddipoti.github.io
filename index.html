@@ -1,122 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schemabot - Visualize Your Ideas</title>
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schemabot - Visualize Your Ideas</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body class="light-theme"> <!-- Default to light theme, script will update -->
-    <div class="landing-page">
-        <!-- Reusing Header Logic via JS or simplified static header -->
-        <div class="header">
-            <div class="header-left">
-                <img src="img/favicon.svg" class="header-logo" alt="Logo">
-                <span class="header-title">Schemabot</span>
-            </div>
-            <div class="header-right">
-                <button id="theme-toggle" class="theme-toggle-button" title="Toggle Theme">
-                   <!-- Icon will be inserted by script -->
-                </button>
-            </div>
-        </div>
-
-        <div class="landing-hero">
-            <h1 class="landing-title">Visualize Your Ideas</h1>
-            <p class="landing-subtitle">A powerful, intuitive node-based editor for creating and organizing information, flowcharts, diagrams hierarchically.</p>
-            <a href="editor.html" class="cta-button">Launch Editor</a>
-        </div>
-
-        <div class="samples-section">
-            <h2 class="section-title">Try Samples</h2>
-            <div class="sample-links">
-                <a href="editor.html?file=AWS" class="sample-card">
-                     <img src="img/content/aws.png" class="sample-image" alt="AWS Infrastructure">
-                     <span class="sample-title">AWS</span>
-                </a>
-                <a href="editor.html?file=ApacheSpark" class="sample-card">
-                     <img src="img/content/spark.png" class="sample-image" alt="Concept Map">
-                     <span class="sample-title">Apache Spark</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="features-section">
-            <h2 class="section-title">Key Features</h2>
-            <ul class="features-list">
-                <li class="feature-item"><strong>Panning & Zooming:</strong> Navigate infinite canvas with precision.</li>
-                <li class="feature-item"><strong>Hierarchical Nodes:</strong> Nested containers for organizing complex structures.</li>
-                <li class="feature-item"><strong>Paths & Lines:</strong> Connect nodes flexibly to define relationships.</li>
-                <li class="feature-item"><strong>Save & Load:</strong> Persist your work effortlessly to/from JSON.</li>
-                <li class="feature-item"><strong>Keyboard Shortcuts:</strong> Boost productivity with Cut, Paste, Delete, Zoom shortcuts.</li>
-                <li class="feature-item"><strong>Rich Styling:</strong> Uniform design with Light/Dark themes supports.</li>
-            </ul>
-        </div>
-
-        <div class="features-section">
-            <h2 class="section-title">Quick Start Guide</h2>
-            <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 40px; display: grid;">
-                <div class="feature-card">
-                    <h3 class="feature-title">Toolbar & Creation</h3>
-                    <ul style="opacity: 0.9; line-height: 1.6; padding-left: 20px;">
-                        <li><strong>Select Tool:</strong> Default pointer for moving and editing.</li>
-                        <li><strong>Create Nodes:</strong> Click icon (Container/Box), then click on canvas to place.</li>
-                        <li><strong>Connect Nodes:</strong> Click Path/Line tool -> Click Start Node -> Click End Node.</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <h3 class="feature-title">Shortcuts & Actions</h3>
-                    <ul style="opacity: 0.9; line-height: 1.6; padding-left: 20px;">
-                        <li><strong>Move/Pan:</strong> Drag nodes to move. Drag empty space to pan.</li>
-                        <li><strong>Edit Text:</strong> Double-click text areas.</li>
-                        <li><strong>Save/Load:</strong> Ctrl+S / Ctrl+O (Cmd on Mac).</li>
-                        <li><strong>Clipboard:</strong> Ctrl+C, Ctrl+X, Ctrl+V for Copy/Cut/Paste.</li>
-                        <li><strong>Cancel/Deselect:</strong> Esc key.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            &copy; 2026 Schemabot. Built with Kotlin/JS.
-        </div>
+<div class="landing-page">
+  <!-- Reusing Header Logic via JS or simplified static header -->
+  <div class="header">
+    <div class="header-left">
+      <img src="img/favicon.svg" class="header-logo" alt="Logo">
+      <span class="header-title">Schemabot</span>
     </div>
+    <div class="header-right">
+      <button id="theme-toggle" class="theme-toggle-button" title="Toggle Theme">
+        <!-- Icon will be inserted by script -->
+      </button>
+    </div>
+  </div>
 
-    <script>
-        // Simple Theme Manager for Landing Page
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const body = document.body;
-        const LIGHT_THEME = 'light-theme';
-        const DARK_THEME = 'dark-theme';
+  <div class="landing-hero">
+    <h1 class="landing-title">Visualize Your Ideas</h1>
+    <p class="landing-subtitle">A powerful, intuitive node-based editor for creating and organizing information,
+      flowcharts, diagrams hierarchically.</p>
+    <a href="editor.html" class="cta-button">Launch Editor</a>
+  </div>
 
-        function getStoredTheme() {
-            return localStorage.getItem('theme') || LIGHT_THEME;
-        }
+  <div class="samples-section">
+    <h2 class="section-title">Try Samples</h2>
+    <div class="sample-links">
+      <a href="editor.html?file=AWS" class="sample-card">
+        <img src="img/content/aws.png" class="sample-image" alt="AWS Infrastructure">
+        <span class="sample-title">AWS</span>
+      </a>
+      <a href="editor.html?file=ApacheSpark" class="sample-card">
+        <img src="img/content/spark.png" class="sample-image" alt="Apache Spark">
+        <span class="sample-title">Apache Spark</span>
+      </a>
+      <a href="editor.html?file=Python" class="sample-card">
+        <img src="img/content/python.png" class="sample-image" alt="Python">
+        <span class="sample-title">Python</span>
+      </a>
+    </div>
+  </div>
 
-        function setTheme(theme) {
-            body.classList.remove(LIGHT_THEME, DARK_THEME);
-            body.classList.add(theme);
-            localStorage.setItem('theme', theme);
-            updateIcon();
-        }
+  <div class="features-section">
+    <h2 class="section-title">Key Features</h2>
+    <ul class="features-list">
+      <li class="feature-item"><strong>Panning & Zooming:</strong> Navigate infinite canvas with precision.</li>
+      <li class="feature-item"><strong>Hierarchical Nodes:</strong> Nested containers for organizing complex structures.
+      </li>
+      <li class="feature-item"><strong>Paths & Lines:</strong> Connect nodes flexibly to define relationships.</li>
+      <li class="feature-item"><strong>Save & Load:</strong> Persist your work effortlessly to/from JSON.</li>
+      <li class="feature-item"><strong>Keyboard Shortcuts:</strong> Boost productivity with Cut, Paste, Delete, Zoom
+        shortcuts.
+      </li>
+      <li class="feature-item"><strong>Rich Styling:</strong> Uniform design with Light/Dark themes supports.</li>
+    </ul>
+  </div>
 
-        function toggleTheme() {
-            const currentTheme = body.classList.contains(DARK_THEME) ? DARK_THEME : LIGHT_THEME;
-            const newTheme = currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
-            setTheme(newTheme);
-        }
+  <div class="features-section">
+    <h2 class="section-title">Quick Start Guide</h2>
+    <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 40px; display: grid;">
+      <div class="feature-card">
+        <h3 class="feature-title">Toolbar & Creation</h3>
+        <ul style="opacity: 0.9; line-height: 1.6; padding-left: 20px;">
+          <li><strong>Select Tool:</strong> Default pointer for moving and editing.</li>
+          <li><strong>Create Nodes:</strong> Click icon (Container/Box), then click on canvas to place.</li>
+          <li><strong>Connect Nodes:</strong> Click Path/Line tool -> Click Start Node -> Click End Node.</li>
+        </ul>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-title">Shortcuts & Actions</h3>
+        <ul style="opacity: 0.9; line-height: 1.6; padding-left: 20px;">
+          <li><strong>Move/Pan:</strong> Drag nodes to move. Drag empty space to pan.</li>
+          <li><strong>Edit Text:</strong> Double-click text areas.</li>
+          <li><strong>Save/Load:</strong> Ctrl+S / Ctrl+O (Cmd on Mac).</li>
+          <li><strong>Clipboard:</strong> Ctrl+C, Ctrl+X, Ctrl+V for Copy/Cut/Paste.</li>
+          <li><strong>Cancel/Deselect:</strong> Esc key.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-        function updateIcon() {
-            const isDark = body.classList.contains(DARK_THEME);
-            themeToggleBtn.innerHTML = isDark ? '☀️' : '🌙';
-        }
+  <div class="footer">
+    &copy; 2026 Schemabot. Built with Kotlin/JS.
+  </div>
+</div>
 
-        themeToggleBtn.addEventListener('click', toggleTheme);
+<script>
+  // Simple Theme Manager for Landing Page
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const body = document.body;
+  const LIGHT_THEME = 'light-theme';
+  const DARK_THEME = 'dark-theme';
 
-        // Initialize
-        setTheme(getStoredTheme());
-    </script>
+  function getStoredTheme() {
+    return localStorage.getItem('theme') || LIGHT_THEME;
+  }
+
+  function setTheme(theme) {
+    body.classList.remove(LIGHT_THEME, DARK_THEME);
+    body.classList.add(theme);
+    localStorage.setItem('theme', theme);
+    updateIcon();
+  }
+
+  function toggleTheme() {
+    const currentTheme = body.classList.contains(DARK_THEME) ? DARK_THEME : LIGHT_THEME;
+    const newTheme = currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+    setTheme(newTheme);
+  }
+
+  function updateIcon() {
+    const isDark = body.classList.contains(DARK_THEME);
+    themeToggleBtn.innerHTML = isDark ? '☀️' : '🌙';
+  }
+
+  themeToggleBtn.addEventListener('click', toggleTheme);
+
+  // Initialize
+  setTheme(getStoredTheme());
+</script>
 </body>
 </html>
